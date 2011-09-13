@@ -33,6 +33,17 @@
 #+latex_header: \mode<beamer>{\usecolortheme{beaver}}
 #+latex_header: \mode<beamer>{\usefonttheme{structurebold}}
 
+* Why git?
+
+- It is a file revision control system, one of many:
+  + git
+  + mercurial
+  + bazaar
+  + subversion, old
+
+- *EVERYONE* needs to keep track of changes in their files
+- everyone should and everyone needs to at this course 
+
 * What is git
 
 - Git is a free distributed revision control, or software source code
@@ -51,14 +62,17 @@
 
 Start by telling git your contact details:
 
-  + git config \texttt{$-$$-$}global user.name "Your Name"
-  + git config \texttt{$-$$-$}global user.email
-    "your.name@kaust.edu.sa" \minus
+#+BEGIN_SRC shell
+  $ git config --global user.name "Your Name"
+  $ git config --global user.email "your.name@kaust.edu.sa"
+#+END_SRC
 
 Since git is a distributed version controlling system, you can use it
 for any directory. Simply run: 
 
-  - git init
+#+BEGIN_SRC shell
+  $ git init
+#+END_SRC
 
 * Ignoring files
 
@@ -78,21 +92,25 @@ root directory.
 
 git commit command takes note of only those files that have been 'add'ed.
 
-  - git add .
-  - git commit -a -m 'note about the commit'
+#+BEGIN_SRC shell
+  $ git add .
+  $ git commit -a -m 'note about the commit'
+#+END_SRC
 
-Git contains powerful mechanisms to branch, merge versions and study
-older versions. 
 
 *Important*: If you want to rename a file or directory that is under
 git, do not use the normal 'mv' command. Git can keep track of the
 change, if you do:
 
-  - git mv filename newfilename
+#+BEGIN_SRC shell
+  $ git mv filename newfilename
+#+END_SRC
 
 Similarly, remove a file from disk and git at the same time:
 
-  - git rm filename
+#+BEGIN_SRC shell
+  $ git rm filename
+#+END_SRC
 
 See: man pages git, gittutorial
 
@@ -101,34 +119,60 @@ See: man pages git, gittutorial
 You can create the new local project directory or simply
 add files from an existing directory into this repository:
  
-  - mkdir myproj
-  - cd myproj
-  - git init
+#+BEGIN_SRC shell
+  $ mkdir myproj
+  $ cd myproj
+  $ git init
+#+END_SRC
 
 Add files and content, e.g.:
 
-  - echo "text" > readme
+#+BEGIN_SRC shell
+  $ echo "text" > readme
+#+END_SRC
 
 Tell git not to keep track of emacs backup files, e.g. 
 
-  - echo '*~' > .gitignore
-  - git add .
-  - git commit -a -m 'first commit'
+#+BEGIN_SRC shell
+  $ echo '*~' > .gitignore
+  $ git add .
+  $ git commit -a -m 'first commit'
+#+END_SRC
 
 * Working with files
 
 While working with files, you can check the status any time with:
 
-  - git status
-  - git log (filename)
-  - git diff filename
-  - git blame filename
-  - gitk
+#+BEGIN_SRC shell
+  $ git status
+  $ git log (filename)
+  $ git diff filename
+  $ git blame filename
+  $ gitk
+#+END_SRC
 
 and commit any set of changes.
 
-  - git commit -a -m 'short description of changes'
+#+BEGIN_SRC shell
+  $ git commit -a -m 'short description of changes'
+#+END_SRC
 
+* Recovering files
+
+If you notice (git status) that you have accidentally removed a file,
+you can fetch the latest committed version by:
+
+#+BEGIN_SRC shell
+  $ git checkout filename
+#+END_SRC
+
+* More advanced git
+
+Git contains powerful mechanisms to 
+
+- branch
+- merge versions
+- study older versions
 
 * Installing git
 
@@ -144,17 +188,15 @@ or
 - http://progit.org/book/ - the best book
 - http://gitref.org/ - reference card expanded to a web site
 - http://book.git-scm.com/index.html
-- Install the 'gitmagic' ubuntu package:  Access the text in:
-    /usr/share/doc/gitmagic/gitmagic.pdf.gz
-- http://git-scm.com/course/svn.html
+- http://git-scm.com/course/svn.html - for subversion users
 - http://www.kernel.org/pub/software/scm/git/docs/everyday.html
 
 
 * git command summary
 
-- git init
-- copy a .gitignore file
-- git status
-- git add
-- git commit
-
+#+BEGIN_SRC shell
+$ git init
+$ git status
+$ git add .
+$ git commit -a -m 'comment'
+#+END_SRC
