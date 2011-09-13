@@ -1,7 +1,7 @@
-#+TITLE: Linux Fundamentals
+#+TITLE: UNIX Fundamentals
 #+AUTHOR: Heikki Lehvaslaiho
 #+EMAIL:     heikki.lehvaslaiho@kaust.edu.sa
-#+DATE:      2011-09-11 Sun
+#+DATE:      Command line programming for biologists \\ 22-26 Oct 2011
 #+DESCRIPTION:
 #+KEYWORDS: UNIX, LINUX , CLI, history, summary, command line  
 #+LANGUAGE:  en
@@ -22,6 +22,9 @@
 
 #+COLUMNS: %40ITEM %10BEAMER_env(Env) %9BEAMER_envargs(Env Args) %4BEAMER_col(Col) %10BEAMER_extra(Extra)
 
+# TOC slide before every section
+#+latex_header: \AtBeginSection[]{\begin{frame}<beamer>\frametitle{Topic}\tableofcontents[currentsection]\end{frame}}
+
 ## see http://deic.uab.es/~iblanes/beamer_gallery/
 
 ##+latex_header: \mode<beamer>{\usetheme{Madrid}}
@@ -30,36 +33,93 @@
 #+latex_header: \mode<beamer>{\usecolortheme{beaver}}
 #+latex_header: \mode<beamer>{\usefonttheme{structurebold}}
 
+* Philosophy of command line
 
-* Session 1 Overview
+** CLI versus GUI
 
-** What is Linux?
-*** A multitasking, multi-user operating system
-*** Informally refers to the operating system as well as the standard tools and applications distributed with it
-*** Specifically, Linux refers to the kernel which forms the core of the operating system
-*** The kernel is distributed with indispensable utilities and applications, such as compilers, editors, command interpreters, etc.
-*** Most Linux software distributed under the GNU general public license (GPL)
+Philosophical
+- Command line forces internalization of the problem by abstraction
+Practical
+- Scientific data sets are too big for GUI
+- Scientific data does not come in standard formats
 
-** What are Linux Systems Used For?
 
-*** Linux is based on Unix operating systems, traditionally associated with
-*** heavy computing, stability and backend services
-*** computationally intensive tasks such as visualisation and graphics rendering
-*** scientific computation and simulations
-*** academic laboratories
-*** Large portion of the Internet is Unix-based
-*** Linux is revolutionising the old legacy of Unix by bringing the operating system to desktops and everyday users
+** Practical differences
 
-** What are Linux Systems Used For?
+*** GUI 					      :B_ignoreheading:BMCOL:
+    :PROPERTIES: 
+    :BEAMER_env: block
+    :BEAMER_col: 0.5
+    :END:
+    - Depends on reading the file into memory and manipulating it there.
+    - Only a limited number of commands fit in  menus
+    - Can not be automated
 
-*** Linux systems often used for back end services:
-- Web servers, database servers, file servers, mail servers, ftp servers, firewalls, routers, print servers...
-*** Linux is slowly moving onto the desktop:
-- Desktop, office suites, graphics manipulation
-*** Growing commercial interest in Linux-based computing:
-- Reliable, secure IT systems
-- Cost-effective solutions
-- Support from traditional Unix companies such as Sun, HP, IBM, Novell
+*** CLI 						    :BMCOL:B_example:
+    :PROPERTIES: 
+    :BEAMER_col: 0.5
+    :BEAMER_env: block
+    :END:
+    - Work in chunks, e.g. line by line
+    - Programmes are designed to work together
+    - Output from one is the next programme's input 
+    This is instant programming
+
+
+** Progression in CLI usage
+
+1. One at the time (learn the commands)
+2. Chain them together
+3. Store them for later use (shell aliases and functions)
+4. Create your own (any programming language, here perl)
+
+The aim is for efficiency, speed and convenience
+
+
+
+* UNIX operating system
+
+** Operating system
+
+An operating system (OS) is software, consisting of programs and data,
+that runs on computers, manages computer hardware resources, and
+provides common services for execution of various application
+software.
+
+*** list 					      :B_ignoreheading:BMCOL:
+    :PROPERTIES: 
+    :BEAMER_env: ignoreheading
+    :BEAMER_col: 0.6
+    :END:
+    Operating system types:
+    - Real-time
+    - Multi-user vs. Single-user
+    - Multi-tasking vs. Single-tasking
+    - Distributed
+    - Embedded
+
+*** list 					      :B_ignoreheading:BMCOL:
+    :PROPERTIES: 
+    :BEAMER_col: 0.4
+    :BEAMER_env: ignoreheading
+    :END:
+    [[file:img/500px-Operating_system_placement.svg.png]]
+
+** Unix and Unix-like operating systems
+
+Main features:
+
+- multitasking
+- multi-user
+- GUI is separate from CLI
+
+Originally developed in 1969 by a group of AT&T employees at Bell
+Labs, including Ken Thompson, Dennis Ritchie, Brian Kernighan,
+Douglas McIlroy, and Joe Ossanna.
+
+- Developed in an environment of free information exchange
+- Became heavily fragmented and  commercialised once companies noticed its value
+- GNU project for free OS started by Richhard Stallman in early 80's
 
 ** Brief History of UNIX
 
@@ -68,7 +128,24 @@
 [[file:img/2000px-Unix_history-simple.svg.png]]
 
 
-** Brief History (I)
+** Out course computers run MacOSX
+
+- Mac OSX, a variation of BSD UNIX
+- Most servers workstations in science run LINUX
+
+There are subtle differences in tools and how they work between
+UNIXes.
+
+It is possible to install the GNU tools to a Mac
+
+- The Fink project http://www.finkproject.org/
+- MacPorts http://www.macports.org/
+
+Increasingly, there are native ports of free GUI programs to MacOS X.
+- Aquamacs
+
+
+** Brief History of LINUX (I)
 
 *** Linux began in 1980's as an effort to create a free Unix-like operating system
 *** The project was called GNU and was run by the Free Software Foundation (FSF) created by Richard Stallman
@@ -76,7 +153,7 @@
 *** By early 1990's most of the components were written, but the operating system was missing a kernel
 *** Coincidentally, Linus Torvalds of Helsinki University had been working on a Unix-based kernel – the first version was completed in 1994
 
-** Brief History (II)
+** Brief History of LINUX (II)
 
 *** Linus liked the endeavours of the Free Software Foundation and released his kernel under the GNU GPL
 *** The Linux kernel and GNU tools made a complete, free operating system: the GNU/Linux operating system
@@ -91,11 +168,11 @@
 *** GPL, MPL and BSD licenses are some examples
 
 ** User Interface
-*** Describes the way a system interacts with its users
-*** Text-based or command line interface:
-*** Dates back to pre 1980's
-*** Commands typed using keyboard to run applications
-*** Less user-friendly but extremely flexible, especially for system administration
+- Describes the way a system interacts with its users
+- Text-based or command line interface:
+- Dates back to pre 1980's
+- Commands typed using keyboard to run applications
+- Less user-friendly but extremely flexible, especially for system administration
 
 ** Graphical interface:
 
@@ -105,20 +182,11 @@
 
 ** Logging In
 
-*** Since Linux is a multiuser operating system, users must authenticate themselves before gaining access
+*** Since UNIX is a multiuser operating system, users must authenticate themselves before gaining access
 *** Authentication is done with a username and password, configured by the system administrator
 *** Although visually different, the process of logging in the same in both text and graphical mode
 *** The combination of username, password and disk space for personal files is called a user account
-*** *Note* that Linux is case-sensitive
-
-** Switching Between Text and Graphics
-
-*** When booting in text mode, the desktop is launched using the command startx
-*** When booting in graphical mode, a command interpreter can be launched from the application menu
-*** The command interpreter is also called a terminal or shell
-*** Ctrl-Alt-F1 to F6 will switch from graphical mode into a text-based terminal
-*** Alt-F7 will switch back to graphical mode if the above step was performed
-*** Alt-F1 toF6 will switch between several text-based terminals
+*** *Note* that UNIX is case-sensitive
 
 ** Changing Passwords
 
@@ -127,76 +195,20 @@
 *** Bad passwords are disallowed – passwords should be at least 6 characters long, contain both letters and digits or punctuation and must not be based on dictionary words
 *** There is usually a graphical utility for changing passwords accessible from the application menu (this is desktop-specific)
 
-** The Desktop Environment
+** Getting Help on Commands
 
-*** A number of different desktops are available for Linux, each with different look & feel, and functionality
-*** Currently, most popular free desktops are KDE and Gnome
-*** Both are distributed with the most popular Linux distributions
-*** Graphical applications may be
-- desktop-specific: e.g. k-tools for KDE
-- non desktop-specific: e.g. OpenOffice, Mozilla 
+*** Command: man [section] name
+*** Common options:
+- -k: searches for keywords in  man page entries
+*** Standard use displays the manual page of the command
+*** The section number may need to be specified for keywords that have more than one entry in the system
+*** Examples:
+- man ls
+- man -k cron
+- man 5 crontab
 
-** Desktop Features
 
--Main desktop area:
-- Application windows
-- Shortcut icons
-*** Panel:
-- Application menu launcher, offering convenient access to commonly-performed tasks
-- Application shortcuts, should be customised according to user's needs
-- Desktop switcher, to switch between virtual desktops, allowing the user to group applications logically without cluttering
-- Taskbar, allowing the user to manage currently running applications
-- System information
-
-** Useful Graphical Applications
-
-*** Word processing / Spreadsheets / Presentations:
--  OpenOffice.org Writer / Calc / Impress
-*** Drawing: OpenOffice.org Draw
-*** Project management: MrProject
-*** Image manipulation: GIMP
-*** Web browsing: Mozilla firefox
-*** Email: Evolution, Mozilla thunderbird
-*** Text editor: Emacs
-*** PDF reader: Adobe Acrobat reader, xpdf
-*** Accounting: Turbocash, gnucash
-*** IRC client: xchat
-
-** KDE-specific Applications
-
-*** kedit: simple text editor
-*** korganizer: calendaring and event organiser
-*** kghostview: postscript document viewer
-*** kcalc: scientific calculator
-*** kpaint: bitmap drawing program
-*** kmail: graphical email client
-*** amarok: CD player
-*** khelpcenter: online help application
-*** konqueror: file and Web browser
-*** kword: word processor
-*** kspread: spreadsheet application
-
-** Gnome-specific Applications
-
-*** gedit: simple text editor
-*** ggv: postscript document viewer
-*** gcalctool: scientific calculator
-*** nautilus: file and Web browser
-*** eog: graphics viewing program
-*** gnumeric: spreadsheet application
-*** yelp: help browser
-*** gnomemeeting: Voice over IP suite
-*** rhythmbox: CD and music player
-*** gnome-pilot: Palm PDA management
-
-** Miscellaneous Utilities
-
-*** Screen locking: password enabled screen saver
-*** Panel configurator: customise look & feel, location, behaviour and shortcuts on panel
-*** Online help
-*** Find files utility
-*** Logout function: to quit the desktop, log out, shutdown or reboot the computer
-*** Control panel (requires root access): to configure hardware, software and system settings
+* UNIX file system
 
 ** File System Basics (I)
 
@@ -224,11 +236,11 @@
 
 ** Directory Hierarchy
 
-*** Files are grouped into logical units into collections called directories (known as folders in other OS's)
-*** Directories may contain subdirectories, resulting in a hierarchical structure
-*** The top-most directory in this tree is called the root directory, denoted by a /
-*** Each user has a directory set aside for storing personal files – this is called his home directory – uniquely identified by the username e.g /home/dilbert
-*** Users should create new directories in their home directories to properly organise their files
+- Files are grouped into logical units into collections called directories (known as folders in other OS's)
+- Directories may contain subdirectories, resulting in a hierarchical structure
+- The top-most directory in this tree is called the root directory, denoted by a /
+- Each user has a directory set aside for storing personal files – this is called his home directory – uniquely identified by the username e.g /home/dilbert
+- Users should create new directories in their home directories to properly organise their files
 
 ** Example Directory Tree
 
@@ -242,25 +254,6 @@
 
 ** Pathing
 
-** File Manipulation with the GUI
-
-*** konqueror is a KDE utility for visualising and navigating the file system
-*** The location bar displays the directory whose contents are being displayed
-*** The main window can be configured to display information in different ways
-*** Directories and files can be manipulated through menu options, shortcut icons and context-sensitive menus (i.e. by right-clicking on an object)
-*** File permission information can be accessed through the properties option (covered in more detail later)
-
-** Session 1 Command Summary
-
-
-
-* Session 2 Overview
-
-*** Command-line interface (CLI)
-*** File manipulation with the CLI
-*** Viewing file contents; text editors
-*** File system security – users and groups
-*** Shell job control
 
 ** File Manipulation with the CLI
 
@@ -447,6 +440,31 @@ Changing Directory
 - chmod ug+x MakeBudget (grants execute permission to user and group)
 - chmod a+rwx public_html (not a good idea!)
 
+
+** File system Command Summary
+
+*** Command	Description
+*** pwd	print working directory
+*** cd	change directory
+*** ls	list files and directories
+*** mkdir/rmdir	make / remove directories
+*** cp	copy files and directories
+*** rm	remove files
+*** mv	move / rename files and directories
+*** cat	print files to the terminal
+*** less/more	filter output for convenient viewing
+*** clear	clear the screen
+*** chown	change file and directory owner and group
+*** chmod	change file and directory access permissions
+
+
+
+*** fg/bg	send processes to foreground / background
+*** jobs	list background and suspended processes
+
+
+* Job control and IO Redirection
+
 ** Shell Job Control (I)
 
 *** Job control refers to the ability of the shell to run processes in the background
@@ -464,30 +482,6 @@ Changing Directory
 *** Send a process to the foreground by typing fg <jobnumber>
 *** View background and suspended processes with the jobs command
 
-Session 2 Command Summary
-
-*** Command	Description
-*** pwd	print working directory
-*** cd	change directory
-*** ls	list files and directories
-*** mkdir/rmdir	make / remove directories
-*** cp	copy files and directories
-*** rm	remove files
-*** mv	move / rename files and directories
-*** cat	print files to the terminal
-*** less/more	filter output for convenient viewing
-*** clear	clear the screen
-*** chown	change file and directory owner and group
-*** chmod	change file and directory access permissions
-*** fg/bg	send processes to foreground / background
-*** jobs	list background and suspended processes
-
-
-* Session 3 Overview
-*** IO redirection
-*** Text processing utilities
-*** Getting help on commands
-*** Accessing remote services
 
 ** IO Redirection
 
@@ -512,6 +506,7 @@ Session 2 Command Summary
 - prog > temp 2> log
 - prog &> outfile.$$
 
+
 ** Pipes
 
 *** Pipes redirect the output of one command to the input of another
@@ -520,6 +515,8 @@ Session 2 Command Summary
 - ls -1 | wc -l
 - cat somefile.txt | grep the
 - who | grep mary | wc -l
+
+* Text utilities
 
 ** Searching Within Files
 
@@ -616,18 +613,6 @@ Session 2 Command Summary
  (compact listing of all logins)
 - ls -t | head | grep .ppt | xargs mv -t w/talks/
  (move the latest ppt files into the w/talks directory)
-
-** Getting Help on Commands
-
-*** Command: man [section] name
-*** Common options:
-- -k: searches the database for appropriate man page entries
-*** Standard use displays the manual page of the command
-*** The section number may need to be specified for keywords that have more than one entry in the system
-*** Examples:
-- man ls
-- man -k cron
-- man 5 crontab
 
 ** Remote Access
 
