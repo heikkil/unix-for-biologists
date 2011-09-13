@@ -21,4 +21,4 @@ vc.tex
 *.d
 *.fls
 *.temp
-org
+*.tex
