@@ -33,6 +33,8 @@
 #+latex_header: \mode<beamer>{\usecolortheme{beaver}}
 #+latex_header: \mode<beamer>{\usefonttheme{structurebold}}
 
+#+latex_header: \logo{\includegraphics[width=1cm,height=1cm,keepaspectratio]{img/logo-kaust}}
+
 * Why git?
 
 - It is a file revision control system, one of many:

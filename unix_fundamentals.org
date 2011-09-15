@@ -33,6 +33,8 @@
 #+latex_header: \mode<beamer>{\usecolortheme{beaver}}
 #+latex_header: \mode<beamer>{\usefonttheme{structurebold}}
 
+#+latex_header: \logo{\includegraphics[width=1cm,height=1cm,keepaspectratio]{img/logo-kaust}}
+
 * Philosophy of command line
 
 ** CLI versus GUI
@@ -283,8 +285,6 @@ Increasingly, there are native ports of free GUI programs to MacOS X.
 - Users should create new directories in their home directories to
   properly organise their files
 
-** Example Directory Tree
-
 ** Pathing
 
 - The location of a file in the file system is known as its pathname
@@ -295,7 +295,10 @@ Increasingly, there are native ports of free GUI programs to MacOS X.
   - Note that applications are also files in the file system and have
     their own pathnames
 
-** Pathing
+** Example Directory Tree
+
+#+ATTR_LaTeX: width=0.99\textwidth
+[[file:img/unix_tree.pdf]]
 
 
 ** File Manipulation with the CLI
@@ -312,6 +315,7 @@ Increasingly, there are native ports of free GUI programs to MacOS X.
   or opening a new terminal or shell
 
 - The command \texttt{pwd} prints the current working directory
+
 
 ** Changing Directory
 
@@ -330,6 +334,11 @@ Increasingly, there are native ports of free GUI programs to MacOS X.
   $ cd ../../bin
   $ cd -
 #+END_SRC
+
+** Moving in the directory structure
+
+#+ATTR_LaTeX: width=0.99\textwidth
+[[file:img/unix_tree_traversing.pdf]]
 
 
 ** Pathing Command Structure and Options
@@ -496,6 +505,10 @@ Increasingly, there are native ports of free GUI programs to MacOS X.
 - *execute* permission allows the user to change directory to it
 
 ** Viewing Permissions via CLI
+
+#+BEGIN_SRC shell
+-rw-r--r-- 1 heikki heikki 1772 2007-03-07 13:29 test.pdf
+#+END_SRC
 
 - The \texttt{ls -l} command shows file and directory permissions in the first column
 - If the first character is a dash, then it represents a file. If it is a d, it represents a directory
@@ -1095,3 +1108,23 @@ Increasingly, there are native ports of free GUI programs to MacOS X.
 -  See: Advanced Bash-Scripting Guide
 
 
+* History
+
+** History and Copyright
+
+- Heikki Lehv\auml{}slaiho, heikki.lehvaslaiho@kaust.edu.sa \\
+  CBRC, KAUST \\
+  September 2011
+
+- Heikki Lehv\auml{}slaiho, heikki@sanbi.ac.za \\
+  SANBI, University of Western Cape \\
+  March 2007
+
+- John M. Ostrowick, jon@cs.wits.ac.za \\
+  School of Computer Science, 
+  University of the Witwatersrand \\
+  June 2005
+
+This work is licensed under the Creative Commons
+Attribution-ShareAlike 2.0 South Africa License.  To view a copy of
+this license, visit http://creativecommons.org/licenses/by-sa/2.0/za/
