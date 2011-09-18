@@ -58,66 +58,244 @@
 3. Rather than telling you how to do things, it is infinitely expandable
    and customisable (kitchen sink)
 4. Uniform commands regardless of task
-5. It is available for all computers (vi)
-6. Can be run in text terminals 
-7. Latest emacs version (v.23) has got the basics right
-8. I like it
+5. Everything is text and accessible
+6. It is available for all computers (vi)
+7. Can be run in text terminals
+8. Latest emacs version (v.23) has got the basics right
+9. I like it
 
 * Other features
 
-- write in any language or script
-- edit, compile and debug in any programming language
-- remote editing
-- compare two or three files for differences
-- file manager
-- news, mail, RSS
-- games  
+- Write in any language or script
+- Edit, compile and debug in any programming language
+- Remote editing
+- Compare two or three files for differences
+- File manager
+- Image viewer
+- News, mail, RSS
+- Games  
 
 * History of emacs
 
-- Originally written by one of the biggest in open source: Richard Stallman
+- Originally written by Richard Stallman
 - GNUemacs
-- Xemacs was a fork that is not discontinued
+- Xemacs was a fork that is now discontinued
+- Many versions for non-Unix environments
+- http://www.gnu.org/software/emacs/
 
 * Starting and exiting Emacs
-* Basic text movement and editing commands
-* Editing columns of text
+
+- Start emacs
+  + Search it: "Aquamacs"
+  + Locate it in the Applications folder and pull it into the dock.
+  + Start it from command line:
+
+#+BEGIN_SRC shell
+  emacs [filename]
+#+END_SRC
+
+  + Run it in the terminal, i.e. No Window, 
+
+#+BEGIN_SRC shell
+  emacs -nw [filename] 
+#+END_SRC
+
+- Exit emacs:
+
+  + Menu: File/Quit
+  + Close the window
+  + Keyboard command:
+
+#+BEGIN_SRC shell
+  C-x C-c   save-buffers-kill terminal
+#+END_SRC
+    
+* Text movement and editing commands
+
+- CUA mode
+  - Make sure that CUA mode is active (Options menu)
+    + Options/Save Options (into ~/.emacs file)
+  - CUA mode gives you standard keybindings to copy, delete, paste
+  - Selection works by S-arrow
+  - Emacs default to start selecting is C-Space
+
+- Editing columns of text
+
+  - Select several lines down starting from the first column
+
+#+BEGIN_SRC shell
+  C-return  cua-set-rectangle-mark
+#+END_SRC
+
+  - type characters or use CUA edit commands to see the effect
+  - Finish with C-c 
+
+* Some basic text editing commands
+
+#+BEGIN_SRC shell
+
+   C-t    transpose-chars
+   C-k    kill-line
+
+   M-u    upcase-word
+   M-l    downcase-word
+   M-c    capitalize-word
+#+END_SRC
+
+  - bash has all these!
+
+#+BEGIN_SRC shell
+   C-u         universal-argument
+   C-u 40 #    (try it!)
+#+END_SRC
+
+
+
 * Opening and saving files
-* version control
+
+  - Common ones:
+
+#+BEGIN_SRC shell
+
+	C-x C-f		Find file
+	C-x C-s		Save file
+	C-x s		Save some buffers
+	C-x C-b		List buffers
+	C-x b		Switch buffer
+	C-x C-c		Quit Emacs
+	C-x 1		Delete all but one window
+	C-x u		Undo
+
+#+END_SRC
+
+  - pressing ESC-ESC-ESC can get you of anything
+
+* Finding and replacing
+
+  - Cumulative search
+
+#+BEGIN_SRC shell
+    C-s <characters>   isearch-forward
+    C-r <characters>   isearch-backward
+    C-s C-w            search next word
+    C-s C-s            repeat search
+#+END_SRC
+
+  - Replace
+    - The only common command with no mnemonics
+
+#+BEGIN_SRC shell
+   M-%  query-replace
+   C-M-% (translated from <escape> C-%)  query-replace-regexp
+#+END_SRC
+
+* Advanced editing from emacs
+
+- Shell commands on region
+
+  + Select text and type the command below, followed by 'grep a'
+
+#+BEGIN_SRC shell  
+  M-|      shell-command-on-region
+  C-u M-|  shell-command-on-region and replace region
+#+END_SRC
+
+
+- Shell command from emacs
+
+#+BEGIN_SRC shell  
+M-!             shell-command
+#+END_SRC
+
+- Running shell within emacs
+
+#+BEGIN_SRC shell  
+M-x shell      run a shell in emacs window
+#+END_SRC
+
+* Version control
 
 Emacs detects automatically if the file you are editing is under a
-version control system
+version control system.
+
+  - You need one command to add a file to the version control system
+    and commit new changes:
+
+#+BEGIN_SRC shell
+  C-x v v   vc-next-action
+#+END_SRC
+
+  - For other commands, look under Tools/Version Control
 
 * Emacs concepts: windows, frames, files, and buffers
-* Invoking commands with keybindings and with M-x
+
+
+  - Menu bar, tool-bar, mode line, echo area
+  - file
+    + Emacs opens stored files into a buffer
+  - buffer
+    + Everything is displayd in its own buffer
+    + A buffer can need not be stored in a file
+    + Any buffer can be saved into a file
+  - frame
+    + is what emacs calls GUI windows
+    + you can open more than one frame
+
+* Working with many windows
+
+  - An emacs frame can have more then one window each displaying a buffer
+#+BEGIN_SRC shell
+    C-x 3   split-window-horizontally
+    C-x 2   split-window-vertically
+    C-x 1   delete-other-windows
+    C-x o   other-window
+#+END_SRC
 
 * modes
 
 ** Major modes
   + dired
-  + org mode
+  + org mode http://orgmode.org/
+    - note taking
+    - outlining
+    - todo lists
+    - project planning
+    - authoring (export to Latex)
   + latex mode
+  + computer language modes
 
 ** Minor modes
 
   + CUA mode: C-x, C-c, C-v, C-z work as expected
-  + table mode: M-x table-mode
-  + line numbers:  M-x linnum-mode
+  + table mode: part of org mode
+  + line numbers:  M-x linum-mode
   + spellchecker: M-x fly-spell-mode
 
 - emacs -nw
 
-
 * perl mode
 
-- The default emacs perl mode is functional but somewhat limited
+- The default emacs perl mode is functional but limited
 - the cperl mode is more comprehensive
 
-- To change to cperl, put this into your .emacs file and restart
+- To change to cperl:
+
+#+BEGIN_SRC emacs-lisp
+ C-x cperl-mode
+#+END_SRC
+
+-  To always use cperl mode, put this into your .emacs file and restart
+
 #+BEGIN_SRC emacs-lisp
  (defalias 'perl-mode 'cperl-mode)
 #+END_SRC
 
 * Tutorials
 
-http://xahlee.org/emacs/emacs.html
+#+BEGIN_SRC shell
+  C-h t  help-with-tutorial
+  C-h r  info-emacs-manual
+#+END_SRC
+
+  - http://www.emacswiki.org/emacs/SiteMap
+  - http://xahlee.org/emacs/emacs.html
