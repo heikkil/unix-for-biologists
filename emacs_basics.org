@@ -109,7 +109,39 @@
 #+BEGIN_SRC shell
   C-x C-c   save-buffers-kill terminal
 #+END_SRC
-    
+
+* Special keys
+
+#+BEGIN_SRC shell
+  C-x C-c   save-buffers-kill-terminal
+#+END_SRC
+
+- Keyboard commands are given with upper case modifier
+  keys and lower case characters
+  + C - the control key
+  + M - meta key, which usually is mapped to alt key
+
+- Modifier keys are kept down when character keys are pressed
+- Meta key can be replaced by the ESC key. 
+  + It is pressed and released before pressing the character key.
+- Shift key is implicit if needed to reach the character key
+
+* Typing a command 
+
+- All commands have names
+- Most have keyboard short cuts
+- Command names are given by starting with M-x and typing the name
+  with spaces between words.
+- TAB completion can be used at any time
+
+#+BEGIN_SRC shell
+  M-x save-buffers-kill-terminal <return>
+#+END_SRC
+
+- Typing appears at the bottom of the window echo area
+- Command is executed when the return key is pressed
+- All commands are added to the special buffer called \texttt{*Messages*}
+
 * Text movement and editing commands
 
 - CUA mode
@@ -267,11 +299,10 @@ version control system.
 ** Minor modes
 
   + CUA mode: C-x, C-c, C-v, C-z work as expected
-  + table mode: part of org mode
+  + table mode to create tab-delimited files: part of org mode
   + line numbers:  M-x linum-mode
   + spellchecker: M-x fly-spell-mode
 
-- emacs -nw
 
 * perl mode
 
