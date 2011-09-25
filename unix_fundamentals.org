@@ -105,7 +105,7 @@ software.
     :BEAMER_col: 0.4
     :BEAMER_env: ignoreheading
     :END:
-    [[file:img/500px-Operating_system_placement.svg.png]]
+    [[file:img/Operating_system_placement.pdf]]
 
 ** Unix and Unix-like operating systems
 
@@ -127,7 +127,7 @@ Douglas McIlroy, and Joe Ossanna.
 
 ##+CAPTION: Family tree of *NIX
 #+ATTR_LaTeX: width=0.99\textwidth
-[[file:img/2000px-Unix_history-simple.svg.png]]
+[[file:img/Unix_history-simple.pdf]]
 
 
 ** Out course computers run MacOSX
@@ -792,11 +792,17 @@ Increasingly, there are native ports of free GUI programs to MacOS X.
 
 ** Remote Access
 
-- Remote access refers to the ability to connect to another machine on a network and work as though physically located at that machine
+- Remote access refers to the ability to connect to another machine on
+  a network and work as though physically located at that machine
+
 - Two applications allow a shell to be run on a remote machine: telnet
   (unsecure, not allowed any more) and ssh (secure shell)
-- ssh encrypts the traffic between the two machines, and is preferred to telnet
-- scp is a related ssh utility that provides secure file transfer, and is preferred to ftp
+
+- ssh encrypts the traffic between the two machines, and is preferred
+  to telnet
+
+- scp is a related ssh utility that provides secure file transfer, and
+  is preferred to ftp
 
 ** Secure Shell (SSH)
 
