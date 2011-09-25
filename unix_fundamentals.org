@@ -105,6 +105,7 @@ software.
     :BEAMER_col: 0.4
     :BEAMER_env: ignoreheading
     :END:
+    #+ATTR_LaTeX: width=0.6\textwidth
     [[file:img/Operating_system_placement.pdf]]
 
 ** Unix and Unix-like operating systems
