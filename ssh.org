@@ -1,0 +1,156 @@
+#+TITLE: Connecting securely
+#+AUTHOR: Heikki Lehv\auml{}slaiho
+#+EMAIL:     heikki.lehvaslaiho@kaust.edu.sa
+#+DATE:      Command line programming for biologists \\ 22-24 Oct 2011
+#+DESCRIPTION:
+#+KEYWORDS: UNIX, LINUX , CLI, history, summary, command line  
+#+LANGUAGE:  en
+#+OPTIONS:   H:3 num:t toc:nil \n:nil @:t ::t |:t ^:t -:t f:t *:t <:t
+#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil tags:not-in-toc
+#+INFOJS_OPT: view:nil toc:t ltoc:t mouse:underline buttons:0 path:http://orgmode.org/org-info.js
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+LINK_UP:   
+#+LINK_HOME: 
+#+XSLT:
+
+#+startup: beamer
+#+LaTeX_CLASS: beamer
+##+LaTeX_CLASS_OPTIONS: [bigger]
+
+##+BEAMER_FRAME_LEVEL: 2
+
+#+COLUMNS: %40ITEM %10BEAMER_env(Env) %9BEAMER_envargs(Env Args) %4BEAMER_col(Col) %10BEAMER_extra(Extra)
+
+# TOC slide before every section
+#+latex_header: \AtBeginSection[]{\begin{frame}<beamer>\frametitle{Topic}\tableofcontents[currentsection]\end{frame}}
+
+## see http://deic.uab.es/~iblanes/beamer_gallery/
+
+##+latex_header: \mode<beamer>{\usetheme{Madrid}}
+#+latex_header: \mode<beamer>{\usetheme{Antibes}}
+##+latex_header: \mode<beamer>{\usecolortheme{wolverine}}
+#+latex_header: \mode<beamer>{\usecolortheme{beaver}}
+#+latex_header: \mode<beamer>{\usefonttheme{structurebold}}
+
+#+latex_header: \logo{\includegraphics[width=1cm,height=1cm,keepaspectratio]{img/logo-kaust}}
+
+* The necessity of security
+
+- Everything is interconnected in the web
+
+- Security is provided by *secure practices*
+
+- Connections between computers have to be secured
+
+- Telnet should not be allowed, everything through ssh
+
+* SSH
+
+- Secure Shell (SSH) is a network protocol for connecting two
+  networked computers via a secure channel over an insecure network.
+  + for secure data communication
+  + remote shell services
+  + command execution
+
+- Makes possible remote execution with GUI in the local screen
+
+- SSH uses public-key cryptography to authenticate the remote computer
+  and allow the remote computer to authenticate the user
+
+* Public-key cryptography
+
+** list 					      :B_ignoreheading:BMCOL:
+    :PROPERTIES: 
+    :BEAMER_env: ignoreheading
+    :BEAMER_col: 0.5
+    :END:
+- "Asymmetric key cryptography"
+- Public and private keys
+- Usually based on products of large prime numbers
+
+** list 					      :B_ignoreheading:BMCOL:
+    :PROPERTIES: 
+    :BEAMER_env: ignoreheading
+    :BEAMER_col: 0.5
+    :END:
+
+#+ATTR_LaTeX: width=0.95\textwidth
+[[file:img/Public-key-crypto-1.pdf]]
+
+
+* How cryptographic keys are used
+
+#+ATTR_LaTeX: width=0.70\textwidth
+[[file:img/Public_key_signing.pdf]]
+
+* Secure Shell (SSH)
+
+- SSH command
+  + \texttt{ssh [-l login] hostname} OR 
+  + \texttt{ssh username@hostname}
+- SCP command
+  + \texttt{scp [[user1]@host1:]file1 [[user2]@host2:]file2}
+  + Arguments provide the source and destination respectively
+- Examples:
+#+BEGIN_SRC shell
+  $ ssh -l root guests.kaust.edu.sa
+  $ scp ../docs/budget.doc guests.kaust.edu.sa:documents/
+  $ scp guests.kaust.edu.sa:backup.gz .
+  $ ssh guests.kaust.edu.sa 'date ; w'
+#+END_SRC
+
+* Setting up passwordless connection (1/2)
+
+- We are connecting to a remote machine 'rem'
+
+- create DSA key pair:
+
+#+BEGIN_SRC shell
+  $ ssh-keygen -t dsa
+#+END_SRC
+
+  + leave the passphrase empty
+  + files id\_dsa and id\_dsa.pub are put your .ssh dir.
+
+- Copy the public key to remote machine:
+
+#+BEGIN_SRC shell
+  $ scp ~/.ssh/id_dsa.pub rem:.ssh/authorized_keys
+#+END_SRC
+
+* Setting up passwordless connection (2/2)
+
+- set the permissions
+  + everything in .ssh must be visible only to you
+
+#+BEGIN_SRC shell
+  $ chmod 700 ~/.ssh/
+  $ chmod 600 ~/.ssh/*
+  $ ssh rem 'chmod 700 ~/.ssh/ ; chmod 600 ~/.ssh/* '
+#+END_SRC
+
+- Now try connecting!
+
+#+BEGIN_SRC shell
+  $ ssh rem
+#+END_SRC
+
+
+
+* rsync
+
+- Replacement and extension of scp (and rcp)
+  + Copy files and directories between a local host and a remote host
+  + Can use SSH as a secure channel
+  + Can send/receive only the bytes inside files that changed since
+    the last replication
+  + Can remove files on the destination host if those files were
+     deleted on the source host to keep both hosts *in sync*.
+
+#+BEGIN_SRC shell
+  $ rsync -avz foo:src/bar /data/tmp
+#+END_SRC
+
+- copies in archive mode
+- see the man page for more examples
