@@ -1,0 +1,103 @@
+These files create material for a course.
+
+The source files are written in emacs org mode http://orgmode.org/.
+
+They are then formatted to PDF through latex (C-c C-e p) . The exact
+formatting commands are stored in the beginning of each file. In
+addition, you'll need to more general org mode directives in your
+.emacs file.
+
+Note that you might have to use the latest org mode code from their
+repository. Run
+
+  git clone git://orgmode.org/org-mode.git
+
+and change the load-path from code below.
+
+The rest of the document lists my current settings:
+
+;
+; org
+;
+
+; This uses the org mode git repo 
+; do not forget to pull occationally
+(setq load-path (cons "/home/heikki/src/org-mode/lisp" load-path))
+
+; set the org auto mode
+(require 'org)
+(add-to-list 'auto-mode-alist '("\\.\\([o][r][g]\\)\\'" . org-mode))
+
+
+;
+; latex export from org
+;
+
+(require 'org-latex) 
+
+; * My Headline
+; In section [[My Headline]] we discuss ...
+(setq org-export-latex-hyperref-format "\\ref{%s}")
+
+;
+; Use syntax highlight in code examples
+;
+;; tell org to use listings
+(setq org-export-latex-listings t)
+;; you must include the listings package
+(add-to-list 'org-export-latex-packages-alist '("" "listings"))
+;; if you want colored source code then you need to include the color package
+(add-to-list 'org-export-latex-packages-alist '("" "color"))
+;; example colours to be included in the document
+;\definecolor{keywords}{RGB}{255,0,90}
+;\definecolor{comments}{RGB}{60,179,113}
+;\definecolor{fore}{RGB}{249,242,215}
+;\definecolor{back}{RGB}{51,51,51}
+;\lstset{
+;  basicstyle=\color{fore},
+;  keywordstyle=\color{keywords},
+;  commentstyle=\color{comments},
+;  backgroundcolor=\color{back}
+;}
+
+ 
+; 'djcb-org-article' for export org documents to the LaTex 'article', using
+; XeTeX and some fancy fonts; requires XeTeX (see org-latex-to-pdf-process) 
+ 
+(add-to-list 'org-export-latex-classes
+	     '("fu-org-article"
+"\\documentclass[11pt,a4paper]{article}
+\\usepackage[T1]{fontenc}
+\\usepackage{fontspec}
+\\usepackage{graphicx}
+\\usepackage{cite}
+ 
+\\usepackage{libertine} 
+\\defaultfontfeatures{Mapping=tex-text}
+\\setromanfont[Numbers=OldStyle]{Linux Libertine O}
+ 
+ 
+\\usepackage[a4paper, textheight=10in,
+	    marginparsep=7pt, marginparwidth=.6in]{geometry}
+\\usepackage[hyperref,x11names]{xcolor}
+\\usepackage[colorlinks=true,urlcolor=black,linkcolor=black]{hyperref}
+ 
+\\pagestyle{empty}
+\\title{}
+      [NO-DEFAULT-PACKAGES]
+      [NO-PACKAGES]"
+	       ("\\section{%s}" . "\\section*{%s}")
+	       ("\\subsection{%s}" . "\\subsection*{%s}")
+	       ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+	       ("\\paragraph{%s}" . "\\paragraph*{%s}")
+	       ("\\subparagraph{%s}" . "\\subparagraph*{%s}")
+	       )
+	     )
+ 
+(setq org-latex-to-pdf-process 
+  '("xelatex -interaction nonstopmode %f"
+    "xelatex -interaction nonstopmode %f")) ;; for multiple passes
+ 
+; * My Headline
+; In section [[My Headline]] we discuss ...
+(setq org-export-latex-hyperref-format "\\ref{%s}")
