@@ -1,7 +1,7 @@
 #+TITLE: Keeping track of file changes with git
 #+AUTHOR: Heikki Lehv\auml{}slaiho
 #+EMAIL:     heikki.lehvaslaiho@kaust.edu.sa
-#+DATE:      Command line programming for biologists \\ 22-26 Oct 2011
+#+DATE:      Command line programming for biologists \\ 22-24 Oct 2011
 #+DESCRIPTION:
 #+KEYWORDS: UNIX, LINUX , CLI, history, summary, command line  
 #+LANGUAGE:  en
@@ -35,6 +35,19 @@
 
 #+latex_header: \logo{\includegraphics[width=1cm,height=1cm,keepaspectratio]{img/logo-kaust}}
 
+## define colours for code listings
+\definecolor{keywords}{RGB}{255,0,90}
+\definecolor{comments}{RGB}{60,179,113}
+\definecolor{fore}{RGB}{249,242,215}
+\definecolor{back}{RGB}{51,51,51}
+\lstset{
+  basicstyle=\color{fore},
+  keywordstyle=\color{keywords},
+  commentstyle=\color{comments},
+  backgroundcolor=\color{back}
+}
+
+
 * Why git?
 
 - It is a file revision control system, one of many:
@@ -66,7 +79,8 @@ Start by telling git your contact details:
 
 #+BEGIN_SRC shell
   $ git config --global user.name "Your Name"
-  $ git config --global user.email "your.name@kaust.edu.sa"
+  $ git config --global user.email \
+    "your.name@kaust.edu.sa"
 #+END_SRC
 
 Since git is a distributed version controlling system, you can use it
