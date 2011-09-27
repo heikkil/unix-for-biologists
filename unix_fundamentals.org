@@ -1,7 +1,7 @@
 #+TITLE: UNIX Fundamentals
 #+AUTHOR: Heikki Lehv\auml{}slaiho
 #+EMAIL:     heikki.lehvaslaiho@kaust.edu.sa
-#+DATE:      Command line programming for biologists \\ 22-26 Oct 2011
+#+DATE:      Command line programming for biologists \\ 22-24 Oct 2011
 #+DESCRIPTION:
 #+KEYWORDS: UNIX, LINUX , CLI, history, summary, command line  
 #+LANGUAGE:  en
@@ -34,6 +34,18 @@
 #+latex_header: \mode<beamer>{\usefonttheme{structurebold}}
 
 #+latex_header: \logo{\includegraphics[width=1cm,height=1cm,keepaspectratio]{img/logo-kaust}}
+
+## define colours for code listings
+\definecolor{keywords}{RGB}{255,0,90}
+\definecolor{comments}{RGB}{60,179,113}
+\definecolor{fore}{RGB}{249,242,215}
+\definecolor{back}{RGB}{51,51,51}
+\lstset{
+  basicstyle=\color{fore},
+  keywordstyle=\color{keywords},
+  commentstyle=\color{comments},
+  backgroundcolor=\color{back}
+}
 
 * Philosophy of command line
 
@@ -131,7 +143,7 @@ Douglas McIlroy, and Joe Ossanna.
 [[file:img/Unix_history-simple.pdf]]
 
 
-** Out course computers run MacOSX
+** Our course computers run MacOSX
 
 - Mac OSX, a variation of BSD UNIX
 - Most servers and workstations in science run LINUX
@@ -331,9 +343,9 @@ Increasingly, there are native ports of free GUI programs to MacOS X.
 - For example:
 
 #+BEGIN_SRC shell
-  $ cd ~/admin
-  $ cd ../../bin
-  $ cd -
+  cd ~/admin
+  cd ../../bin
+  cd -
 #+END_SRC
 
 ** Moving in the directory structure
@@ -374,15 +386,21 @@ Increasingly, there are native ports of free GUI programs to MacOS X.
 - \texttt{ls -lrt} (long listing; most recently accessed files last)
 
 ** Creating & Removing Directories
-
+# Task: How would you create a directory /tmp/2011/10/24/ in one
+# command?
+# Hint: Read the mkrid man page
 - To create a directory, use \texttt{mkdir <directory>}
-  - \texttt{mkdir admin}
-  - \texttt{mkdir /home/dilbert/admin}
+#+BEGIN_SRC shell
+  mkdir admin
+  mkdir /home/dilbert/admin
+#+END_SRC
 
 - To remove a directory, use \texttt{rmdir <directory>}. Note that the directory must be empty
-- \texttt{rmdir admin}
+#+BEGIN_SRC shell
+  rmdir admin
+#+END_SRC
 
-- Again the pathing rules apply. The easiest method is to change
+- Again, the pathing rules apply. The easiest method is to change
   into the directory first so that relative pathing can be used
 
 ** Copying Files
@@ -398,8 +416,8 @@ Increasingly, there are native ports of free GUI programs to MacOS X.
 
 - Examples:
 #+BEGIN_SRC shell
-  $ cp budget.doc oldbudget.doc
-  $ cp jan-budget.doc feb-budget.doc admin/
+  cp budget.doc oldbudget.doc
+  cp jan-budget.doc feb-budget.doc admin/
 #+END_SRC
 
 ** Removing Files
@@ -411,9 +429,9 @@ Increasingly, there are native ports of free GUI programs to MacOS X.
 - \texttt{-r}: removes directories recursively
 *** Examples:
 #+BEGIN_SRC shell
-  $ rm budget.doc
-  $ rm budget.doc oldbudget.doc
-  $ rm -r admin/ (to be used with care!)
+  rm budget.doc
+  rm budget.doc oldbudget.doc
+  rm -r admin/ (to be used with care!)
 #+END_SRC
 
 ** Renaming and Moving Files
@@ -427,9 +445,9 @@ Increasingly, there are native ports of free GUI programs to MacOS X.
 - This command is also used to move and rename directories
 - Examples:
 #+BEGIN_SRC shell
-  $ mv budget.doc oldbudget.doc
-  $ mv budget.doc ../admin
-  $ mv admin/ admin2003/
+  mv budget.doc oldbudget.doc
+  mv budget.doc ../admin
+  mv admin/ admin2003/
 #+END_SRC
 
 
@@ -442,13 +460,13 @@ Increasingly, there are native ports of free GUI programs to MacOS X.
 - Examples:
 
 #+BEGIN_SRC shell
-  $ ls *.doc
-  $ mv *.doc olddocuments/
-  $ rm *
-  $ ls -l A???.txt
-  $ ls [Aa]*png
-  $ ls [a-z]*jpg
-  $ rm -rf *  (!!!)
+  ls *.doc
+  mv *.doc olddocuments/
+  rm *
+  ls -l A???.txt
+  ls [Aa]*png
+  ls [a-z]*jpg
+  rm -rf *  (!!!)
 #+END_SRC
 
 ** Helpful CLI Features
@@ -483,7 +501,7 @@ Increasingly, there are native ports of free GUI programs to MacOS X.
 - Groups allow file access to sets of users to be easily implemented
 - Each file is owned by one user and allocated to one group
 - A new file is created with the user as its owner and the user's current group as its group 
-- File ownership can be changed with the chown command
+- File ownership can be changed with the \texttt{chown} command
 
 ** Privilege Types
 
@@ -578,13 +596,13 @@ Increasingly, there are native ports of free GUI programs to MacOS X.
 - Command: \texttt{find path -name pattern}
 - Examples:
 
-  + \texttt{\$ find . -name "*.txt"} \\ (find .txt files starting from the current directory)
-  + \texttt{\$ find / -name "*.rpm"} \\  (find rpm files starting from the root directory)
+  + \texttt{\find . -name "*.txt"} \\ (find .txt files starting from the current directory)
+  + \texttt{\find / -name "*.rpm"} \\  (find rpm files starting from the root directory)
 
 - Command: \texttt{locate pattern}
   + uses the (s)locate database, which needs to be updated regularly]
 - Example: 
-  + \texttt{\$ locate txt} \\ (find any file whose name contains the string “txt”)
+  + \texttt{locate txt} \\ (find any file whose name contains the string “txt”)
 
 ** Querying File Types
 
@@ -593,9 +611,9 @@ Increasingly, there are native ports of free GUI programs to MacOS X.
   + \texttt{-z}: filters the file through gzip
 - Examples:
 #+BEGIN_SRC shell
-  $ file main.c
-  $ file index.html
-  $ file somearchive.tar.gz
+  file main.c
+  file index.html
+  file somearchive.tar.gz
 #+END_SRC
 
 
@@ -639,9 +657,9 @@ Increasingly, there are native ports of free GUI programs to MacOS X.
   command, e.g. \texttt{mozilla \&}
 
 - Suspend an active processes by keying \\ \texttt{Ctrl-Z}
-- Send a process to the background by typing \\ \texttt{\$ bg <jobnumber>}
-- Send a process to the foreground by typing \\ \texttt{\$ fg <jobnumber>}
-- View background and suspended processes with the command: \\ \texttt{\$ jobs}
+- Send a process to the background by typing \\ \texttt{bg <jobnumber>}
+- Send a process to the foreground by typing \\ \texttt{fg <jobnumber>}
+- View background and suspended processes with the command: \\ \texttt{jobs}
 
 ** IO Redirection
 
@@ -655,8 +673,8 @@ Increasingly, there are native ports of free GUI programs to MacOS X.
 - Examples:
 
 #+BEGIN_SRC shell
-  $ ls > temp
-  $ wc -l < temp
+  ls > temp
+  wc -l < temp
 #+END_SRC
 
 ** IO Redirection: STDERR
@@ -670,9 +688,23 @@ Increasingly, there are native ports of free GUI programs to MacOS X.
 
 - Examples:
 #+BEGIN_SRC shell
- $ prog > temp 2> log
- $ prog &> outfile.$$
+ prog > temp 2> log
+ prog &> outfile.$$
 #+END_SRC
+
+** Pipes
+
+- Pipes redirect the output of one command to the input of another
+- This allows the user to combine commands to create more complex ones
+- Examples:
+#+BEGIN_SRC shell
+  ls -1 | wc -l
+  cat somefile.txt | grep the
+  who | grep mary | wc -l
+#+END_SRC
+
+ \raggedright Text tools work one line at the time!
+
 
 ** Job Control Command Summary
 
@@ -682,20 +714,7 @@ Increasingly, there are native ports of free GUI programs to MacOS X.
 - \texttt{<} redirect STDIN
 - \texttt{2>} redirect STDERR
 - \texttt{2>\&1} and \texttt{\&>} redirect both STDIN and STDERR together
-
-
-** Pipes
-
-- Pipes redirect the output of one command to the input of another
-- This allows the user to combine commands to create more complex ones
-- Examples:
-#+BEGIN_SRC shell
-  $ ls -1 | wc -l
-  $ cat somefile.txt | grep the
-  $ who | grep mary | wc -l
-#+END_SRC
-
- \raggedright Text tools work one line at the time!
+- \texttt{|} connect STDIN to next STDOUT
 
 * Text utilities
 
@@ -791,39 +810,8 @@ Increasingly, there are native ports of free GUI programs to MacOS X.
   + \texttt{cut -d: -f1  /etc/passwd | sort | xargs echo} \\ (compact listing of all logins)
   + \texttt{ls -t | head | grep .ppt | xargs mv -t w/talks/} \\ (move the latest ppt files into the w/talks directory)
 
-** Remote Access
 
-- Remote access refers to the ability to connect to another machine on
-  a network and work as though physically located at that machine
-
-- Two applications allow a shell to be run on a remote machine: telnet
-  (unsecure, not allowed any more) and ssh (secure shell)
-
-- ssh encrypts the traffic between the two machines, and is preferred
-  to telnet
-
-- scp is a related ssh utility that provides secure file transfer, and
-  is preferred to ftp
-
-** Secure Shell (SSH)
-
-- SSH command
-  + \texttt{ssh [-l login] hostname} OR 
-  + \texttt{ssh username@hostname}
-- SCP command
-  + \texttt{scp [[user1]@host1:]file1 [[user2]@host2:]file2}
-  + Arguments provide the source and destination respectively
-- Examples:
-#+BEGIN_SRC shell
-  $ ssh -l root guests.kaust.edu.sa
-  $ scp ../docs/budget.doc guests.kaust.edu.sa:documents/
-  $ scp guests.kaust.edu.sa:backup.gz .
-  $ ssh guests.kaust.edu.sa 'date ; w'
-#+END_SRC
-
-  
-
-** Session 3 Command Summary
+** Text Utilities Command Summary
 
 - \texttt{grep}	print lines matching a pattern
 - \texttt{diff}	find differences between two files
@@ -836,9 +824,6 @@ Increasingly, there are native ports of free GUI programs to MacOS X.
 - \texttt{uniq}	remove duplicate successive lines from a text file
 - \texttt{xargs}	pass list as arguments to an other program
 - \texttt{man}	display online manual pages
-- \texttt{ssh}	secure shell client (remote login program)
-- \texttt{scp}	secure copy (remote file copy program)
-
 
 * Compression and Archiving
 
@@ -883,8 +868,7 @@ Increasingly, there are native ports of free GUI programs to MacOS X.
 - Examples:
   + \texttt{tar -cvf docbackup.tar *.doc} \\ (creates a tar file containing all .doc files)
   + \texttt{tar -zxf somearchive.tar.gz} \\ (extracts files in the archive compressed with gzip)
-  + \texttt{tar -jtf somearchive.tar.bz2 \\ (lists files in the archive compressed with bzip2)
-
+  + \texttt{tar -jtf somearchive.tar.bz2} \\ (lists files in the archive compressed with bzip2)
 
 ** zip
 
@@ -1063,7 +1047,7 @@ Increasingly, there are native ports of free GUI programs to MacOS X.
    again, type source <filename>, e.g.
 
 #+BEGIN_SRC shell
-    $ source ~/.bashrc
+    source ~/.bashrc
 #+END_SRC
 
 
@@ -1107,8 +1091,8 @@ Increasingly, there are native ports of free GUI programs to MacOS X.
   + name() = { commands } creates a new function in .bashrc
 -  Examples:
 #+BEGIN_SRC shell
-  $ psg()   { ps -AF | grep "$@" | grep -v grep ; }
-  $ killn() { kill `psg "$@" | cut -c9-14` ; }
+  psg()   { ps -AF | grep "$@" | grep -v grep ; }
+  killn() { kill `psg "$@" | cut -c9-14` ; }
 #+END_SRC
 
 -  Bash is a full featured programming language

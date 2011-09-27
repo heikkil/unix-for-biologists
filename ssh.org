@@ -35,6 +35,18 @@
 
 #+latex_header: \logo{\includegraphics[width=1cm,height=1cm,keepaspectratio]{img/logo-kaust}}
 
+## define colours for code listings
+\definecolor{keywords}{RGB}{255,0,90}
+\definecolor{comments}{RGB}{60,179,113}
+\definecolor{fore}{RGB}{249,242,215}
+\definecolor{back}{RGB}{51,51,51}
+\lstset{
+  basicstyle=\color{fore},
+  keywordstyle=\color{keywords},
+  commentstyle=\color{comments},
+  backgroundcolor=\color{back}
+}
+
 * The necessity of security
 
 - Everything is interconnected in the web
@@ -92,22 +104,20 @@
 - SCP command
   + \texttt{scp [[user1]@host1:]file1 [[user2]@host2:]file2}
   + Arguments provide the source and destination respectively
-- Examples:
+- Examples (remote computer 'rem'):
 #+BEGIN_SRC shell
-  $ ssh -l root guests.kaust.edu.sa
-  $ scp ../docs/budget.doc guests.kaust.edu.sa:documents/
-  $ scp guests.kaust.edu.sa:backup.gz .
-  $ ssh guests.kaust.edu.sa 'date ; w'
+  ssh -l root rem
+  scp ../docs/budget.doc rem:documents/
+  scp rem:backup.gz .
+  ssh rem 'date ; w'
 #+END_SRC
 
 * Setting up passwordless connection (1/2)
 
-- We are connecting to a remote machine 'rem'
-
 - create DSA key pair:
 
 #+BEGIN_SRC shell
-  $ ssh-keygen -t dsa
+  ssh-keygen -t dsa
 #+END_SRC
 
   + leave the passphrase empty
@@ -116,7 +126,7 @@
 - Copy the public key to remote machine:
 
 #+BEGIN_SRC shell
-  $ scp ~/.ssh/id_dsa.pub rem:.ssh/authorized_keys
+  scp ~/.ssh/id_dsa.pub rem:.ssh/authorized_keys
 #+END_SRC
 
 * Setting up passwordless connection (2/2)
@@ -125,15 +135,16 @@
   + everything in .ssh must be visible only to you
 
 #+BEGIN_SRC shell
-  $ chmod 700 ~/.ssh/
-  $ chmod 600 ~/.ssh/*
-  $ ssh rem 'chmod 700 ~/.ssh/ ; chmod 600 ~/.ssh/* '
+  chmod 700 ~/.ssh/
+  chmod 600 ~/.ssh/*
+  ssh rem 'chmod 700 ~/.ssh/'
+  ssh rem 'chmod 600 ~/.ssh/*'
 #+END_SRC
 
 - Now try connecting!
 
 #+BEGIN_SRC shell
-  $ ssh rem
+  ssh rem
 #+END_SRC
 
 
@@ -149,7 +160,7 @@
      deleted on the source host to keep both hosts *in sync*.
 
 #+BEGIN_SRC shell
-  $ rsync -avz foo:src/bar /data/tmp
+  rsync -avz foo:src/bar /data/tmp
 #+END_SRC
 
 - copies in archive mode

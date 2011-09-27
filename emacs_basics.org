@@ -35,6 +35,18 @@
 
 #+latex_header: \logo{\includegraphics[width=1cm,height=1cm,keepaspectratio]{img/logo-kaust}}
 
+## define colours for code listings
+\definecolor{keywords}{RGB}{255,0,90}
+\definecolor{comments}{RGB}{60,179,113}
+\definecolor{fore}{RGB}{249,242,215}
+\definecolor{back}{RGB}{51,51,51}
+\lstset{
+  basicstyle=\color{fore},
+  keywordstyle=\color{keywords},
+  commentstyle=\color{comments},
+  backgroundcolor=\color{back}
+}
+
 * Why Aquamacs
 
 - Aquamacs Emacs is a emacs with complete Mac user interface, by David
@@ -165,7 +177,6 @@
 * Some basic text editing commands
 
 #+BEGIN_SRC shell
-
    C-t    transpose-chars
    C-k    kill-line
 
@@ -188,7 +199,6 @@
   - Common ones:
 
 #+BEGIN_SRC shell
-
 	C-x C-f		Find file
 	C-x C-s		Save file
 	C-x s		Save some buffers
@@ -197,7 +207,6 @@
 	C-x C-c		Quit Emacs
 	C-x 1		Delete all but one window
 	C-x u		Undo
-
 #+END_SRC
 
   - pressing ESC-ESC-ESC can get you of anything
