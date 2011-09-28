@@ -1,0 +1,23 @@
+The VULGAR format
+
+The Verbosely Ugly Labelled Gapped Alignment Report format starts with
+the nine fields shared with a few other shorthand formats (SUGAR,
+cigar):
+
+- query_name  	Name of the query sequence from the input file.
+- query_start  	Start of the alignment in the query.
+- query_end   	 End of the alignment in the query.
+- query_strand 	Query orientation (+/-).
+- subject_name 	Name of the subject sequence from the input file.
+- subject_start     	Start of the alignment in the subject.
+- subject_end       	End of the alignment in the subject.
+- subject_strand    	Subject orientation (always + for SSAHA2).
+- score             	Smith-Waterman score obtained from the cross_match alignment.
+
+In vulgar, these are followed by a series of <label, query_length,
+subject_length> triplets, where label can be 'M' for match or 'G' for
+gap. The distinction between an insertion and a deletion is now made
+by the relative lengths of 'query_length' and
+'subject_length'. Example:
+
+vulgar: gnl|uv|NGB00064.1:1-44 22 0 - 1106514475071 9 31 + 110 M 22 22
