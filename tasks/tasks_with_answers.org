@@ -1,0 +1,529 @@
+#+TITLE:  Unix questions and answers
+#+AUTHOR: Heikki Lehv\auml{}slaiho
+#+EMAIL:     heikki.lehvaslaiho@kaust.edu.sa
+#+DATE:      Command line programming for biologists \\ 22-24 Oct 2011
+#+DESCRIPTION:
+#+KEYWORDS: UNIX, LINUX , CLI, history, summary, command line  
+#+LANGUAGE:  en
+#+OPTIONS:   H:3 num:t toc:t \n:nil @:t ::t |:t ^:t -:t f:t *:t <:t
+#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil tags:not-in-toc
+#+INFOJS_OPT: view:nil toc:t ltoc:t mouse:underline buttons:0 path:http://orgmode.org/org-info.js
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+LINK_UP:   
+#+LINK_HOME: 
+#+XSLT:
+
+#+startup: beamer
+#+LaTeX_CLASS: beamer
+##+LaTeX_CLASS_OPTIONS: [bigger]
+
+#+BEAMER_FRAME_LEVEL: 2
+
+#+COLUMNS: %40ITEM %10BEAMER_env(Env) %9BEAMER_envargs(Env Args) %4BEAMER_col(Col) %10BEAMER_extra(Extra)
+
+# TOC slide before every section
+#+latex_header: \AtBeginSection[]{\begin{frame}<beamer>\frametitle{Topic}\tableofcontents[currentsection]\end{frame}}
+
+## see http://deic.uab.es/~iblanes/beamer_gallery/
+
+##+latex_header: \mode<beamer>{\usetheme{Madrid}}
+#+latex_header: \mode<beamer>{\usetheme{Antibes}}
+##+latex_header: \mode<beamer>{\usecolortheme{wolverine}}
+#+latex_header: \mode<beamer>{\usecolortheme{beaver}}
+#+latex_header: \mode<beamer>{\usefonttheme{structurebold}}
+
+#+latex_header: \logo{\includegraphics[width=1cm,height=1cm,keepaspectratio]{img/logo-kaust}}
+
+## define colours for code listings
+\definecolor{keywords}{RGB}{255,0,90}
+\definecolor{comments}{RGB}{60,179,113}
+\definecolor{fore}{RGB}{249,242,215}
+\definecolor{back}{RGB}{51,51,51}
+\lstset{
+  basicstyle=\color{fore},
+  keywordstyle=\color{keywords},
+  commentstyle=\color{comments},
+  backgroundcolor=\color{back}
+}
+
+
+* Session: 1
+
+** 
+- i. List the of the most important features of the Linux system.
+
+\pause
+
+- i. Multiple users, multitasking, memory protection. It has other
+  features but they are all subsets of these features. E.g. access
+  privileges is part of the multiple user system, being able to switch
+  between graphics and command line is part of the multitasking
+  feature, and not crashing part of the memory protection feature.
+
+** 
+- ii. What does a "kernel" do?
+
+\pause
+
+- ii. The kernel is the core of the operating system. It abstracts the
+  hardware so that the user does not need to deal directly with the
+  hardware (computer's physical parts). It also offers other features,
+  such s those listed in point (i) above, e.g.., task
+  scheduling. Operating systems are programs that allow other programs
+  to run, and which control computer hardware. The kernel is the most
+  important part of an OS.
+
+** 
+- iii. Where is Linux commonly used, apart from Bioinformatics? Why?
+
+\pause
+
+- iii. Linux is commonly used on Internet servers, mail servers, web
+  servers, etc. because it is very stable.
+
+** 
+- iv. What is the difference between a command line and graphical
+  interface?
+
+\pause
+
+- iv. On a command line (CLI) you type instructions to the computer,
+  an a graphical interface (GUI) you click with the mouse and
+  manipulate graphical objects.
+
+** 
+- v. Try to switch between the command line and graphic
+  interface. Record the keystrokes you used.
+
+\pause
+
+- v. Control-Alt-F1 - F6 gets you the CLI, Control-Alt-F7 to the GUI.
+
+** 
+- vi. Why do you have to "log in"? Give examples of login names, and
+  two examples of good passwords, and two examples of bad passwords.
+
+\pause
+
+- vi. You have to log in, because Linux is a multiple user
+  system. This prevents users from tampering with each others'
+  files. Examples of logins are "root" and "nobody". Examples of good
+  passwords are: 4AZg^& and fvr@#$l2, examples of bad passwords are
+  "bob" and "j0ebob"
+
+** 
+- vii. Give an example of a file which does not need a file name
+  extension but which can nevertheless be viewed properly on Linux.
+
+\pause
+
+- vii. Plain text can be viewed properly without filename extension.
+** 
+- viii. Give the path to your home directory. 
+
+\pause
+
+- viii. /home/username is your login name. So, if you login as user
+  bob, your home directory is at /home/bob, most likely.
+
+** 
+- ix. What is the difference between relative and an absolute path?
+  Give an example of the relative path to the Course folder you made
+  in exercise (ix) above, and then give the absolute path of the the
+  link and link's target as mentioned in (ix) above.
+
+\pause
+
+- ix. Absolute paths include the top of the filesystem, root (/). The
+  absolute path to the course folder is thus
+  \texttt{/home/username/Desktop/course} and to the link is
+  \texttt{/home/username/course}. The relative paths, assuming we are
+  in our home directory, are \texttt{./course} and
+  \texttt{./Desktop/course}.
+
+
+
+* Session 2
+
+
+** 
+
+- i. Use the command which shows your current working directory to
+  find out the path of you home directory. Write the path to your home
+  directory down.
+
+\pause
+
+- i. 
+
+#+BEGIN_SRC shell
+   pwd
+#+END_SRC
+
+  It should show something like \texttt{home/username} or
+  \texttt{Users/username}. You should type this command immediately
+  after logging in if you want the path to your home directory, since
+  that is where you are placed after logging in.
+
+** 
+- ii. See what each of these do combined with \texttt{cd} command: ~
+  (tilde), - (dash), .. (double dot). What do they do?
+
+\pause
+
+- ii. 
+
+  + Tilde takes you to your home directory \texttt{cd \~ }
+  + Dash takes you to the previous directory you were in \texttt{cd -}
+  + Double-dot takes you up one level in the hierarchy \texttt{cd ..}
+
+** 
+- iii. Work out how to get recursive directory listing which shows the
+  forward-slashes at the end of directory names. Write down the
+  command line.
+
+\pause
+
+- iii.
+
+#+BEGIN_SRC shell
+   ls -RF
+#+END_SRC
+
+** 
+- iv. What is the difference between rm and rmdir? Which is more
+  effective in what circumstance (which always works)?
+
+\pause
+
+- iv. rm deletes anything, but only deletes directories when given
+  option -r. rmdir deletes directories, but only if they are
+  empty. Therefore rm -r is more effective since it will destroy
+  everything. This makes rm -r extremely dangerous.
+
+** 
+- v. What will the following series of commands do? 
+#+BEGIN_SRC shell
+  cp /etc/passwd ~
+  mkdir ~/stuff
+  cd
+  mv passwd stuff/example
+  cp stuff/example ~
+#+END_SRC
+
+\pause
+
+- v. Copy the file /etc/passwd to your home directory, make a folder
+  in there called “stuff”, go to the home directory, move the passwd
+  file into the folder called “stuff” but rename it simultaneously to
+  “example”, then copy the file called "example" from the folder
+  called “stuff” into the home directory.
+
+** 
+- vi. How do you force mv to move instead of rename? When does mv move
+  and when does it rename?
+
+\pause
+
+- vi. mv will move if the target is a directory, rename if the target
+  does not exist, and if the target is an existing file, mv will
+  overwrite (destroy) the file, replacing it with the one you renamed.
+
+** 
+- vii. What is the difference between * and ? on the command line?
+  What do they mach?
+
+\pause
+
+- vii. 
+
+ + * matches anything of any length
+ + ? matches any one character (letter or number).
+
+** 
+- viii. What are the three main privilege types? What will
+
+#+BEGIN_SRC shell
+  chmod 755 ~
+#+END_SRC
+
+   do? In this output, what does "wheel" signify : 
+#+BEGIN_SRC shell
+ drwxrwxrwx 5  me wheel 170 24 Jan 15:17 Shared
+#+END_SRC
+
+\pause
+
+- vii. 
+
+  + Read, write, execute. 
+
+  + The 'chmod 755 ~' will set the home directory to be world-readable
+  and world-executable.
+
+  + "wheel" refers to the group that has permissions in that directory.
+
+** 
+- ix. What is the difference between the & operator and the command
+  bg? Once you have used one of these, how do you reverse its effect?
+  How do you pause a job? How do you cancel a job? How do you see what
+  jobs you have running?
+
+\pause
+
+- ix. & puts the command in the background immediately, bg only does
+  so after pausing a job. To bring it to foreground again, use fg. To
+  pause, use control-Z. To cancel, use control-C. jobs shows what jobs
+  are running in (under that terminal shell).
+
+** 
+- x. Type 
+
+#+BEGIN_SRC shell
+  ls -aRF /
+#+END_SRC
+
+   That will mess up your screen! Now pause it. Now background
+  it. Prove that it is backgrounded by running another command, like
+  top. Quit out of top by typing q. Now cancel the backgrounded job by
+  first bringing it to the front.
+
+\pause
+
+- x. The solution to this exercise relies on your understanding the
+  answer to (ix) above.
+
+
+
+* Session 3
+
+
+** 
+- i. How can you use the cat command and IO redirection to copy a file? 
+
+\pause
+
+- i. 
+#+BEGIN_SRC shell
+   cat filename > new_filename
+#+END_SRC
+
+** 
+- ii. How can you use the cat and grep commands, together with pipes to search for pattern in a file? 
+
+\pause
+
+- ii. 
+
+#+BEGIN_SRC shell
+  cat filename | grep pattern
+#+END_SRC
+
+
+** 
+- iii. How can you use cut, paste and IO redirection to create a new
+  file with only the first and second columns?
+
+\pause
+
+
+- iii. One command:
+
+#+BEGIN_SRC shell
+  cut -f 1,3 filename
+#+END_SRC
+
+or broken into smaller steps:
+
+#+BEGIN_SRC shell
+cut -f1 filename > col1
+cut -f 3 filename > col3
+paste col1 col2
+#+END_SRC
+
+** 
+- iv. How can you find out about SSH configuration using the man command? (Hint: use man -k) 
+
+\pause
+
+- iv. 
+
+#+BEGIN_SRC shell
+man -k ssh
+# or 
+apropos ssh
+#+END_SRC
+
+This then gives a list of man pages where help on ssh can be
+found. One of them is ssh\_config, so the next command is
+
+#+BEGIN_SRC shell
+  man ssh_config 
+#+END_SRC
+
+
+** 
+
+- v. File 'contamination.vulgar' shows exonorate homology search in
+  vulgar format (see vulgar.readme). Use command line tools to extract
+  target (subject) ids and count them.
+
+\pause
+
+- v. 
+
+#+BEGIN_SRC shell
+  cat contamination.vulgar | \
+  cut -d\  -f6 | \
+  sort -u | \
+  wc -l
+#+END_SRC
+
+
+
+
+* Session 4
+
+
+**  
+- i. You have a directory full of files. What would be the best way to
+  get the files with a .dat extension from one machine to another over
+  a slow network?
+ 
+\pause
+
+- i. You could copy them to a disk and take them to the remote-machine.
+
+  + Compress and archive them to send less information over the
+    network. 
+
+#+BEGIN_SRC shell
+  tar -cvf filename.tar *dat
+  gzip filename.tar
+  scp filename.tar.gz user@remote.machine.org:
+#+END_SRC
+
+or 
+
+#+BEGIN_SRC shell
+  tar -zcvf filename.tz *dat
+#+END_SRC
+
+or (!)
+
+#+BEGIN_SRC shell
+ tar cf - *dat | ssh user@remote.machine.org \
+   tar xf - -C /home/user 
+#+END_SRC
+
+
+
+
+** 
+- ii. You have a tarball that was created with the command [tar -zcvf
+  hooha.tar.gz * ]. How can you extract the text files from this
+  archive?
+ 
+\pause
+
+- ii. 
+#+BEGIN_SRC shell
+  tar -zxf hooha.tar.gz *.txt
+#+END_SRC
+
+
+** 
+- iii. Your machine is running very slowly because a programs you were
+  running is misbehaving. How can you stop this program?
+ 
+\pause
+
+- iii. 
+
+ 1. Find the program.
+
+#+BEGIN_SRC shell
+  ps -aux
+  top
+#+END_SRC
+
+ 2. Try to kill the program gently
+
+#+BEGIN_SRC shell
+  kill <id>
+#+END_SRC
+ 3. If that does not work, force kill:
+ 
+#+BEGIN_SRC shell
+  kill -9 <id>
+#+END_SRC
+
+
+** 
+- iv. You have a program in \texttt{/home/me/vital/statistics/} that
+  you use regularly. How can you make it so that this program be run
+  easily no matter which directory you are currently in?
+ 
+\pause
+
+- iv. You need to add \texttt{/home/me/vital/statistics} to the PATH
+  variable. Add this line to \texttt{~/.bash\_profile} file. Create
+  it, if it does not exist.
+
+#+BEGIN_SRC shell
+	export PATH=$PATH:/home/me/vital/statistics
+#+END_SRC
+
+In most system you can use the predefined environmental variable $HOME to add:
+
+#+BEGIN_SRC shell
+	export PATH=$PATH:$HOME/vital/statistics
+#+END_SRC
+
+
+
+** 
+- v. You often use the \texttt{ls} command to list the files in a directory,
+  but you are lazy and would prefer for \texttt{ls} to output the long listing
+  format. How can you change the command \texttt{ls} so that it does that
+  automatically?
+ 
+\pause
+
+- v.
+
+#+BEGIN_SRC shell
+  alias ls='ls -l'
+#+END_SRC
+
+
+** 
+- vi. You wish to backup your home directory by running
+
+#+BEGIN_SRC shell
+  tar -zcvf /home/me/backup.tar.gz home/me
+#+END_SRC
+
+every Tuesday at l2:00 PM. What would you need to add to the cron
+scheduling utility?
+
+\pause
+
+- vi.
+#+BEGIN_SRC shell
+ 0 12 * * 2 tar -zcvf /home/me/backup.tar.z /home/me/
+#+END_SRC
+ 
+
+
+** 
+- vii. You would want to turn off your computer after midnight using  the poweroff command. How can you do this?
+
+\pause
+
+- vii. 
+
+#+BEGIN_SRC shell
+at 00:00 poweroff
+#+END_SRC
