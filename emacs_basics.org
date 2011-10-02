@@ -311,7 +311,7 @@ version control system.
   + table mode to create tab-delimited files: part of org mode
   + line numbers:  M-x linum-mode
   + spellchecker: M-x fly-spell-mode
-
+  + code syntax checking: M-x flymake-mode
 
 * perl mode
 
