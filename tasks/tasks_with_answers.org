@@ -106,11 +106,19 @@
 
 \pause
 
-- vi. You have to log in, because Linux is a multiple user
-  system. This prevents users from tampering with each others'
-  files. Examples of logins are "root" and "nobody". Examples of good
-  passwords are: 4AZg^& and fvr@#$l2, examples of bad passwords are
-  "bob" and "j0ebob"
+- vi. You have to log in, because Linux is a multiple user system.
+  This prevents users from tampering with each others' files. Examples
+  of logins 
+  + root
+  + nobody
+
+  Examples of good passwords are:
+  + 4AZg\^\&
+  + fvr@#$l2
+
+  Examples of bad passwords are 
+  + bob
+  + j0ebob
 
 ** 
 - vii. Give an example of a file which does not need a file name
@@ -124,8 +132,11 @@
 
 \pause
 
-- viii. /home/username is your login name. So, if you login as user
-  bob, your home directory is at /home/bob, most likely.
+- viii. Under common LINUX systems your login name is
+  \texttt{/home/username}.  So, if you login as user bob, your home
+  directory is at \texttt{/home/bob}, most likely.
+
+  Under Mac OS, you are at \texttt{/Users/username}
 
 ** 
 - ix. What is the difference between relative and an absolute path?
