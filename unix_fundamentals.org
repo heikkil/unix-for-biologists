@@ -90,7 +90,6 @@
 The aim is for efficiency, speed and convenience
 
 
-
 * UNIX operating system
 
 ** Operating system
@@ -297,6 +296,74 @@ Increasingly, there are native ports of free GUI programs to MacOS X.
 
 - Users should create new directories in their home directories to
   properly organise their files
+
+** Important directories in Linux
+
+Macs (BSD Unix) follow slightly different conventions!
+
+*** list 					      :B_ignoreheading:BMCOL:
+    :PROPERTIES: 
+    :BEAMER_env: ignoreheading
+    :BEAMER_col: 0.6
+    :END:
+
+- /bin
+  + Basic system binaries (executables)
+- /usr/bin
+  + More system binaries
+- /usr/local/bin
+  + local (user installed) binaries
+- /sbin
+  + Basic system administrative programs
+- /usr/sbin
+  + More system administrative programs.
+*** list 					      :B_ignoreheading:BMCOL:
+    :PROPERTIES: 
+    :BEAMER_env: ignoreheading
+    :BEAMER_col: 0.6
+    :END:
+- /etc
+  + Et cetera. Systemwide configuration scripts 
+- /etc/rc.d or /etc/init.d
+  + Boot scripts
+- /usr/share/doc
+  + Documentation for installed packages
+- /usr/man
+  + The systemwide manpages
+- /dev
+  + Device directory
+
+** More important directories in Linux
+*** list 					      :B_ignoreheading:BMCOL:
+    :PROPERTIES: 
+    :BEAMER_env: ignoreheading
+    :BEAMER_col: 0.6
+    :END:
+- /proc
+  + Process directory
+- /sys
+  + Systemwide device directory.
+- /mnt or /media
+  + Mount, directory for mounting external drives
+- /var
+  + Variable (changeable) system files
+- /var/log
+  + Systemwide log files
+*** list 					      :B_ignoreheading:BMCOL:
+    :PROPERTIES: 
+    :BEAMER_env: ignoreheading
+    :BEAMER_col: 0.6
+    :END:
+- /var/spool/mail
+  + User mail spool
+- /lib
+  + Systemwide library files
+- /usr/lib
+  + More systemwide library files
+- /tmp
+  + System temporary files (world writable)
+- /boot
+  + System boot directory
 
 ** Pathing
 
@@ -575,7 +642,6 @@ Increasingly, there are native ports of free GUI programs to MacOS X.
   + \texttt{chmod 700 myscript.sh} (user only executable)
   + \texttt{chmod 664 schedule.txt} (read by all, write by user and group)
   
-
 * Disks and Files
 
 ** Determining Disk and Memory Usage
@@ -636,7 +702,6 @@ Increasingly, there are native ports of free GUI programs to MacOS X.
 -  \texttt{du}    estimate file space usage
 -  \texttt{find}  search for files in a directory hierarchy
 -  \texttt{locate}  find files by name
-
 
 * Job Control and IO Redirection
 
@@ -997,7 +1062,6 @@ Increasingly, there are native ports of free GUI programs to MacOS X.
   15 14 1 * * $HOME/bin/monthly-reports
 #+END_SRC
 
-
 * Shells
 
 ** What is a Shell
@@ -1032,7 +1096,7 @@ Increasingly, there are native ports of free GUI programs to MacOS X.
 - Caveat: Many linux distributions have a bash-compatible, more light-weight
   default shell 
 
-** Environment Variables
+** Environment variables
 
 -  They define the user environment and are read from initialisation files each time a user logs in
 -  To view the value of a variable, type \texttt{echo \$VARNAME}
@@ -1052,7 +1116,7 @@ Increasingly, there are native ports of free GUI programs to MacOS X.
 
 
 
-** Some Shell Specifics
+** Some shell specifics
 
 -  Using bash:
   -  Global initialisation file is /etc/profile
@@ -1065,7 +1129,7 @@ Increasingly, there are native ports of free GUI programs to MacOS X.
   -  setenv displays all currently set variables
   -  Syntax to set a variable: setenv VARNAME="value"
 
-** The PATH Variable
+** The PATH variable
 
 -  Specifies the directories that the shell searches to find a command or executable
 -  Directories are searched in the order they appear
@@ -1083,7 +1147,7 @@ Increasingly, there are native ports of free GUI programs to MacOS X.
   + alias rm='rm -i' (change the behaviour of rm to confirm deletes)
   + alias ll='ls -lLF | less' (create a new command for friendly file listings)
 
-** bash as programming language
+** Bash functions
 
 -  An other way to provide command-substitution functionality is bash functions
 -  The set command is used to view bash functions
@@ -1095,9 +1159,36 @@ Increasingly, there are native ports of free GUI programs to MacOS X.
   killn() { kill `psg "$@" | cut -c9-14` ; }
 #+END_SRC
 
--  Bash is a full featured programming language
--  See: Advanced Bash-Scripting Guide
+** Bash is a full featured programming language
 
+- variables
+- regular expressions
+- operators
+- conditionals
+- loops
+- functions
+
+-  For more, see:
+   + Bash Guide for Beginners http://tldp.org/LDP/Bash-Beginners-Guide/Bash-Beginners-Guide.pdf
+   + BASH programming - Introduction HOW-TO http://tldp.org/HOWTO/Bash-Prog-Intro-HOWTO.html
+   + Advanced Bash-Scripting Guide http://tldp.org/LDP/abs/abs-guide.pdf
+
+** Bash configuration files
+
+Places to store your shortcuts and environmental variables. Create
+when needed.
+
+- /etc/profile
+  + system wide envvars (might call other files)
+
+- $HOME/.bash\_profile
+  + user's envvars
+
+- $HOME/.bashrc
+  + user's init file for aliases and functions
+
+- $HOME/.bash\_logout
+  + executed when logging out
 
 * History
 
