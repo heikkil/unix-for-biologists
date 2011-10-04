@@ -1,7 +1,7 @@
 #+TITLE: Connecting securely
 #+AUTHOR: Heikki Lehv\auml{}slaiho
 #+EMAIL:     heikki.lehvaslaiho@kaust.edu.sa
-#+DATE:      Command line programming for biologists \\ 22-24 Oct 2011
+#+DATE:      2011-10-04 \\ CC BY-SA 3.0
 #+DESCRIPTION:
 #+KEYWORDS: UNIX, LINUX , CLI, history, summary, command line  
 #+LANGUAGE:  en
@@ -89,12 +89,17 @@
 
 #+ATTR_LaTeX: width=0.95\textwidth
 [[file:img/Public-key-crypto-1.pdf]]
-
+\\ \tiny Image adapted from Wikimedia Commons, CC BY-SA 3.0.
 
 * How cryptographic keys are used
+#+begin_center
 
 #+ATTR_LaTeX: width=0.70\textwidth
 [[file:img/Public_key_signing.pdf]]
+\\ \tiny Image from Wikimedia Commons, CC BY-SA 3.0.
+
+#+end_center
+
 
 * Secure Shell (SSH)
 
