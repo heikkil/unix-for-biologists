@@ -1,7 +1,7 @@
 #+TITLE: UNIX Fundamentals
 #+AUTHOR: Heikki Lehv\auml{}slaiho
 #+EMAIL:     heikki.lehvaslaiho@kaust.edu.sa
-#+DATE:      Command line programming for biologists \\ 22-24 Oct 2011
+#+DATE:      2011-10-04 \\ CC BY-SA 3.0
 #+DESCRIPTION:
 #+KEYWORDS: UNIX, LINUX , CLI, history, summary, command line  
 #+LANGUAGE:  en
@@ -118,6 +118,9 @@ software.
     :END:
     #+ATTR_LaTeX: width=0.6\textwidth
     [[file:img/Operating_system_placement.pdf]]
+    \\ \tiny Image from from Wikimedia Commons, CC BY-SA 3.0.
+
+
 
 ** Unix and Unix-like operating systems
 
@@ -137,10 +140,9 @@ Douglas McIlroy, and Joe Ossanna.
 
 ** Brief History of UNIX
 
-##+CAPTION: Family tree of *NIX
-#+ATTR_LaTeX: width=0.99\textwidth
-[[file:img/Unix_history-simple.pdf]]
-
+   #+ATTR_LaTeX: width=0.95\textwidth
+   [[file:img/Unix_history-simple.pdf]] 
+   \\ \tiny Image from from Wikimedia Commons, CC BY-SA 3.0.
 
 ** Our course computers run MacOSX
 
@@ -1208,5 +1210,7 @@ when needed.
   June 2005
 
 This work is licensed under the Creative Commons
-Attribution-ShareAlike 2.0 South Africa License.  To view a copy of
-this license, visit http://creativecommons.org/licenses/by-sa/2.0/za/
+Attribution-ShareAlike 3.0 Unported.  To view a copy of this license,
+visit http://creativecommons.org/licenses/by-sa/3.0/
+
+[1] Image from from Wikimedia Commons, CC BY-SA 3.0.
