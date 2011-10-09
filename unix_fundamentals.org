@@ -50,11 +50,11 @@
 * Philosophy of command line
 ** CLI versus GUI
 
-*** Philosophical
-- Command line forces internalization of the problem by abstraction
-*** Practical
-- Scientific data sets are too big for GUI
-- Scientific data does not come in standard formats
+- Philosophical
+  + Command line forces internalization of the problem by abstraction
+- Practical
+  + Scientific data sets are too big for GUI
+  + Scientific data does not come in standard formats
 
 ** Practical differences
 
@@ -156,27 +156,30 @@ Increasingly, there are native ports of free GUI programs to MacOS X.
 
 ** Brief History of LINUX (I)
 
-*** Linux began in 1980's as an effort to create a free Unix-like operating system
-*** The project was called GNU and was run by the Free Software Foundation (FSF) created by Richard Stallman
-*** Development began with system tools such as editors, a compiler and hundreds of other utilities
-*** By early 1990's most of the components were written, but the operating system was missing a kernel
-*** Coincidentally, Linus Torvalds of Helsinki University had been working on a Unix-based kernel – the first version was completed in 1994
+- Linux began in 1980's as an effort to create a free Unix-like operating system
+- The project was called GNU and was run by the Free Software Foundation (FSF) created by Richard Stallman
+- Development began with system tools such as editors, a compiler and hundreds of other utilities
+- By early 1990's most of the components were written, but the operating system was missing a kernel
+- Coincidentally, Linus Torvalds of Helsinki University had been working on a Unix-based kernel – the first version was completed in 1994
 
 ** Brief History of LINUX (II)
 
-*** Linus liked the endeavours of the Free Software Foundation and released his kernel under the GNU GPL  (The GNU General Public License)
+- Linus liked the endeavours of the Free Software Foundation and
+  released his kernel under the GNU GPL (The GNU General Public
+  License)
 
-*** The Linux kernel and GNU tools made a complete, free operating system: the GNU/Linux operating system
+- The Linux kernel and GNU tools made a complete, free operating
+  system: the GNU/Linux operating system
 
 ** Open Source Licenses
-*** GPL was one of the most important contributions of the FSF
-*** The Open Source definition (http://www.opensource.org) is based on the GPL
-*** Open Source licenses ensure basic freedoms, including:
-- The freedom to use the software for any purpose
-- The freedom to distribute the software to others
-- The freedom to modify the software
-- The freedom to distribute the modified software to others (under the same licensing conditions)
-*** GPL, MPL and BSD licenses are some examples
+- GPL was one of the most important contributions of the FSF
+- The Open Source definition (http://www.opensource.org) is based on the GPL
+- Open Source licenses ensure basic freedoms, including:
+  + The freedom to use the software for any purpose
+  + The freedom to distribute the software to others
+  + The freedom to modify the software
+  + The freedom to distribute the modified software to others (under the same licensing conditions)
+- GPL, MPL and BSD licenses are some examples
 
 ** User Interface
 - Describes the way a system interacts with its users
@@ -228,12 +231,13 @@ Increasingly, there are native ports of free GUI programs to MacOS X.
 
 ** Getting Help on Commands
 
-*** Command: man [section] name
-*** Common options:
-- \texttt{ -k}: searches for keywords in  man page entries
-*** Standard use displays the manual page of the command
-*** The section number may need to be specified for keywords that have more than one entry in the system
-*** Examples:
+- Command: man [section] name
+- Common options:
+  + \texttt{ -k}: searches for keywords in  man page entries
+- Standard use displays the manual page of the command
+- The section number may need to be specified for keywords that have
+  more than one entry in the system
+- Examples:
 
 #+BEGIN_SRC shell
    man ls
@@ -429,17 +433,17 @@ Macs (BSD Unix) follow slightly different conventions!
 ** Listing Files
 
 - Command: \texttt{ls [options] [files]}
-*** Common options:
-- \texttt{-a}: shows all files, including hidden files
-- \texttt{-l}: uses long listing format
-- \texttt{-r}: produces output in reverse order
-- \texttt{-t}: sorts output by modification times
-- \texttt{-1}: lists one file per line
-*** Examples: 
-- \texttt{ls }(short file listing)
-- \texttt{ls -al} (long listing, including hidden files)
-- \texttt{ls -1} (short listing; one file per line)
-- \texttt{ls -lrt} (long listing; most recently accessed files last)
+- Common options:
+  + \texttt{-a}: shows all files, including hidden files
+  + \texttt{-l}: uses long listing format
+  + \texttt{-r}: produces output in reverse order
+  + \texttt{-t}: sorts output by modification times
+  + \texttt{-1}: lists one file per line
+- Examples: 
+  + \texttt{ls }(short file listing)
+  + \texttt{ls -al} (long listing, including hidden files)
+  + \texttt{ls -1} (short listing; one file per line)
+  + \texttt{ls -lrt} (long listing; most recently accessed files last)
 
 ** Creating & Removing Directories
 # Task: How would you create a directory /tmp/2011/10/24/ in one
@@ -478,12 +482,12 @@ Macs (BSD Unix) follow slightly different conventions!
 
 ** Removing Files
 
-*** Command: \texttt{rm [options] files}
-*** Common options:
-- \texttt{-f}: does not prompt before removing
-- \texttt{-i}: prompts before removing
-- \texttt{-r}: removes directories recursively
-*** Examples:
+- Command: \texttt{rm [options] files}
+- Common options:
+  + \texttt{-f}: does not prompt before removing
+  + \texttt{-i}: prompts before removing
+  + \texttt{-r}: removes directories recursively
+- Examples:
 #+BEGIN_SRC shell
   rm budget.doc
   rm budget.doc oldbudget.doc
@@ -526,57 +530,68 @@ Macs (BSD Unix) follow slightly different conventions!
 
 ** Helpful CLI Features
 
-*** Tab completion: command and file names are completed as far as possible when the tab key is pressed. Double-tab key press shows available completions
-*** History: pressing the up arrow key scrolls backwards through the previous commands
-*** Events (\texttt{!}): previous events can be rerun using the ! character and the first character(s) of the event. The most recent matching event is chosen. !! runs the most recent command
-*** Control-R allows live history searching
-*** These features are shell-dependent (bash supports all)
-
+- Tab completion: command and file names are completed as far as
+  possible when the tab key is pressed. Double-tab key press shows
+  available completions
+- History: pressing the up arrow key scrolls backwards through the
+  previous commands
+- Events (\texttt{!}): previous events can be rerun using the !
+  character and the first character(s) of the event. The most recent
+  matching event is chosen. !! runs the most recent command
+- Control-R allows live history searching
+- These features are shell-dependent (bash supports all)
 ** Viewing File Contents
 
-*** cat utility: outputs the contents of a file to the terminal
-*** less utility: similar to cat, but displays one page of output at a time (improvement of more)
-- Use spacebar to advance to the next page
-- Use \texttt{B} to jump back to the previous page
-- Use Enter key to advance line at a time
-- Use up and down arrow keys to move a line at a time
-- search by pressing \texttt{/}, type the string and press enter (press n for next)
-*** clear utility: clears the screen
-
+- \texttt{cat} utility: outputs the contents of a file to the terminal
+- \texttt{less} utility: similar to cat, but displays one page of output at a
+  time (improvement of more)
+  + Press spacebar to advance to the next page
+  + Press \texttt{B} to jump back to the previous page
+  + Press Enter key to advance line at a time
+  + Press up and down arrow keys to move a line at a time
+  + search by pressing \texttt{/}, type the string and press enter
+    (press n for next)
+- \texttt{clear} utility: clears the screen
 ** Text Editors
 
-- Linux offers a variety of text editors: vi (or vim), emacs, nedit, pico, jed, kwrite, etc.
-- vi (and vim – vi-improved) is a command-driven editor that is found on almost all Unix-based systems
-- Emacs is a GNU editor that offers a large amount of additional functionality. Its graphical interface and maturity make it an excellent choice of editor for the novice user.
+- Linux offers a variety of text editors: vi (or vim), emacs, nedit,
+  pico, jed, kwrite, etc.
+- vi (and vim – vi-improved) is a command-driven editor that is found
+  on almost all Unix-based systems
+- Emacs is a GNU editor that offers a large amount of additional
+  functionality. Its graphical interface and maturity make it an
+  excellent choice of editor for the novice user.
 
 ** File System Security
 
 - Linux file system security is a simple scheme based on users and groups
-- Users belong to one or more groups, set by the system administrator
+- Users belong to one or more groups, set by the system administrator (root)
 - Groups allow file access to sets of users to be easily implemented
 - Each file is owned by one user and allocated to one group
-- A new file is created with the user as its owner and the user's current group as its group 
-- File ownership can be changed with the \texttt{chown} command
+  - \texttt{chown}: change file owner
+  - \texttt{chown}: change group
+- A new file is created with the user as its owner and the user's
+  current group as its group
 
 ** Privilege Types
 
-*** Files and directories may be granted read, write and execute permissions
-*** Each of these privileges are specified separately for:
-- the owner
-- the group
-- other users, who do not fall into the previous categories
+- Files and directories may be granted read, write and execute permissions
+- Each of these privileges are specified separately for:
+  + the owner
+  + the group
+  + other users, who do not fall into the previous categories
 
 ** Privilege Semantics
 
-*** Privileges have different meanings for files and directories
-*** Privileges for files
-- *read* permission allows the file to be read, copied, printed, etc
-- *write* permission allows the file to be modified, overwritten and deleted
-- *execute* permission allows the file to be executed
-*** Privileges for directories
-- *read* permission allows the directory's contents to be listed
-- *write* permission allows files to be created and deleted in it
-- *execute* permission allows the user to change directory to it
+- Privileges have different meanings for files and directories
+- Privileges for files
+  + *read* permission allows the file to be read, copied, printed, etc
+  + *write* permission allows the file to be modified, overwritten and deleted
+  + *execute* permission allows the file to be executed
+- Privileges for directories
+  + *read* permission allows the directory's contents to be listed
+  + *write* permission allows files to be created and deleted in it
+  + *execute* permission allows the user to change directory to it
 
 ** Viewing Permissions via CLI
 
@@ -584,9 +599,12 @@ Macs (BSD Unix) follow slightly different conventions!
 -rw-r--r-- 1 heikki heikki 1772 2007-03-07 13:29 test.pdf
 #+END_SRC
 
-- The \texttt{ls -l} command shows file and directory permissions in the first column
-- If the first character is a dash, then it represents a file. If it is a d, it represents a directory
-- Characters 2-4 indicate the permissions of the owner (r = read, w = write, x = execute)
+- The \texttt{ls -l} command shows file and directory permissions in
+  the first column
+- If the first character is a dash, then it represents a file. If it
+  is a d, it represents a directory
+- Characters 2-4 indicate the permissions of the owner (r = read, w =
+  write, x = execute)
 - Characters 5-7 indicate the permissions of the group
 - Characters 8-10 indicate the permissions of other users
 - Third column displays the owner
@@ -619,16 +637,35 @@ Macs (BSD Unix) follow slightly different conventions!
 - Alternative, numeric, notation is to use three groups of octal digits
  from 0-7 to set all the permissions explicitly:
 
-|   | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 |
-|---+---+---+---+---+---+---+---+---|
-| r | - | - |   | - | r | r | r | r |
-| w | - | - | w | w | - |   | w | w |
-| x | - | x | - | x | - | w | - | x |
+
+| dec | 0   | 1   | 2   | 3   | 4   | 5   | 6   | 7   |
+| bin | 000 | 001 | 010 | 011 | 100 | 101 | 110 | 111 |
+|-----+-----+-----+-----+-----+-----+-----+-----+-----|
+| r   | -   | -   | -   | -   | r   | r   | r   | r   |
+| w   | -   | -   | w   | w   | -   | -   | w   | w   |
+| x   | -   | x   | -   | x   | -   | w   | -   | x   |
 
 - Examples:
 
   + \texttt{chmod 700 myscript.sh} (user only executable)
   + \texttt{chmod 664 schedule.txt} (read by all, write by user and group)
+
+** How to run a program?
+
+1. Explicit path
+  - Give absolute path
+  - Execute bit must be set
+2. use $PATH
+  - Shell variable holding a list of executable directories
+#+begin_src shell
+  echo $PATH
+  which echo
+#+end_src
+
+- \texttt{echo} is in \texttt{/bin/echo}
+- Can you find /bin in the path list?
+- \texttt{which} shows the path of an executable
+
   
 * Disks and Files
 ** Determining Disk and Memory Usage
@@ -649,8 +686,8 @@ Macs (BSD Unix) follow slightly different conventions!
 - Command: \texttt{find path -name pattern}
 - Examples:
 
-  + \texttt{\find . -name "*.txt"} \\ (find .txt files starting from the current directory)
-  + \texttt{\find / -name "*.rpm"} \\  (find rpm files starting from the root directory)
+  + \texttt{find . -name "*.txt"} \\ (find .txt files starting from the current directory)
+  + \texttt{find / -name "*.rpm"} \\  (find rpm files starting from the root directory)
 
 - Command: \texttt{locate pattern}
   + uses the (s)locate database, which needs to be updated regularly]
