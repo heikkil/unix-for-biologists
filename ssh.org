@@ -117,6 +117,7 @@
   ssh rem 'date ; w'
 #+END_SRC
 
+
 * Setting up passwordless connection (1/2)
 
 - create DSA key pair:
@@ -152,6 +153,29 @@
   ssh rem
 #+END_SRC
 
+
+* SSH configuration
+
+#+begin_src shell
+touch ~/.ssh/config
+chmod 600 ~/.ssh/config
+#+end_src
+
+- Example contents:
+
+#+begin_src shell
+Host noor
+     Hostname noor-login.kaust.edu.sa
+     GSSAPIAuthentication no
+     User lehvasho
+
+Host ipscan
+     Hostname 10.68.26.123
+     User user
+
+Host *
+     User heikki
+#+end_src
 
 
 * rsync
