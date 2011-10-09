@@ -1123,10 +1123,11 @@ Macs (BSD Unix) follow slightly different conventions!
 
 ** Environment variables
 
--  They define the user environment and are read from initialisation files each time a user logs in
--  To view the value of a variable, type \texttt{echo \$VARNAME}
--  To see all, type \texttt{printenv}
--  Some common environment variables:
+- They define the user environment and are read from initialisation
+  files each time a user logs in
+- To view the value of a variable, type \texttt{echo \$VARNAME}
+- To see all, type \texttt{printenv}
+- Some common environment variables:
   + EDITOR: sets the editor to be used by text viewing programs
   + PATH: specifies directories to be searched for executables
   + SHELL: the default login shell
@@ -1136,9 +1137,8 @@ Macs (BSD Unix) follow slightly different conventions!
    again, type source <filename>, e.g.
 
 #+BEGIN_SRC shell
-    source ~/.bashrc
+    source ~/.bash_profile
 #+END_SRC
-
 
 ** Some shell specifics
 
@@ -1155,10 +1155,17 @@ Macs (BSD Unix) follow slightly different conventions!
 
 ** The PATH variable
 
--  Specifies the directories that the shell searches to find a command or executable
--  Directories are searched in the order they appear
--  Any user-directories added to a path should come after the system directories
--  If the current directory is added to the path, it should always be the last entry
+- Specifies the directories that the shell searches to find a command
+  or executable
+- Any user-directories added to a path should come after the system
+  directories
+- Directories are searched in the order they appear
+
+#+begin_src sh
+  echo $PATH
+  export PATH=$HOME/bin:$PATH
+  export PATH=.:$PATH
+#+end_src
 
 ** Aliases
 
@@ -1213,6 +1220,20 @@ when needed.
 
 - $HOME/.bash\_logout
   + executed when logging out
+
+** Shell scripting
+- Create a script:
+#+begin_src sh
+#!/bin/bash
+# example1.sh
+hostname
+echo $USER ; date
+#+end_src
+- Run it:
+#+begin_src sh
+chmod 755 example1.sh
+./example1.sh
+#+end_src
 
 * History
 
