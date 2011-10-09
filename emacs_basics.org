@@ -147,11 +147,11 @@
 - TAB completion can be used at any time
 
 #+BEGIN_SRC shell
-  M-x save-buffers-kill-terminal <return>
+  M-x save-buffers-kill-terminal <Return>
 #+END_SRC
 
 - Typing appears at the bottom of the window echo area
-- Command is executed when the return key is pressed
+- Command is executed when the Return key is pressed
 - All commands are added to the special buffer called \texttt{*Messages*}
 
 * Text movement and editing commands
@@ -168,7 +168,7 @@
   - Select several lines down starting from the first column
 
 #+BEGIN_SRC shell
-  C-return  cua-set-rectangle-mark
+  C-Return  cua-set-rectangle-mark
 #+END_SRC
 
   - type characters or use CUA edit commands to see the effect
