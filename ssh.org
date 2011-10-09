@@ -189,7 +189,7 @@ Host *
      deleted on the source host to keep both hosts *in sync*.
 
 #+BEGIN_SRC shell
-  rsync -avz foo:src/bar /data/tmp
+  rsync -avz --del foo:src/bar /data/tmp
 #+END_SRC
 
 - copies in archive mode
