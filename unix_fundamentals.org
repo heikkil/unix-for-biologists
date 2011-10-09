@@ -748,10 +748,20 @@ Macs (BSD Unix) follow slightly different conventions!
 - Send a process to the foreground by typing \\ \texttt{fg <jobnumber>}
 - View background and suspended processes with the command: \\ \texttt{jobs}
 
+** Standard input and output
+
+- Unix commands take input (STDIN) and/or produce output
+  (STDOUT):
+  + STDIN: keyboard
+  + STDOUT: screen
+  + STDERR: screen
+
+#+ATTR_LaTeX: width=0.99\textwidth
+[[file:img/stdinout.pdf]]
+
+
 ** IO Redirection
 
-- Many Linux commands take input (STDIN) and/or produce output
-  (STDOUT) on the terminal
 - IO redirection allows both input and output to be replaced by files
 - Output redirection: 
   - The > symbol redirects output to a file rather than the terminal
