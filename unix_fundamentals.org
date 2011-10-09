@@ -48,7 +48,6 @@
 }
 
 * Philosophy of command line
-
 ** CLI versus GUI
 
 *** Philosophical
@@ -56,7 +55,6 @@
 *** Practical
 - Scientific data sets are too big for GUI
 - Scientific data does not come in standard formats
-
 
 ** Practical differences
 
@@ -79,7 +77,6 @@
     - Output from one is the next programme's input 
     This is instant programming
 
-
 ** Progression in CLI usage
 
 1. One at the time (learn the commands)
@@ -89,9 +86,7 @@
 
 The aim is for efficiency, speed and convenience
 
-
 * UNIX operating system
-
 ** Operating system
 
 An operating system (OS) is software, consisting of programs and data,
@@ -119,7 +114,6 @@ software.
     #+ATTR_LaTeX: width=0.6\textwidth
     [[file:img/Operating_system_placement.pdf]]
     \\ \tiny Image from from Wikimedia Commons, CC BY-SA 3.0.
-
 
 
 ** Unix and Unix-like operating systems
@@ -159,7 +153,6 @@ It is possible to install the GNU tools to a Mac
 
 Increasingly, there are native ports of free GUI programs to MacOS X.
 - Aquamacs
-
 
 ** Brief History of LINUX (I)
 
@@ -202,7 +195,6 @@ Increasingly, there are native ports of free GUI programs to MacOS X.
   - common GUIs in LINUX: Gnome, KDE
   - many different "window amanagers" are availble
   - Mac OS X GUI is proprietary Aqua
-
 
 ** Logging In
 
@@ -250,7 +242,6 @@ Increasingly, there are native ports of free GUI programs to MacOS X.
 #+END_SRC
 
 * UNIX file system
-
 ** File System Basics (I)
 
 - Files are entities for storing data in a computer system
@@ -279,7 +270,6 @@ Increasingly, there are native ports of free GUI programs to MacOS X.
   - .odt: OpenOffice.org files (writer / calc / impress / draw)
   - .tar: Archive created with the tar utility
   - .txt: Plain text file
-
 
 ** Directory Hierarchy
 
@@ -382,7 +372,6 @@ Macs (BSD Unix) follow slightly different conventions!
 #+ATTR_LaTeX: width=0.99\textwidth
 [[file:img/unix_tree.pdf]]
 
-
 ** File Manipulation with the CLI
 
 - Understanding paths is important when using the CLI
@@ -397,7 +386,6 @@ Macs (BSD Unix) follow slightly different conventions!
   or opening a new terminal or shell
 
 - The command \texttt{pwd} prints the current working directory
-
 
 ** Changing Directory
 
@@ -421,7 +409,6 @@ Macs (BSD Unix) follow slightly different conventions!
 
 #+ATTR_LaTeX: width=0.99\textwidth
 [[file:img/unix_tree_traversing.pdf]]
-
 
 ** Pathing Command Structure and Options
 
@@ -518,7 +505,6 @@ Macs (BSD Unix) follow slightly different conventions!
   mv budget.doc ../admin
   mv admin/ admin2003/
 #+END_SRC
-
 
 ** Using Wildcards in Filenames
 
@@ -645,7 +631,6 @@ Macs (BSD Unix) follow slightly different conventions!
   + \texttt{chmod 664 schedule.txt} (read by all, write by user and group)
   
 * Disks and Files
-
 ** Determining Disk and Memory Usage
 
 - The \texttt{df} command is used to determine how much free space is available
@@ -684,7 +669,6 @@ Macs (BSD Unix) follow slightly different conventions!
   file somearchive.tar.gz
 #+END_SRC
 
-
 ** File System Command Summary
 
 -  \texttt{pwd}	print working directory
@@ -706,7 +690,6 @@ Macs (BSD Unix) follow slightly different conventions!
 -  \texttt{locate}  find files by name
 
 * Job Control and IO Redirection
-
 ** Shell Job Control (I)
 
 - Job control refers to the ability of the shell to run a command,
@@ -772,7 +755,6 @@ Macs (BSD Unix) follow slightly different conventions!
 
  \raggedright Text tools work one line at the time!
 
-
 ** Job Control Command Summary
 
 - \texttt{fg/bg}	send processes to foreground / background
@@ -784,7 +766,6 @@ Macs (BSD Unix) follow slightly different conventions!
 - \texttt{|} connect STDIN to next STDOUT
 
 * Text utilities
-
 ** Searching Within Files
 
 - Command: \texttt{grep [options] pattern files}
@@ -877,7 +858,6 @@ Macs (BSD Unix) follow slightly different conventions!
   + \texttt{cut -d: -f1  /etc/passwd | sort | xargs echo} \\ (compact listing of all logins)
   + \texttt{ls -t | head | grep .ppt | xargs mv -t w/talks/} \\ (move the latest ppt files into the w/talks directory)
 
-
 ** Text Utilities Command Summary
 
 - \texttt{grep}	print lines matching a pattern
@@ -893,7 +873,6 @@ Macs (BSD Unix) follow slightly different conventions!
 - \texttt{man}	display online manual pages
 
 * Compression and Archiving
-
 ** Compression and Archiving
 
 - Compression and archiving are useful for backups and transferring
@@ -971,7 +950,6 @@ Macs (BSD Unix) follow slightly different conventions!
       page under Mac OS X)
 
 * Processes
-
 ** Process Management
 
 - Linux is a multitasking operating systems that allows more than one
@@ -1012,7 +990,6 @@ Macs (BSD Unix) follow slightly different conventions!
 - Examples:
   + \texttt{kill 1964} \\ (kill process with PID 1964 as gently as possible)
   + \texttt{kill -9 1145} \\ (kill process with PID 1145 using maximum force)
-
 
 ** Scheduling Utilities
 
@@ -1065,7 +1042,6 @@ Macs (BSD Unix) follow slightly different conventions!
 #+END_SRC
 
 * Shells
-
 ** What is a Shell
 
 - A shell is a command interpreter that executes commands entered
@@ -1115,7 +1091,6 @@ Macs (BSD Unix) follow slightly different conventions!
 #+BEGIN_SRC shell
     source ~/.bashrc
 #+END_SRC
-
 
 
 ** Some shell specifics
