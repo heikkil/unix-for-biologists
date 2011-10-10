@@ -66,6 +66,7 @@
     - Depends on reading the file into memory and manipulating it there.
     - Only a limited number of commands fit in  menus
     - Can not be automated
+    \nbsp
 
 *** CLI 						    :BMCOL:B_example:
     :PROPERTIES: 
