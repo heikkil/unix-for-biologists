@@ -239,7 +239,7 @@ Increasingly, there are native ports of free GUI programs to MacOS X.
   more than one entry in the system
 - Examples:
 
-#+BEGIN_SRC shell
+#+BEGIN_SRC shell -n
    man ls
    man -k cron
    man 5 crontab
@@ -403,7 +403,7 @@ Macs (BSD Unix) follow slightly different conventions!
   - - refers to the previous directory
 - For example:
 
-#+BEGIN_SRC shell
+#+BEGIN_SRC shell -n
   cd ~/admin
   cd ../../bin
   cd -
@@ -450,7 +450,7 @@ Macs (BSD Unix) follow slightly different conventions!
 # command?
 # Hint: Read the mkrid man page
 - To create a directory, use \texttt{mkdir <directory>}
-#+BEGIN_SRC shell
+#+BEGIN_SRC shell -n
   mkdir admin
   mkdir /home/dilbert/admin
 #+END_SRC
@@ -475,7 +475,7 @@ Macs (BSD Unix) follow slightly different conventions!
   destination can be specified (which may be a directory)
 
 - Examples:
-#+BEGIN_SRC shell
+#+BEGIN_SRC shell -n
   cp budget.doc oldbudget.doc
   cp jan-budget.doc feb-budget.doc admin/
 #+END_SRC
@@ -488,7 +488,7 @@ Macs (BSD Unix) follow slightly different conventions!
   + \texttt{-i}: prompts before removing
   + \texttt{-r}: removes directories recursively
 - Examples:
-#+BEGIN_SRC shell
+#+BEGIN_SRC shell -n
   rm budget.doc
   rm budget.doc oldbudget.doc
   rm -r admin/ (to be used with care!)
@@ -504,7 +504,7 @@ Macs (BSD Unix) follow slightly different conventions!
   destination can be specified
 - This command is also used to move and rename directories
 - Examples:
-#+BEGIN_SRC shell
+#+BEGIN_SRC shell -n
   mv budget.doc oldbudget.doc
   mv budget.doc ../admin
   mv admin/ admin2003/
@@ -518,7 +518,7 @@ Macs (BSD Unix) follow slightly different conventions!
   - \texttt{[]}: defined sets or ranges
 - Examples:
 
-#+BEGIN_SRC shell
+#+BEGIN_SRC shell -n
   ls *.doc
   mv *.doc olddocuments/
   rm *
@@ -657,7 +657,7 @@ Macs (BSD Unix) follow slightly different conventions!
   - Execute bit must be set
 2. use $PATH
   - Shell variable holding a list of executable directories
-#+begin_src shell
+#+begin_src shell -n
   echo $PATH
   which echo
 #+end_src
@@ -700,7 +700,7 @@ Macs (BSD Unix) follow slightly different conventions!
 - Common options:
   + \texttt{-z}: filters the file through gzip
 - Examples:
-#+BEGIN_SRC shell
+#+BEGIN_SRC shell -n
   file main.c
   file index.html
   file somearchive.tar.gz
@@ -769,7 +769,7 @@ Macs (BSD Unix) follow slightly different conventions!
   -  The < symbol redirects input from a file rather than the terminal
 - Examples:
 
-#+BEGIN_SRC shell
+#+BEGIN_SRC shell -n
   ls > temp
   wc -l < temp
 #+END_SRC
@@ -784,7 +784,7 @@ Macs (BSD Unix) follow slightly different conventions!
     standard out (equivalent to shorter \texttt{\&>filename})
 
 - Examples:
-#+BEGIN_SRC shell
+#+BEGIN_SRC shell -n
  prog > temp 2> log
  prog &> outfile.$$
 #+END_SRC
@@ -794,7 +794,7 @@ Macs (BSD Unix) follow slightly different conventions!
 - Pipes redirect the output of one command to the input of another
 - This allows the user to combine commands to create more complex ones
 - Examples:
-#+BEGIN_SRC shell
+#+BEGIN_SRC shell -n
   ls -1 | wc -l
   cat somefile.txt | grep the
   who | grep mary | wc -l
@@ -1161,7 +1161,7 @@ Macs (BSD Unix) follow slightly different conventions!
   directories
 - Directories are searched in the order they appear
 
-#+begin_src sh
+#+begin_src sh -n
   echo $PATH
   export PATH=$HOME/bin:$PATH
   export PATH=.:$PATH
@@ -1223,7 +1223,7 @@ when needed.
 
 ** Shell scripting
 - Create a script:
-#+begin_src sh
+#+begin_src sh -n
 #!/bin/bash
 # example1.sh
 hostname
@@ -1234,6 +1234,14 @@ echo $USER ; date
 chmod 755 example1.sh
 ./example1.sh
 #+end_src
+
+
+** Further reading
+
+- Introduction to Linux  \\ http://tldp.org/LDP/intro-linux/html/
+- Introduction to Command Line Linux \\ http://www.physics.ubc.ca/mbelab/computer/linux-intro/html/
+- Beginner's Bash \\ http://linux.org.mt/article/terminal 
+- Regular Expressions \\ http://www.zytrax.com/tech/web/regex.htm
 
 * History
 
