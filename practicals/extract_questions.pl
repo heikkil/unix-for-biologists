@@ -2,17 +2,30 @@
 use Modern::Perl;
 use autodie;
 
-my $file = 'tasks_with_answers.org';
+my $file = 'questions_with_answers.org';
 
 open my $F, "<", $file;
 
-#my $header = 1;
+our $OUT;    # output files
+
 my $question = 0;
+
+
 while (<$F>) {
     # sessions
     say if /^\* /;
 
-#    $question = 1 if /^\- /;
+    if (/^\* /) {
+	my $line = $_;
+	chomp;
+	s/[^:]+:/Questions/;
+	s/ +/_/g;
+	my $outfile = $_. ".txt";
+	open $OUT, ">", $outfile;
+	say $OUT $line;
+    }
+
+
     $question = 1 if /^\*\*/;
     $question = 0 if /\\pause/;
 
@@ -22,6 +35,6 @@ while (<$F>) {
     s/\\texttt\{([^}]+)\}/$1/;
 
     # print out question lines
-    print if $question;
+    print $OUT $_ if $question;
 
 }

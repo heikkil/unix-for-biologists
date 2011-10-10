@@ -48,65 +48,55 @@
 }
 
 
-* Session: 1
+* Session: Unix operating system
 
-** 
-- i. List the of the most important features of the Linux system.
+** 1.
+- 1. List the of the most important features of a Unix system.
+
+\pause
+ 
+
+  + Multiple users
+  + Multitasking
+  + Memory protection
+
+  It has other features but they are all subsets of these
+  features. E.g. access privileges is part of the multiple user
+  system, being able to switch between graphics and command line is
+  part of the multitasking feature, and not crashing part of the
+  memory protection feature.
+
+** 2.
+
+- 2. What does a "kernel" do?
 
 \pause
 
-- i. Multiple users, multitasking, memory protection. It has other
-  features but they are all subsets of these features. E.g. access
-  privileges is part of the multiple user system, being able to switch
-  between graphics and command line is part of the multitasking
-  feature, and not crashing part of the memory protection feature.
-
-** 
-- ii. What does a "kernel" do?
-
-\pause
-
-- ii. The kernel is the core of the operating system. It abstracts the
+- 2. The kernel is the core of the operating system. It abstracts the
   hardware so that the user does not need to deal directly with the
   hardware (computer's physical parts). It also offers other features,
-  such s those listed in point (i) above, e.g.., task
-  scheduling. Operating systems are programs that allow other programs
-  to run, and which control computer hardware. The kernel is the most
-  important part of an OS.
+  such ss those listed above, e.g, task scheduling. Operating systems
+  are programs that allow other programs to run, and which control
+  computer hardware. The kernel is the most important part of an OS.
 
-** 
-- iii. Where is Linux commonly used, apart from Bioinformatics? Why?
-
-\pause
-
-- iii. Linux is commonly used on Internet servers, mail servers, web
-  servers, etc. because it is very stable.
-
-** 
-- iv. What is the difference between a command line and graphical
+** 3.
+- 3. What is the main difference between a command line and graphical
   interface?
 
 \pause
 
-- iv. On a command line (CLI) you type instructions to the computer,
-  an a graphical interface (GUI) you click with the mouse and
+- 3. On a command line (CLI) you type instructions to the computer,
+  an a graphical interface (GUI) you click with the mouse (cursor) and
   manipulate graphical objects.
 
-** 
-- v. Try to switch between the command line and graphic
-  interface. Record the keystrokes you used.
+
+** 4
+- 4. Why do you have to "log in"? Give examples of login names, two
+  examples of good passwords, and two examples of bad passwords.
 
 \pause
 
-- v. Control-Alt-F1 - F6 gets you the CLI, Control-Alt-F7 to the GUI.
-
-** 
-- vi. Why do you have to "log in"? Give examples of login names, and
-  two examples of good passwords, and two examples of bad passwords.
-
-\pause
-
-- vi. You have to log in, because Linux is a multiple user system.
+- 4. You have to log in, because Linux is a multiple user system.
   This prevents users from tampering with each others' files. Examples
   of logins 
   + root
@@ -121,13 +111,6 @@
   + j0ebob
 
 ** 
-- vii. Give an example of a file which does not need a file name
-  extension but which can nevertheless be viewed properly on Linux.
-
-\pause
-
-- vii. Plain text can be viewed properly without filename extension.
-** 
 - viii. Give the path to your home directory. 
 
 \pause
@@ -138,35 +121,38 @@
 
   Under Mac OS, you are at \texttt{/Users/username}
 
-** 
-- ix. What is the difference between relative and an absolute path?
-  Give an example of the relative path to the Course folder you made
-  in exercise (ix) above, and then give the absolute path of the the
-  link and link's target as mentioned in (ix) above.
+* Session: Files in Unix
+
+** 1.
+   
+- 1. Give an example of a file which does not need a file name
+  extension but which can nevertheless be viewed properly on Linux.
 
 \pause
 
-- ix. Absolute paths include the top of the filesystem, root (/). The
-  absolute path to the course folder is thus
-  \texttt{/home/username/Desktop/course} and to the link is
-  \texttt{/home/username/course}. The relative paths, assuming we are
-  in our home directory, are \texttt{./course} and
-  \texttt{./Desktop/course}.
+- 1. Plain text can be viewed properly without filename extension.
 
-
-
-* Session 2
-
-
-** 
-
-- i. Use the command which shows your current working directory to
-  find out the path of you home directory. Write the path to your home
-  directory down.
+** 2.
+- 2. What is the difference between relative and an absolute path?
+  Give an example of the relative path to the guides directory you copied
+  in the ssh exercise, and then give the absolute path to the that directory.
 
 \pause
 
-- i. 
+- 2. Absolute paths include the top of the filesystem, root (/). The
+  absolute path to the guides directory is thus
+  \texttt{/Users/username/guides}. The relative path, assuming we are
+  in our home directory, is \texttt{./guides}.
+
+
+** 3
+
+- 3. Use the command which shows your current working directory to
+  find out the path of you home directory. 
+
+\pause
+
+- 3. 
 
 #+BEGIN_SRC shell
    pwd
@@ -177,45 +163,45 @@
   after logging in if you want the path to your home directory, since
   that is where you are placed after logging in.
 
-** 
-- ii. See what each of these do combined with \texttt{cd} command: ~
+** 4
+- 4. See what each of these do combined with \texttt{cd} command: ~
   (tilde), - (dash), .. (double dot). What do they do?
 
 \pause
 
-- ii. 
+- 4. 
 
   + Tilde takes you to your home directory \texttt{cd \~ }
   + Dash takes you to the previous directory you were in \texttt{cd -}
   + Double-dot takes you up one level in the hierarchy \texttt{cd ..}
 
-** 
-- iii. Work out how to get recursive directory listing which shows the
+** 5
+- 5. Work out how to get recursive directory listing which shows the
   forward-slashes at the end of directory names. Write down the
   command line.
 
 \pause
 
-- iii.
+- 5.
 
 #+BEGIN_SRC shell
    ls -RF
 #+END_SRC
 
-** 
-- iv. What is the difference between rm and rmdir? Which is more
-  effective in what circumstance (which always works)?
+** 6.
+- 6. What is the difference between \texttt{rm} and \texttt{rmdir}?
+  Which is more effective in what circumstance (which always works)?
 
 \pause
 
-- iv. rm deletes anything, but only deletes directories when given
-  option -r. rmdir deletes directories, but only if they are
-  empty. Therefore rm -r is more effective since it will destroy
-  everything. This makes rm -r extremely dangerous.
+- 6. \texttt{rm} deletes anything, but only deletes directories when given
+  option \texttt{-r}. rmdir deletes directories, but only if they are
+  empty. Therefore {rm -r} is more effective since it will destroy
+  everything. This makes \texttt{rm -r} extremely dangerous.
 
-** 
-- v. What will the following series of commands do? 
-#+BEGIN_SRC shell
+** 7.
+- 7. What will the following series of commands do? 
+#+BEGIN_SRC shell -n
   cp /etc/passwd ~
   mkdir ~/stuff
   cd
@@ -225,48 +211,50 @@
 
 \pause
 
-- v. Copy the file /etc/passwd to your home directory, make a folder
-  in there called “stuff”, go to the home directory, move the passwd
-  file into the folder called “stuff” but rename it simultaneously to
-  “example”, then copy the file called "example" from the folder
-  called “stuff” into the home directory.
+- 7. Copy the file \texttt{/etc/passwd} to your home directory(1), make a
+  folder in there called “stuff” (2), go to the home directory (3),
+  move the passwd file into the folder called “stuff” but rename it
+  simultaneously to “example” (4), then copy the file called "example"
+  from the folder called “stuff” into the home directory (5).
 
-** 
-- vi. How do you force mv to move instead of rename? When does mv move
-  and when does it rename?
+** 8.
+- 8. How do you force \texttt{mv} to move instead of rename? When does
+  \texttt{mv} move and when does it rename?
 
 \pause
 
-- vi. mv will move if the target is a directory, rename if the target
-  does not exist, and if the target is an existing file, mv will
-  overwrite (destroy) the file, replacing it with the one you renamed.
+- 8. \texttt{mv} will move if the target is a directory or includes a
+  different directory. If the target is an existing file, \texttt{mv}
+  will overwrite (destroy) the file, replacing it with the one you
+  renamed.
 
-** 
-- vii. What is the difference between * and ? on the command line?
+** 9.
+- 9. What is the difference between * and ? on the command line?
   What do they mach?
 
 \pause
 
-- vii. 
+- 9. 
 
  + * matches anything of any length
  + ? matches any one character (letter or number).
 
-** 
-- viii. What are the three main privilege types? What will
+** 10.
+- 10. What are the three main privilege types? What will
 
 #+BEGIN_SRC shell
   chmod 755 ~
 #+END_SRC
 
    do? In this output, what does "wheel" signify : 
+
 #+BEGIN_SRC shell
- drwxrwxrwx 5  me wheel 170 24 Jan 15:17 Shared
+   drwxrwxrwx 5  me wheel 170 24 Jan 15:17 Shared
 #+END_SRC
 
 \pause
 
-- vii. 
+- 10. 
 
   + Read, write, execute. 
 
@@ -275,39 +263,38 @@
 
   + "wheel" refers to the group that has permissions in that directory.
 
-** 
-- ix. What is the difference between the & operator and the command
+** 11.
+- 11. What is the difference between the & operator and the command
   bg? Once you have used one of these, how do you reverse its effect?
   How do you pause a job? How do you cancel a job? How do you see what
   jobs you have running?
 
 \pause
 
-- ix. & puts the command in the background immediately, bg only does
+- 11. & puts the command in the background immediately, bg only does
   so after pausing a job. To bring it to foreground again, use fg. To
   pause, use control-Z. To cancel, use control-C. jobs shows what jobs
   are running in (under that terminal shell).
 
-** 
-- x. Type 
+** 12.
+- 12. Type 
 
 #+BEGIN_SRC shell
   ls -aRF /
 #+END_SRC
 
-   That will mess up your screen! Now pause it. Now background
+  It will mess up your screen! Now pause it. Now background
   it. Prove that it is backgrounded by running another command, like
   top. Quit out of top by typing q. Now cancel the backgrounded job by
   first bringing it to the front.
 
 \pause
 
-- x. The solution to this exercise relies on your understanding the
-  answer to (ix) above.
+- 12. The solution to this exercise relies on your understanding the
+  answer to (11) above.
 
 
-
-* Session 3
+* Session: 3
 
 
 ** 
@@ -354,7 +341,8 @@ paste col1 col2
 #+END_SRC
 
 ** 
-- iv. How can you find out about SSH configuration using the man command? (Hint: use man -k) 
+- iv. How can you find out about SSH configuration using the man
+  command? (Hint: use man -k)
 
 \pause
 
@@ -394,7 +382,7 @@ found. One of them is ssh\_config, so the next command is
 
 
 
-* Session 4
+* Session: 4
 
 
 **  
@@ -432,9 +420,13 @@ or (!)
 
 
 ** 
-- ii. You have a tarball that was created with the command [tar -zcvf
-  hooha.tar.gz * ]. How can you extract the text files from this
-  archive?
+- ii. You have a tarball that was created with the command 
+
+#+begin_src shell
+  tar -zcvf  hooha.tar.gz *
+#+end_src
+
+  How can you extract the text files from this archive?
  
 \pause
 
