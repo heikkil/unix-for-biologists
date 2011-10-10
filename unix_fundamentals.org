@@ -123,7 +123,7 @@ Main features:
 
 - multitasking
 - multi-user
-- GUI is separate from CLI
+- memory protection
 
 Originally developed in 1969 by a group of AT&T employees at Bell
 Labs, including Ken Thompson, Dennis Ritchie, Brian Kernighan,
@@ -667,7 +667,23 @@ Macs (BSD Unix) follow slightly different conventions!
 - Can you find /bin in the path list?
 - \texttt{which} shows the path of an executable
 
-  
+
+** File System Command Summary
+
+-  \texttt{pwd}	print working directory
+-  \texttt{cd}	change directory
+-  \texttt{ls}	list files and directories
+-  \texttt{mkdir/rmdir}	make / remove directories
+-  \texttt{cp}	copy files and directories
+-  \texttt{rm}	remove files
+-  \texttt{mv}	move / rename files and directories
+-  \texttt{cat}	print files to the terminal
+-  \texttt{less/more}	filter output for convenient viewing
+-  \texttt{clear}	clear the screen
+-  \texttt{chown}	change file and directory owner and group
+-  \texttt{chmod}	change file and directory access permissions
+
+ 
 * Disks and Files
 ** Determining Disk and Memory Usage
 
@@ -707,25 +723,13 @@ Macs (BSD Unix) follow slightly different conventions!
   file somearchive.tar.gz
 #+END_SRC
 
-** File System Command Summary
+** Disks and Files Command Summary
 
--  \texttt{pwd}	print working directory
--  \texttt{cd}	change directory
--  \texttt{ls}	list files and directories
--  \texttt{mkdir/rmdir}	make / remove directories
--  \texttt{cp}	copy files and directories
--  \texttt{rm}	remove files
--  \texttt{mv}	move / rename files and directories
--  \texttt{cat}	print files to the terminal
--  \texttt{less/more}	filter output for convenient viewing
--  \texttt{clear}	clear the screen
--  \texttt{chown}	change file and directory owner and group
--  \texttt{chmod}	change file and directory access permissions
-# move these to a later date 
 -  \texttt{df}    report file system disk space usage
 -  \texttt{du}    estimate file space usage
 -  \texttt{find}  search for files in a directory hierarchy
 -  \texttt{locate}  find files by name
+-  \texttt{file}  look inside the file to determine type
 
 * Job Control and IO Redirection
 ** Shell Job Control (I)
