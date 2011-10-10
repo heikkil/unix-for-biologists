@@ -723,6 +723,56 @@ Macs (BSD Unix) follow slightly different conventions!
   file somearchive.tar.gz
 #+END_SRC
 
+** Links
+
+UNIX filesystem has two ways of having multiple places in the
+filesystem to access one file:
+
+
+*** Symbolic links 				      :B_ignoreheading:BMCOL:
+    :PROPERTIES: 
+    :BEAMER_env: block
+    :BEAMER_col: 0.5
+    :END:
+    - To files and directories
+    - Separate file pointing to the original
+    - Removing the original leaves hanging symlink
+    - Works accross filesystems
+    - Slower IO
+    - New inode number
+
+
+*** Hard links 						    :BMCOL:B_example:
+    :PROPERTIES: 
+    :BEAMER_col: 0.5
+    :BEAMER_env: block
+    :END:
+    - Not for directories
+    - Each link is equally valid way to a file
+    - File vanishes only when last link to it is removed
+    - Within same filesystem
+    - Fast IO
+    - Same inode number
+
+** Link example
+
+#+begin_src shell -n
+echo aaa > file.normal
+ln -s file.normal link.symbolic
+ln file.normal link.hard
+ls -lia
+#+end_src
+
+Output (modified to fit):
+
+#+begin_src shell 
+04241 drwxr-xr-x  2 h h	 4096 16:46 .
+56643 drwxrwxrwt 18 r r 16384 16:17 ..
+24013 -rw-r--r--  2 h h	    4 16:45 file.normal
+24013 -rw-r--r--  2 h h	    4 16:45 link.hard
+24014 lrwxrwxrwx  1 h h	   11 16:46 link.symbolic -> file.normal
+#+end_src
+
 ** Disks and Files Command Summary
 
 -  \texttt{df}    report file system disk space usage
@@ -730,6 +780,9 @@ Macs (BSD Unix) follow slightly different conventions!
 -  \texttt{find}  search for files in a directory hierarchy
 -  \texttt{locate}  find files by name
 -  \texttt{file}  look inside the file to determine type
+-  \texttt{ln}  create link to a file
+-  \texttt{ln -s}  create symbolic link to a file or directory
+
 
 * Job Control and IO Redirection
 ** Shell Job Control (I)
