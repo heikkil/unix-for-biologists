@@ -55,7 +55,6 @@
 
 \pause
  
-
   + Multiple users
   + Multitasking
   + Memory protection
@@ -67,7 +66,6 @@
   memory protection feature.
 
 ** 2.
-
 - 2. What does a "kernel" do?
 
 \pause
@@ -110,12 +108,12 @@
   + bob
   + j0ebob
 
-** 
-- viii. Give the path to your home directory. 
+** 5.
+- 5. Give the path to your home directory. 
 
 \pause
 
-- viii. Under common LINUX systems your login name is
+- 5. Under common LINUX systems your login name is
   \texttt{/home/username}.  So, if you login as user bob, your home
   directory is at \texttt{/home/bob}, most likely.
 
