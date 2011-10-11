@@ -2,7 +2,8 @@
 use Modern::Perl;
 use autodie;
 
-my $file = 'questions_with_answers.org';
+my $file = shift;
+$file ||= 'questions_with_answers.org';
 
 open my $F, "<", $file;
 
