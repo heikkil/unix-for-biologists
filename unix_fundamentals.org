@@ -883,7 +883,7 @@ Output (modified to fit):
   + \texttt{-v}: inverts match, printing out all non-matching lines
 - Examples:
   + \texttt{grep bash /etc/password} \\ (search for “bash” in the given file)
-  + \texttt{grep -v the novel.txt} \\ (search for any line not containing “the”)
+  + \texttt{grep -v "\land \$" list.txt > cleanlist.txt} \\ (remove empty lines from a file)
 
 ** Counting
 

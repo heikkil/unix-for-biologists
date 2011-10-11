@@ -132,8 +132,9 @@
 
 ** 2.
 - 2. What is the difference between relative and an absolute path?
-  Give an example of the relative path to the guides directory you copied
-  in the ssh exercise, and then give the absolute path to the that directory.
+  Give an example of the relative path to the guides directory you
+  copied in the ssh exercise, and then give the absolute path to the
+  that directory.
 
 \pause
 
@@ -142,9 +143,7 @@
   \texttt{/Users/username/guides}. The relative path, assuming we are
   in our home directory, is \texttt{./guides}.
 
-
 ** 3
-
 - 3. Use the command which shows your current working directory to
   find out the path of you home directory. 
 
@@ -216,29 +215,57 @@
   from the folder called “stuff” into the home directory (5).
 
 ** 8.
-- 8. How do you force \texttt{mv} to move instead of rename? When does
+- 8. Find out where your previous commands shown by \texttt{history}
+  are stored.
+
+\pause
+
+- 8.
+#+begin_src shell
+  man history
+  less ~/.history
+#+end_src
+
+
+** 9.
+- 9. The ISO 8601 standard defines the format of date as
+  YYYY-MM-DD. What is the command line to get the \texttt{date}
+  program to output in the ISO format?
+
+\pause
+
+- 9.
+
+#+begin_src shell
+  man date
+  date "+%Y-%m-%d"
+#+end_src
+
+
+** 10.
+- 10. How do you force \texttt{mv} to move instead of rename? When does
   \texttt{mv} move and when does it rename?
 
 \pause
 
-- 8. \texttt{mv} will move if the target is a directory or includes a
+- 10. \texttt{mv} will move if the target is a directory or includes a
   different directory. If the target is an existing file, \texttt{mv}
   will overwrite (destroy) the file, replacing it with the one you
   renamed.
 
-** 9.
-- 9. What is the difference between * and ? on the command line?
+** 11.
+- 11. What is the difference between * and ? on the command line?
   What do they mach?
 
 \pause
 
-- 9. 
+- 11. 
 
  + * matches anything of any length
  + ? matches any one character (letter or number).
 
-** 10.
-- 10. What are the three main privilege types? What will
+** 12.
+- 12. What are the three main privilege types? What will
 
 #+BEGIN_SRC shell
   chmod 755 ~
@@ -252,7 +279,7 @@
 
 \pause
 
-- 10. 
+- 12. 
 
   + Read, write, execute. 
 
@@ -261,21 +288,24 @@
 
   + "wheel" refers to the group that has permissions in that directory.
 
-** 11.
-- 11. What is the difference between the & operator and the command
+
+* Session: Job Control and IO Redirection
+
+** 1.
+- 1. What is the difference between the & operator and the command
   bg? Once you have used one of these, how do you reverse its effect?
   How do you pause a job? How do you cancel a job? How do you see what
   jobs you have running?
 
 \pause
 
-- 11. & puts the command in the background immediately, bg only does
+- 1. & puts the command in the background immediately, bg only does
   so after pausing a job. To bring it to foreground again, use fg. To
   pause, use control-Z. To cancel, use control-C. jobs shows what jobs
   are running in (under that terminal shell).
 
-** 12.
-- 12. Type 
+** 2.
+- 2. Type 
 
 #+BEGIN_SRC shell
   ls -aRF /
@@ -288,43 +318,42 @@
 
 \pause
 
-- 12. The solution to this exercise relies on your understanding the
-  answer to (11) above.
+- 2. The solution to this exercise relies on your understanding the
+  answer to (1.) above.
 
-
-* Session: 3
-
-
-** 
-- i. How can you use the cat command and IO redirection to copy a file? 
+** 3
+- 3. How can you use the \texttt{cat} command and IO redirection to copy a file? 
 
 \pause
 
-- i. 
+- 3. 
 #+BEGIN_SRC shell
    cat filename > new_filename
 #+END_SRC
 
-** 
-- ii. How can you use the cat and grep commands, together with pipes to search for pattern in a file? 
+* Session: Text Utilities
+
+** 1.
+- 1. How can you use the cat and grep commands, together with pipes
+  to search for pattern in a file?
 
 \pause
 
-- ii. 
+- 1. 
 
 #+BEGIN_SRC shell
   cat filename | grep pattern
 #+END_SRC
 
 
-** 
-- iii. How can you use cut, paste and IO redirection to create a new
+** 2.
+- 2. How can you use cut, paste and IO redirection to create a new
   file with only the first and second columns?
 
 \pause
 
 
-- iii. One command:
+- 2. One command:
 
 #+BEGIN_SRC shell
   cut -f 1,3 filename
@@ -338,37 +367,85 @@ cut -f 3 filename > col3
 paste col1 col2
 #+END_SRC
 
-** 
-- iv. How can you find out about SSH configuration using the man
-  command? (Hint: use man -k)
+
+
+** 3
+- 3. File 'data/mimivirus.sw' contains all UniProt entries from these
+  giant viruses. How many of these are from TrEMBL and how many from
+  Swiss-Prot?
+
+  + Swiss-Prot format: http://web.expasy.org/docs/#DT_line
+
+  + Hint: Use caret to anchor the grep search string to the beginning
+    of the line, e.g. "\land ID"
 
 \pause
 
-- iv. 
+# mrsclient -H mrs.cbrc.kaust.edu.sa -d uniprot -a mimivirus > mimivirus.dat
+# mrsclient -H mrs.cbrc.kaust.edu.sa -d uniprot -a mimivirus -f fasta > mimivirus.fa
 
-#+BEGIN_SRC shell
-man -k ssh
-# or 
-apropos ssh
-#+END_SRC
-
-This then gives a list of man pages where help on ssh can be
-found. One of them is ssh\_config, so the next command is
-
-#+BEGIN_SRC shell
-  man ssh_config 
-#+END_SRC
+#+begin_src shell
+  cat mimivirus.dat | grep "^DT"| grep -c Swiss
+  cat mimivirus.dat | grep "^DT"| grep -c Tre
+  # in one command:
+  cat mimivirus.dat | grep "^DT"| \
+    grep integrated | cut -d/ -f2| sort| uniq -c
+  #  933 Swiss-Prot.
+  #  982 TrEMBL.
+#+end_src
 
 
-** 
+** 4.
+- 4. Extract all primary accession numbers from 'data/mimivirus.sw'
+  into a file. (http://web.expasy.org/docs/userman.html#AC_line)
+  
+\pause
 
-- v. File 'contamination.vulgar' shows exonorate homology search in
+- 4.
+
+#+begin_src shell
+  cat mimivirus.dat | grep ^AC | \
+    cut -d\; -f1| cut -d\  -f4 > mimi.ac
+#+end_src
+
+** 5. 
+- 5. How many different GO terms have been assigned to mimivirus proteins
+  in file 'data/mimivirus.sw'?
+
+\pause
+
+- 5.
+#+begin_src shell
+  mimivirus.dat | grep 'GO;'| sort -u | wc -l
+  # 308
+#+end_src
+
+
+
+** 6.
+- 6. How many sequences are there in the file 'data/mimivirus.fa'?
+  How many are 'Uncharacterized'?
+  + Fasta format description: http://en.wikipedia.org/wiki/FASTA_format
+
+\pause
+
+- 6. 
+
+#+begin_center shell
+  cat mimivirus.fa | grep -c '>'
+  # 1915
+  cat mimivirus.fa | grep -c 'Uncharacterized'
+  # 607
+#+end_center
+
+** 7.
+- 7. File 'data/contamination.vulgar' shows exonorate homology search in
   vulgar format (see vulgar.readme). Use command line tools to extract
   target (subject) ids and count them.
 
 \pause
 
-- v. 
+- 7. 
 
 #+BEGIN_SRC shell
   cat contamination.vulgar | \
@@ -378,19 +455,16 @@ found. One of them is ssh\_config, so the next command is
 #+END_SRC
 
 
+* Session: Compression and Archiving
 
-
-* Session: 4
-
-
-**  
-- i. You have a directory full of files. What would be the best way to
+** 1.
+- 1. You have a directory full of files. What would be the best way to
   get the files with a .dat extension from one machine to another over
   a slow network?
  
 \pause
 
-- i. You could copy them to a disk and take them to the remote-machine.
+- 1. You could copy them to a disk and take them to the remote-machine.
 
   + Compress and archive them to send less information over the
     network. 
@@ -399,76 +473,113 @@ found. One of them is ssh\_config, so the next command is
   tar -cvf filename.tar *dat
   gzip filename.tar
   scp filename.tar.gz user@remote.machine.org:
-#+END_SRC
-
-or 
-
-#+BEGIN_SRC shell
+  # or
   tar -zcvf filename.tz *dat
-#+END_SRC
-
-or (!)
-
-#+BEGIN_SRC shell
+  # or (!)
  tar cf - *dat | ssh user@remote.machine.org \
    tar xf - -C /home/user 
 #+END_SRC
 
 
-
-
-** 
-- ii. You have a tarball that was created with the command 
+** 2.
+- 2. You have a tarball that was created with the command 
 
 #+begin_src shell
   tar -zcvf  hooha.tar.gz *
 #+end_src
 
-  How can you extract the text files from this archive?
+  How can you extract the text (*.txt) files from this archive?
  
 \pause
 
-- ii. 
+- 2. 
 #+BEGIN_SRC shell
   tar -zxf hooha.tar.gz *.txt
 #+END_SRC
 
+** 3.
+- 3. Compress large files in your data directory using program
+  \texttt{gzip}. How can you see the compression ratio?
+  How can you continue 'grep'ing compressed files?
 
-** 
-- iii. Your machine is running very slowly because a programs you were
+\pause
+
+#+begin_src shell
+  gzip -v mimivirus.dat
+  gzip -l mimivirus.dat.gz
+  zcat mimivirus.dat.gz| grep -c '>'
+  # In Macs:
+  gzcat mimivirus.dat.gz| grep -c '>'
+#+end_src
+
+* Session: Processes
+
+** 1. 
+- 2. Your machine is running very slowly because a programs you were
   running is misbehaving. How can you stop this program?
  
 \pause
 
-- iii. 
-
- 1. Find the program.
+- Find the program.
 
 #+BEGIN_SRC shell
   ps -aux
   top
 #+END_SRC
 
- 2. Try to kill the program gently
+- Try to kill the program gently
 
 #+BEGIN_SRC shell
   kill <id>
 #+END_SRC
- 3. If that does not work, force kill:
+
+- If that does not work, force kill:
  
 #+BEGIN_SRC shell
   kill -9 <id>
 #+END_SRC
 
+** 4
+- 4. You wish to backup your home directory by running
 
-** 
-- iv. You have a program in \texttt{/home/me/vital/statistics/} that
+#+BEGIN_SRC shell
+  tar -zcvf /home/me/backup.tar.gz home/me
+#+END_SRC
+
+every Tuesday at l2:00 PM. What would you need to add to the cron
+scheduling utility?
+
+\pause
+
+- 4.
+#+BEGIN_SRC shell
+ 0 12 * * 2 tar -zcvf /home/me/backup.tar.z /home/me/
+#+END_SRC
+
+** 5.
+- 5. You would want to turn off your computer after midnight using the
+  poweroff command. How can you do this?
+
+\pause
+
+- 5. 
+
+#+BEGIN_SRC shell
+  # as root
+  at 00:00 poweroff
+  # compare to
+  shutdown 00:00
+#+END_SRC
+
+* Session: Shells
+** 1.
+- 1. You have a program in \texttt{/home/me/vital/statistics/} that
   you use regularly. How can you make it so that this program be run
   easily no matter which directory you are currently in?
  
 \pause
 
-- iv. You need to add \texttt{/home/me/vital/statistics} to the PATH
+- 1. You need to add \texttt{/home/me/vital/statistics} to the PATH
   variable. Add this line to \texttt{~/.bash\_profile} file. Create
   it, if it does not exist.
 
@@ -484,47 +595,38 @@ In most system you can use the predefined environmental variable $HOME to add:
 
 
 
-** 
-- v. You often use the \texttt{ls} command to list the files in a directory,
-  but you are lazy and would prefer for \texttt{ls} to output the long listing
-  format. How can you change the command \texttt{ls} so that it does that
-  automatically?
- 
+** 2
+- 2. You often use the \texttt{ls} command to list the files in a
+  directory, but you are lazy and would prefer to use same amount of
+  key strokes to output the long listing format. Create command
+  \texttt{ll} so that it does that automatically.  Add coloring of
+  files into ls and ll commands as an added bonus.
 \pause
 
-- v.
+- 2.
 
 #+BEGIN_SRC shell
-  alias ls='ls -l'
+  alias ls='ls --color-auto'
+  alias ll='ls -al --color=auto'
 #+END_SRC
 
 
-** 
-- vi. You wish to backup your home directory by running
-
-#+BEGIN_SRC shell
-  tar -zcvf /home/me/backup.tar.gz home/me
-#+END_SRC
-
-every Tuesday at l2:00 PM. What would you need to add to the cron
-scheduling utility?
+** 3.
+- 3. Secure your shell environment from human errors and make
+  \texttt{rm} and \texttt{mv} commands ask you for confirmation before
+  doing anything. Make this change permanent.
 
 \pause
 
-- vi.
-#+BEGIN_SRC shell
- 0 12 * * 2 tar -zcvf /home/me/backup.tar.z /home/me/
-#+END_SRC
- 
+-3. 
 
+Check the manual pages of the commands for the suitable option.
+Use alias to test the effect.
 
-** 
-- vii. You would want to turn off your computer after midnight using  the poweroff command. How can you do this?
+#+begin_src shell
+  alias rm='rm -i'
+  alias mv='mv -i'
+#+end_src
 
-\pause
+Store these aliases in ~/.bashrc file and source it.
 
-- vii. 
-
-#+BEGIN_SRC shell
-at 00:00 poweroff
-#+END_SRC
