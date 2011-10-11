@@ -234,7 +234,7 @@ Increasingly, there are native ports of free GUI programs to MacOS X.
 
 - Command: man [section] name
 - Common options:
-  + \texttt{ -k}: searches for keywords in  man page entries
+  + \texttt{ -k}: searches for keywords in man page entries (apropos)
 - Standard use displays the manual page of the command
 - The section number may need to be specified for keywords that have
   more than one entry in the system
@@ -243,8 +243,10 @@ Increasingly, there are native ports of free GUI programs to MacOS X.
 #+BEGIN_SRC shell -n
    man ls
    man -k cron
+   apropos cron
    man 5 crontab
 #+END_SRC
+
 
 * UNIX file system
 ** File System Basics (I)
@@ -883,13 +885,24 @@ Output (modified to fit):
   + \texttt{grep bash /etc/password} \\ (search for “bash” in the given file)
   + \texttt{grep -v the novel.txt} \\ (search for any line not containing “the”)
 
+** Counting
+
+- Command: \texttt{wc [options] file}
+- Common options:
+  + \texttt{-c}: byte (ASCII character) count only
+  + \texttt{-w}: word count only
+  + \texttt{-l}: newline (line) count only
+- Examples:
+  + \texttt{wc -l file.txt} \\ (line count in a file)
+  + \texttt{wc -c <Return>acbd<Ctrl-D> <Ctrl-D>} \\ (number of characters typed, 4)
+
 ** Looking at only one end of the file
 
 - Command: \texttt{head [options] file}
 - Command: \texttt{tail [options] file}
   + \texttt{-n}: where n is number of lines to display
 - Examples:
-  + \texttt{head filename} \\ (display 10 first lines)
+  + \texttt{head filename} \\ (display 10 first lines by default)
   + \texttt{head -210 filename} | tail \\ (look at line numbers 200-210)
 
 ** Differences Between Files
@@ -947,7 +960,7 @@ Output (modified to fit):
 
 ** Removing Duplicates and Counting
 
-- Command to remove successive identical lines: \texttt{uniq [options] filename}
+- Command to remove successive identical lines: \\ \texttt{uniq [options] filename}
 - Common options:
   + \texttt{-c}: prefix lines by the number of occurrences 
 - Examples:
@@ -966,6 +979,7 @@ Output (modified to fit):
 ** Text Utilities Command Summary
 
 - \texttt{grep}	print lines matching a pattern
+- \texttt{wc}	count lines, words and characters
 - \texttt{diff}	find differences between two files
 - \texttt{cut}	remove sections in columns from files
 - \texttt{paste}	merge files as columns
@@ -975,7 +989,6 @@ Output (modified to fit):
 - \texttt{tail}	output the last part of the file
 - \texttt{uniq}	remove duplicate successive lines from a text file
 - \texttt{xargs}	pass list as arguments to an other program
-- \texttt{man}	display online manual pages
 
 * Compression and Archiving
 ** Compression and Archiving
