@@ -12,53 +12,40 @@
 |---------+-------------+-------------------------------------------|
 |         | \nbsp       |                                           |
 | *Day 1* |             |                                           |
-|         | 12.00-15.00 | Talk: Philosophy of command line          |
-|         |             | Talk: UNIX operating system               |
-|         | \nbsp       |                                           |
-|         |             | Talk: Connecting securely                 |
+|         | 12.00-15.00 | Talk: *Philosophy of command line*        |
+|         |             | Talk: *UNIX operating system*             |
+|         |             | Talk: *Connecting securely*               |
 |         |             | Practical: Connect with ssh               |
-|         | \nbsp       |                                           |
-|         |             | Talk: UNIX file system                    |
+|         |             | Practical: UNIX operating system          |
+|         |             | Talk: *UNIX file system*                  |
 |         |             | Practical: Files                          |
-|         | \nbsp       |                                           |
 |         | 15.00       | Tea and coffee                            |
-|         | \nbsp       |                                           |
-|         | 15.00-17.00 | Talk: Emacs editor basics                 |
+|         | 15.00-17.00 | Talk: *Emacs editor basics*               |
 |         |             | Practical: Emacs tutorial                 |
 |         | \nbsp       |                                           |
 | *Day 2* |             |                                           |
-|         | 8.00-11.30  | Talk: Disks and Files                     |
+|         | 8.00-11.30  | Talk: *Disks and Files*                   |
 |         |             | Practical: Disks and Files                |
-|         | \nbsp       |                                           |
-|         |             | Talk: Job Control and IO Redirection      |
+|         |             | Talk: *Job Control and IO Redirection*    |
 |         |             | Practical: Job Control and IO Redirection |
 |         | \nbsp       |                                           |
 |         | 11:30-12.30 | Lunch                                     |
-|         | \nbsb       |                                           |
-|         | 12.30-15.00 | Talk: Text utilities                      |
+|         | 12.30-15.00 | Talk: *Text utilities*                    |
 |         |             | Practical: Text utilities                 |
-|         | \nbsp       |                                           |
 |         | 15.00       | Tea and coffee                            |
-|         | \nbsp       |                                           |
 |         | 15.00-17.00 | Practical: Text utilities                 |
-|         |             |                                           |
 |         | \nbsp       |                                           |
 | *Day 3* |             |                                           |
-|         | 8.00-10.30  | Talk: Compression and Archiving           |
+|         | 8.00-10.30  | Talk: *Compression and Archiving*         |
 |         |             | Practical: Compression and Archiving      |
-|         | \nbsp       |                                           |
-|         |             | Talk: Processes                           |
+|         |             | Talk: *Processes*                         |
 |         |             | Practical: Processes                      |
-|         | \nbsp       |                                           |
-|         |             | Talk: Shells                              |
-|         |             |                                           |
+|         |             | Talk: *Shells*                            |
+|         |             | Practical: Shells                         |
 |         | \nbsp       |                                           |
 |         | 10.30-12.00 | Early Lunch  (vacate the room)            |
-|         | \nbsp       |                                           |
-|         | 12.00-15.00 | Talk: Bash Programming                    |
+|         | 12.00-15.00 | Talk: *Bash Programming*                  |
 |         |             | Practical: Bash Programming               |
-|         | \nbsp       |                                           |
 |         | 15.00       | Tea and coffee                            |
-|         | \nbsp       |                                           |
-|         | 15.00-17.00 | Test and Feedback                         |
+|         | 15.00-17.00 | *Test and Feedback*                       |
 
