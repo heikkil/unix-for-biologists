@@ -101,3 +101,15 @@ The rest of the document lists my current settings:
 ; * My Headline
 ; In section [[My Headline]] we discuss ...
 (setq org-export-latex-hyperref-format "\\ref{%s}")
+
+
+
+PRACTICALS
+==========
+
+All the practicals and the final test are written using the above
+system with pause between questoin and answer. A scrip has been
+written to extract the question part into text files.
+
+Run bin/questions.sh to process all files.
+
