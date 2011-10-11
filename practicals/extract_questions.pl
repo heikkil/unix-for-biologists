@@ -13,14 +13,14 @@ my $question = 0;
 
 while (<$F>) {
     # sessions
-    say if /^\* /;
+    #say if /^\* /;
 
     if (/^\* /) {
 	my $line = $_;
 	chomp;
 	s/[^:]+:/Questions/;
 	s/ +/_/g;
-	my $outfile = $_. ".txt";
+	my $outfile = $_. ".txt"; say $outfile;
 	open $OUT, ">", $outfile;
 	say $OUT $line;
     }
@@ -31,8 +31,9 @@ while (<$F>) {
 
     next if /^\*\*/;
     next if /^\#/;
-    s/\- //;
-    s/\\texttt\{([^}]+)\}/$1/;
+    s/\- +//;
+    s/\\texttt\{([^}]+)\}/$1/g;
+    s/\\land /\^/g;
 
     # print out question lines
     print $OUT $_ if $question;
