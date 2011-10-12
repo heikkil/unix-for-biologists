@@ -643,7 +643,7 @@ In most system you can use the predefined environmental variable $HOME to add:
 
 \pause
 
--3. 
+- 3. 
 
 Check the manual pages of the commands for the suitable option.
 Use alias to test the effect.
