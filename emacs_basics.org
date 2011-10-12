@@ -193,7 +193,6 @@
 #+END_SRC
 
 
-
 * Opening and saving files
 
   - Common ones:
@@ -229,6 +228,17 @@
    M-%  query-replace
    C-M-% (translated from <escape> C-%)  query-replace-regexp
 #+END_SRC
+
+* Keyboard macros
+
+When you find repeating same keyboards:
+
+1. Press F3 (fn-F3 in linux on Macs) to start recording
+2. Do the typing once
+3. Press F4 stop
+4. Keep pressing F4
+
+Read more from the emacs manual
 
 * Advanced editing from emacs
 
