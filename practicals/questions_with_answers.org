@@ -571,6 +571,31 @@ scheduling utility?
   shutdown 00:00
 #+END_SRC
 
+** 6.
+- 6. Run the following commands in the remote server and observe what happens.
+
+#+begin_src shell -n
+  loop date 2  > time.log &
+  tail -f time.log
+  Ctrl-C
+#+end_src
+
+Then run just the first line and exit from the remote computer. After
+a minute, log in again and see what has happened.
+
+Next, read about program \texttt{nohup} and try again while prepending
+it to the line 1. 
+
+\pause
+
+- 6. 
+
+- Nohup makes commands immune to HUP (HangUP) signal that is sent to all
+user processes when user logs off.
+
+- This is one of the standard ways of executing long running jobs in a
+remote computer.
+
 * Session: Shells
 ** 1.
 - 1. You have a program in \texttt{/home/me/vital/statistics/} that

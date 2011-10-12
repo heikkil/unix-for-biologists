@@ -1109,6 +1109,20 @@ Output (modified to fit):
   + \texttt{kill 1964} \\ (kill process with PID 1964 as gently as possible)
   + \texttt{kill -9 1145} \\ (kill process with PID 1145 using maximum force)
 
+** Signals
+
+Basic communication between UNIX processes is done with  standardized
+signals. You have already seen some that are useful for users to
+communicate to processes. They have 
+
+- Ctrl-C INT (Interrupt)
+- Ctrl-Z TSTP (Terminal SToP)
+- Crtl-D EOF (End Of File)
+
+There are many more...
+
+Processes (programs) can handle signals.
+
 ** Scheduling Utilities
 
 - cron
