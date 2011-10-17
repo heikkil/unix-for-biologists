@@ -220,7 +220,6 @@
   less ~/.history
 #+end_src
 
-
 ** 9.
 - 9. The ISO 8601 standard defines the format of date as
   YYYY-MM-DD. What is the command line to get the \texttt{date}
@@ -316,6 +315,20 @@
  
 #+begin_src shell
    cat filename > new_filename
+#+end_src
+
+** 4.
+
+- 4. \texttt{cat} utility exercise. Create two small text
+  files, catenate them together  into a new file while numbering all
+  non-blank lines.
+
+#+begin_src shell
+  cat > first
+  Ctrl-D
+  cat > second
+  Ctrl-D
+  cat -b first second > together
 #+end_src
 
 * Session: Text Utilities
@@ -566,6 +579,23 @@ it to the line 1.
 
 - This is one of the standard ways of executing long running jobs in a
   remote computer.
+
+** 5.
+Most unix computers have either curl or wget utilify. Use one of them
+to copy ftp://rcserver/pub/bio/databases/OMIM/omim.txt.Z from the
+KAUST FTP site. Use the file utility to find the type of the file and
+uncompress it. Count the number of entries in the file.
+
+\pause
+
+#+begin_src shell -n
+wget ftp://rcserver/pub/bio/databases/OMIM/omim.txt.Z
+file omim.txt.Z
+uncompress omim.txt.Z
+head omim.txt
+cat omim.txt | grep -c '^\*RECORD\*$'
+#+end_src
+21395
 
 * Session: Shells
 ** 1.

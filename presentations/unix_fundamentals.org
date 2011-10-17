@@ -208,7 +208,7 @@ Increasingly, there are native ports of free GUI programs to MacOS X.
 - Authentication is done with a username and password, configured by
   the system administrator
 
-- Although visually different, the process of logging in the same in
+- Although visually different, the process of logging is the same in
   both text and graphical mode
 
 - The combination of username, password and disk space for personal
@@ -223,9 +223,10 @@ Increasingly, there are native ports of free GUI programs to MacOS X.
 - You will be prompted for a new password, and a confirmation - after
   confirming your current password
 
-- Bad passwords are disallowed – passwords should be at least 6
-  characters long, contain both letters and digits or punctuation and
-  must not be based on dictionary words
+- Bad passwords are disallowed.
+   + Passwords should be at least 6 characters long, contain both
+     letters and digits or punctuation and must not be based on
+     dictionary words
 
 - There is usually a graphical utility for changing passwords
   accessible from the application menu (this is desktop-specific)
@@ -1001,10 +1002,12 @@ Output (modified to fit):
   + gzip (.gz extension)
   + bzip2 (.bz2 extension)
   + zip (.zip extension – MS compatible)
+  + compress (.Z extension)
 
 - Archiving utilities include 
   + tar (.tar extension – most common Linux format)
   + zip (.zip extension – MS compatible)
+  + uncompress (.Z extension)
 
 ** gzip - GNU compressor
 
