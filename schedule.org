@@ -6,11 +6,9 @@
 #+OPTIONS: toc:nil 
 
 
-
-
-|         | Time        | Event @ #2223                             |
+|         |        Time | Event                                     |
 |---------+-------------+-------------------------------------------|
-|         | \nbsp       |                                           |
+|         |       \nbsp |                                           |
 | *Day 1* |             |                                           |
 |         | 12.00-15.00 | Talk: *Philosophy of command line*        |
 |         |             | Talk: *UNIX operating system*             |
@@ -19,33 +17,33 @@
 |         |             | Practical: UNIX operating system          |
 |         |             | Talk: *UNIX file system*                  |
 |         |             | Practical: Files                          |
-|         | 15.00       | Tea and coffee                            |
+|         |       15.00 | Tea and coffee                            |
 |         | 15.00-17.00 | Talk: *Emacs editor basics*               |
 |         |             | Practical: Emacs tutorial                 |
-|         | \nbsp       |                                           |
+|         |       \nbsp |                                           |
 | *Day 2* |             |                                           |
-|         | 8.00-11.30  | Talk: *Disks and Files*                   |
+|         |  8.00-11.30 | Talk: *Disks and Files*                   |
 |         |             | Practical: Disks and Files                |
 |         |             | Talk: *Job Control and IO Redirection*    |
 |         |             | Practical: Job Control and IO Redirection |
-|         | \nbsp       |                                           |
+|         |       \nbsp |                                           |
 |         | 11:30-12.30 | Lunch                                     |
 |         | 12.30-15.00 | Talk: *Text utilities*                    |
 |         |             | Practical: Text utilities                 |
-|         | 15.00       | Tea and coffee                            |
+|         |       15.00 | Tea and coffee                            |
 |         | 15.00-17.00 | Practical: Text utilities                 |
-|         | \nbsp       |                                           |
+|         |       \nbsp |                                           |
 | *Day 3* |             |                                           |
-|         | 8.00-10.30  | Talk: *Compression and Archiving*         |
+|         |  8.00-10.30 | Talk: *Compression and Archiving*         |
 |         |             | Practical: Compression and Archiving      |
 |         |             | Talk: *Processes*                         |
 |         |             | Practical: Processes                      |
 |         |             | Talk: *Shells*                            |
 |         |             | Practical: Shells                         |
-|         | \nbsp       |                                           |
+|         |       \nbsp |                                           |
 |         | 10.30-12.00 | Early Lunch  (vacate the room)            |
 |         | 12.00-15.00 | Talk: *Bash Programming*                  |
 |         |             | Practical: Bash Programming               |
-|         | 15.00       | Tea and coffee                            |
+|         |       15.00 | Tea and coffee                            |
 |         | 15.00-17.00 | *Test and Feedback*                       |
 
