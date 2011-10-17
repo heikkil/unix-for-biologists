@@ -132,7 +132,7 @@ Douglas McIlroy, and Joe Ossanna.
 - Developed in an environment of free information exchange
 - Became heavily fragmented and  commercialised once companies noticed its value
 - GNU project for free OS started by Richhard Stallman in early 80's
-
+  + “GNU's Not Unix!”
 ** Brief History of UNIX
 
    #+ATTR_LaTeX: width=0.95\textwidth
@@ -420,7 +420,7 @@ Macs (BSD Unix) follow slightly different conventions!
 
 ** Pathing Command Structure and Options
 
-- Linux commands typically follow the structure:
+- Unix commands typically follow the structure:
 #+BEGIN_SRC shell
    command [options] argument1 argument2 ...
 #+END_SRC
@@ -558,7 +558,7 @@ Macs (BSD Unix) follow slightly different conventions!
 - \texttt{clear} utility: clears the screen
 ** Text Editors
 
-- Linux offers a variety of text editors: vi (or vim), emacs, nedit,
+- Unix offers a variety of text editors: vi (or vim), emacs, nedit,
   pico, jed, kwrite, etc.
 - vi (and vim – vi-improved) is a command-driven editor that is found
   on almost all Unix-based systems
@@ -568,12 +568,12 @@ Macs (BSD Unix) follow slightly different conventions!
 
 ** File System Security
 
-- Linux file system security is a simple scheme based on users and groups
+- Unix file system security is a simple scheme based on users and groups
 - Users belong to one or more groups, set by the system administrator (root)
 - Groups allow file access to sets of users to be easily implemented
 - Each file is owned by one user and allocated to one group
   - \texttt{chown}: change file owner
-  - \texttt{chown}: change group
+  - \texttt{chgrp}: change group
 - A new file is created with the user as its owner and the user's
   current group as its group
 
@@ -837,7 +837,7 @@ Output (modified to fit):
 
 ** IO Redirection: STDERR
 
-- Many Linux commands report to a third default location: standard error, STDERR
+- Many Unix commands report to a third default location: standard error, STDERR
 - tcsh can not redirect STDERR to a file!
 - STDERR redirection in bash: 
   - \texttt{2>} redirects standard error to a file rather than the terminal
@@ -870,7 +870,7 @@ Output (modified to fit):
 - \texttt{>} redirect STDOUT
 - \texttt{<} redirect STDIN
 - \texttt{2>} redirect STDERR
-- \texttt{2>\&1} and \texttt{\&>} redirect both STDIN and STDERR together
+- \texttt{2>\&1} and \texttt{\&>} redirect both STDOUT and STDERR together
 - \texttt{|} connect STDIN to next STDOUT
 
 * Text utilities
@@ -1005,7 +1005,7 @@ Output (modified to fit):
   + compress (.Z extension)
 
 - Archiving utilities include 
-  + tar (.tar extension – most common Linux format)
+  + tar (.tar extension – most common Unix format)
   + zip (.zip extension – MS compatible)
   + uncompress (.Z extension)
 
@@ -1073,10 +1073,10 @@ Output (modified to fit):
 * Processes
 ** Process Management
 
-- Linux is a multitasking operating systems that allows more than one
+- Unix is a multitasking operating systems that allows more than one
   process to be run at one time
-- A running program is called a process; associated with it is a
-  process ID (PID)
+- A running program is called a process
+  +  with a unique process ID (PID)
 - Processes can run in the foreground or background, and can be
   combined in interesting ways using IO redirection
 
