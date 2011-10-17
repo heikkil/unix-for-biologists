@@ -70,10 +70,10 @@
 
 \pause
 
-- 2. The kernel is the core of the operating system. It abstracts the
+- The kernel is the core of the operating system. It abstracts the
   hardware so that the user does not need to deal directly with the
   hardware (computer's physical parts). It also offers other features,
-  such ss those listed above, e.g, task scheduling. Operating systems
+  such as those listed above, e.g, task scheduling. Operating systems
   are programs that allow other programs to run, and which control
   computer hardware. The kernel is the most important part of an OS.
 
@@ -83,8 +83,8 @@
 
 \pause
 
-- 3. On a command line (CLI) you type instructions to the computer,
-  an a graphical interface (GUI) you click with the mouse (cursor) and
+- On a command line (CLI) you type instructions to the computer, an a
+  graphical interface (GUI) you click with the mouse (cursor) and
   manipulate graphical objects.
 
 
@@ -94,14 +94,14 @@
 
 \pause
 
-- 4. You have to log in, because Linux is a multiple user system.
+- You have to log in, because Linux is a multiple user system.
   This prevents users from tampering with each others' files. Examples
   of logins 
   + root
   + nobody
 
   Examples of good passwords are:
-  + 4AZg\^\&
+  + 4AZgoo\^\&
   + fvr@#$l2
 
   Examples of bad passwords are 
@@ -113,7 +113,7 @@
 
 \pause
 
-- 5. Under common LINUX systems your login name is
+- Under common LINUX systems your login name is
   \texttt{/home/username}.  So, if you login as user bob, your home
   directory is at \texttt{/home/bob}, most likely.
 
@@ -128,7 +128,7 @@
 
 \pause
 
-- 1. Plain text can be viewed properly without filename extension.
+- Plain text can be viewed properly without filename extension.
 
 ** 2.
 - 2. What is the difference between relative and an absolute path?
@@ -138,7 +138,7 @@
 
 \pause
 
-- 2. Absolute paths include the top of the filesystem, root (/). The
+- Absolute paths include the top of the filesystem, root (/). The
   absolute path to the guides directory is thus
   \texttt{/Users/username/guides}. The relative path, assuming we are
   in our home directory, is \texttt{./guides}.
@@ -148,12 +148,11 @@
   find out the path of you home directory. 
 
 \pause
+ 
 
-- 3. 
-
-#+BEGIN_SRC shell
+#+begin_src shell
    pwd
-#+END_SRC
+#+end_src
 
   It should show something like \texttt{home/username} or
   \texttt{Users/username}. You should type this command immediately
@@ -166,8 +165,6 @@
 
 \pause
 
-- 4. 
-
   + Tilde takes you to your home directory \texttt{cd \~ }
   + Dash takes you to the previous directory you were in \texttt{cd -}
   + Double-dot takes you up one level in the hierarchy \texttt{cd ..}
@@ -179,11 +176,9 @@
 
 \pause
 
-- 5.
-
-#+BEGIN_SRC shell
+#+begin_src shell
    ls -RF
-#+END_SRC
+#+end_src
 
 ** 6.
 - 6. What is the difference between \texttt{rm} and \texttt{rmdir}?
@@ -191,24 +186,24 @@
 
 \pause
 
-- 6. \texttt{rm} deletes anything, but only deletes directories when given
+- \texttt{rm} deletes anything, but only deletes directories when given
   option \texttt{-r}. rmdir deletes directories, but only if they are
   empty. Therefore {rm -r} is more effective since it will destroy
   everything. This makes \texttt{rm -r} extremely dangerous.
 
 ** 7.
 - 7. What will the following series of commands do? 
-#+BEGIN_SRC shell -n
+#+begin_src shell -n
   cp /etc/passwd ~
   mkdir ~/stuff
   cd
   mv passwd stuff/example
   cp stuff/example ~
-#+END_SRC
+#+end_src
 
 \pause
 
-- 7. Copy the file \texttt{/etc/passwd} to your home directory(1), make a
+- Copy the file \texttt{/etc/passwd} to your home directory(1), make a
   folder in there called “stuff” (2), go to the home directory (3),
   move the passwd file into the folder called “stuff” but rename it
   simultaneously to “example” (4), then copy the file called "example"
@@ -220,7 +215,6 @@
 
 \pause
 
-- 8.
 #+begin_src shell
   man history
   less ~/.history
@@ -234,8 +228,6 @@
 
 \pause
 
-- 9.
-
 #+begin_src shell
   man date
   date "+%Y-%m-%d"
@@ -248,18 +240,16 @@
 
 \pause
 
-- 10. \texttt{mv} will move if the target is a directory or includes a
+- \texttt{mv} will move if the target is a directory or includes a
   different directory. If the target is an existing file, \texttt{mv}
   will overwrite (destroy) the file, replacing it with the one you
   renamed.
 
 ** 11.
 - 11. What is the difference between * and ? on the command line?
-  What do they mach?
+  What do they match?
 
 \pause
-
-- 11. 
 
  + * matches anything of any length
  + ? matches any one character (letter or number).
@@ -267,24 +257,22 @@
 ** 12.
 - 12. What are the three main privilege types? What will
 
-#+BEGIN_SRC shell
+#+begin_src shell
   chmod 755 ~
-#+END_SRC
+#+end_src
 
    do? In this output, what does "wheel" signify : 
 
-#+BEGIN_SRC shell
+#+begin_src shell
    drwxrwxrwx 5  me wheel 170 24 Jan 15:17 Shared
-#+END_SRC
+#+end_src
 
 \pause
-
-- 12. 
-
+ 
   + Read, write, execute. 
 
   + The 'chmod 755 ~' will set the home directory to be world-readable
-  and world-executable.
+    and world-executable.
 
   + "wheel" refers to the group that has permissions in that directory.
 
@@ -299,7 +287,7 @@
 
 \pause
 
-- 1. & puts the command in the background immediately, bg only does
+  & puts the command in the background immediately, bg only does
   so after pausing a job. To bring it to foreground again, use fg. To
   pause, use control-Z. To cancel, use control-C. jobs shows what jobs
   are running in (under that terminal shell).
@@ -307,9 +295,9 @@
 ** 2.
 - 2. Type 
 
-#+BEGIN_SRC shell
+#+begin_src shell
   ls -aRF /
-#+END_SRC
+#+end_src
 
   It will mess up your screen! Now pause it. Now background
   it. Prove that it is backgrounded by running another command, like
@@ -318,18 +306,17 @@
 
 \pause
 
-- 2. The solution to this exercise relies on your understanding the
+- The solution to this exercise relies on your understanding the
   answer to (1.) above.
 
 ** 3
 - 3. How can you use the \texttt{cat} command and IO redirection to copy a file? 
 
 \pause
-
-- 3. 
-#+BEGIN_SRC shell
+ 
+#+begin_src shell
    cat filename > new_filename
-#+END_SRC
+#+end_src
 
 * Session: Text Utilities
 
@@ -337,13 +324,11 @@
 - 1. How can you use the cat and grep commands, together with pipes
   to search for pattern in a file?
 
-\pause
+\pause 
 
-- 1. 
-
-#+BEGIN_SRC shell
+#+begin_src shell
   cat filename | grep pattern
-#+END_SRC
+#+end_src
 
 
 ** 2.
@@ -352,20 +337,19 @@
 
 \pause
 
+One command:
 
-- 2. One command:
-
-#+BEGIN_SRC shell
+#+begin_src shell
   cut -f 1,3 filename
-#+END_SRC
+#+end_src
 
 or broken into smaller steps:
 
-#+BEGIN_SRC shell
+#+begin_src shell
 cut -f1 filename > col1
 cut -f 3 filename > col3
 paste col1 col2
-#+END_SRC
+#+end_src
 
 
 
@@ -385,10 +369,10 @@ paste col1 col2
 # mrsclient -H mrs.cbrc.kaust.edu.sa -d uniprot -a mimivirus -f fasta > mimivirus.fa
 
 #+begin_src shell
-  cat mimivirus.dat | grep "^DT"| grep -c Swiss
-  cat mimivirus.dat | grep "^DT"| grep -c Tre
+  cat mimivirus.sw | grep "^DT"| grep -c Swiss
+  cat mimivirus.sw | grep "^DT"| grep -c Tre
   # in one command:
-  cat mimivirus.dat | grep "^DT"| \
+  cat mimivirus.sw | grep "^DT"| \
     grep integrated | cut -d/ -f2| sort| uniq -c
   #  933 Swiss-Prot.
   #  982 TrEMBL.
@@ -401,10 +385,8 @@ paste col1 col2
   
 \pause
 
-- 4.
-
 #+begin_src shell
-  cat mimivirus.dat | grep ^AC | \
+  cat mimivirus.sw | grep ^AC | \
     cut -d\; -f1| cut -d\  -f4 > mimi.ac
 #+end_src
 
@@ -414,9 +396,8 @@ paste col1 col2
 
 \pause
 
-- 5.
 #+begin_src shell
-  mimivirus.dat | grep 'GO;'| sort -u | wc -l
+  mimivirus.sw | grep 'GO;'| sort -u | wc -l
   # 308
 #+end_src
 
@@ -427,32 +408,28 @@ paste col1 col2
   How many are 'Uncharacterized'?
   + Fasta format description: http://en.wikipedia.org/wiki/FASTA_format
 
-\pause
+\pause 
 
-- 6. 
-
-#+begin_center shell
+#+begin_src shell
   cat mimivirus.fa | grep -c '>'
   # 1915
   cat mimivirus.fa | grep -c 'Uncharacterized'
   # 607
-#+end_center
+#+end_src
 
 ** 7.
 - 7. File 'data/contamination.vulgar' shows exonorate homology search in
   vulgar format (see vulgar.readme). Use command line tools to extract
   target (subject) ids and count them.
 
-\pause
+\pause 
 
-- 7. 
-
-#+BEGIN_SRC shell
+#+begin_src shell
   cat contamination.vulgar | \
   cut -d\  -f6 | \
   sort -u | \
   wc -l
-#+END_SRC
+#+end_src
 
 
 * Session: Compression and Archiving
@@ -464,12 +441,12 @@ paste col1 col2
  
 \pause
 
-- 1. You could copy them to a disk and take them to the remote-machine.
+- You could copy them to a disk and take them to the remote-machine.
 
   + Compress and archive them to send less information over the
     network. 
 
-#+BEGIN_SRC shell
+#+begin_src shell
   tar -cvf filename.tar *dat
   gzip filename.tar
   scp filename.tar.gz user@remote.machine.org:
@@ -478,7 +455,7 @@ paste col1 col2
   # or (!)
  tar cf - *dat | ssh user@remote.machine.org \
    tar xf - -C /home/user 
-#+END_SRC
+#+end_src
 
 
 ** 2.
@@ -492,10 +469,9 @@ paste col1 col2
  
 \pause
 
-- 2. 
-#+BEGIN_SRC shell
+ #+begin_src shell
   tar -zxf hooha.tar.gz *.txt
-#+END_SRC
+#+end_src
 
 ** 3.
 - 3. Compress large files in your data directory using program
@@ -515,64 +491,61 @@ paste col1 col2
 * Session: Processes
 
 ** 1. 
-- 2. Your machine is running very slowly because a programs you were
+- 1. Your machine is running very slowly because a programs you were
   running is misbehaving. How can you stop this program?
  
 \pause
 
 - Find the program.
 
-#+BEGIN_SRC shell
+#+begin_src shell
   ps -aux
   top
-#+END_SRC
+#+end_src
 
 - Try to kill the program gently
 
-#+BEGIN_SRC shell
+#+begin_src shell
   kill <id>
-#+END_SRC
+#+end_src
 
 - If that does not work, force kill:
  
-#+BEGIN_SRC shell
+#+begin_src shell
   kill -9 <id>
-#+END_SRC
+#+end_src
 
-** 4
-- 4. You wish to backup your home directory by running
+** 2
+- 2. You wish to backup your home directory by running
 
-#+BEGIN_SRC shell
+#+begin_src shell
   tar -zcvf /home/me/backup.tar.gz home/me
-#+END_SRC
+#+end_src
 
 every Tuesday at l2:00 PM. What would you need to add to the cron
 scheduling utility?
 
 \pause
 
-- 4.
-#+BEGIN_SRC shell
+#+begin_src shell
  0 12 * * 2 tar -zcvf /home/me/backup.tar.z /home/me/
-#+END_SRC
+#+end_src
 
-** 5.
-- 5. You would want to turn off your computer after midnight using the
+** 3.
+- 3. You would want to turn off your computer after midnight using the
   poweroff command. How can you do this?
 
-\pause
+\pause 
 
-- 5. 
-
-#+BEGIN_SRC shell
+#+begin_src shell
   # as root
   at 00:00 poweroff
   # compare to
   shutdown 00:00
-#+END_SRC
+#+end_src
 
-** 6.
-- 6. Run the following commands in the remote server and observe what happens.
+** 4.
+- 4. Run the following commands in the remote server and observe what happens.
 
 #+begin_src shell -n
   loop date 2  > time.log &
@@ -586,15 +559,13 @@ a minute, log in again and see what has happened.
 Next, read about program \texttt{nohup} and try again while prepending
 it to the line 1. 
 
-\pause
+\pause 
 
-- 6. 
-
-- Nohup makes commands immune to HUP (HangUP) signal that is sent to all
-user processes when user logs off.
+- Nohup makes commands immune to HUP (HangUP) signal that is sent to
+  all user processes when user logs off.
 
 - This is one of the standard ways of executing long running jobs in a
-remote computer.
+  remote computer.
 
 * Session: Shells
 ** 1.
@@ -604,21 +575,19 @@ remote computer.
  
 \pause
 
-- 1. You need to add \texttt{/home/me/vital/statistics} to the PATH
+- You need to add \texttt{/home/me/vital/statistics} to the PATH
   variable. Add this line to \texttt{~/.bash\_profile} file. Create
   it, if it does not exist.
 
-#+BEGIN_SRC shell
+#+begin_src shell
 	export PATH=$PATH:/home/me/vital/statistics
-#+END_SRC
+#+end_src
 
 In most system you can use the predefined environmental variable $HOME to add:
 
-#+BEGIN_SRC shell
+#+begin_src shell
 	export PATH=$PATH:$HOME/vital/statistics
-#+END_SRC
-
-
+#+end_src
 
 ** 2
 - 2. You often use the \texttt{ls} command to list the files in a
@@ -626,14 +595,13 @@ In most system you can use the predefined environmental variable $HOME to add:
   key strokes to output the long listing format. Create command
   \texttt{ll} so that it does that automatically.  Add coloring of
   files into ls and ll commands as an added bonus.
+
 \pause
 
-- 2.
-
-#+BEGIN_SRC shell
+#+begin_src shell
   alias ls='ls --color-auto'
   alias ll='ls -al --color=auto'
-#+END_SRC
+#+end_src
 
 
 ** 3.
@@ -641,9 +609,7 @@ In most system you can use the predefined environmental variable $HOME to add:
   \texttt{rm} and \texttt{mv} commands ask you for confirmation before
   doing anything. Make this change permanent.
 
-\pause
-
-- 3. 
+\pause 
 
 Check the manual pages of the commands for the suitable option.
 Use alias to test the effect.
