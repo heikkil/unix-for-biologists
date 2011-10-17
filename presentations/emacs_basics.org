@@ -1,0 +1,348 @@
+#+TITLE: Emacs basics
+#+AUTHOR: Heikki Lehv\auml{}slaiho
+#+EMAIL:     heikki.lehvaslaiho@kaust.edu.sa
+#+DATE:      2011-10-04 \\ CC BY-SA 3.0
+#+DESCRIPTION:
+#+KEYWORDS: UNIX, LINUX , CLI, history, summary, command line  
+#+LANGUAGE:  en
+#+OPTIONS:   H:3 num:t toc:nil \n:nil @:t ::t |:t ^:t -:t f:t *:t <:t
+#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil tags:not-in-toc
+#+INFOJS_OPT: view:nil toc:nil ltoc:t mouse:underline buttons:0 path:http://orgmode.org/org-info.js
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+LINK_UP:   
+#+LINK_HOME: 
+#+XSLT:
+
+#+startup: beamer
+#+LaTeX_CLASS: beamer
+##+LaTeX_CLASS_OPTIONS: [bigger]
+
+##+BEAMER_FRAME_LEVEL: 2
+
+#+COLUMNS: %40ITEM %10BEAMER_env(Env) %9BEAMER_envargs(Env Args) %4BEAMER_col(Col) %10BEAMER_extra(Extra)
+
+# TOC slide before every section
+#+latex_header: \AtBeginSection[]{\begin{frame}<beamer>\frametitle{Topic}\tableofcontents[currentsection]\end{frame}}
+
+## see http://deic.uab.es/~iblanes/beamer_gallery/
+
+##+latex_header: \mode<beamer>{\usetheme{Madrid}}
+#+latex_header: \mode<beamer>{\usetheme{Antibes}}
+##+latex_header: \mode<beamer>{\usecolortheme{wolverine}}
+#+latex_header: \mode<beamer>{\usecolortheme{beaver}}
+#+latex_header: \mode<beamer>{\usefonttheme{structurebold}}
+
+#+latex_header: \logo{\includegraphics[width=1cm,height=1cm,keepaspectratio]{img/logo-kaust}}
+
+## define colours for code listings
+\definecolor{keywords}{RGB}{255,0,90}
+\definecolor{comments}{RGB}{60,179,113}
+\definecolor{fore}{RGB}{249,242,215}
+\definecolor{back}{RGB}{51,51,51}
+\lstset{
+  basicstyle=\color{fore},
+  keywordstyle=\color{keywords},
+  commentstyle=\color{comments},
+  backgroundcolor=\color{back}
+}
+
+* Why Aquamacs
+
+- Aquamacs Emacs is a emacs with complete Mac user interface, by David
+  Reitter.
+
+- Aquamacs's interface is similar to BBEdit or TextMate or in fact any
+  modern Mac software. It uses the same keyboard shortcuts Mac users
+  are familiar. Also uses tabs, multiple windows, pop up dialogs,
+  Apple's help documentation system, etc., and bundles many extra
+  packages, in particular LaTeX support.
+
+- If you never used emacs before, or never used a text terminal or
+   unix, this is a great choice.
+
+  \\ (\raggedleft \footnotesize from http://xahlee.org/emacs/which_emacs.html)
+
+* Why Emacs
+
+1. It controls indentation in perl mode
+2. Syntax highlighting for everything
+3. Rather than telling you how to do things, it is infinitely expandable
+   and customisable (kitchen sink)
+4. Uniform commands regardless of task
+5. Everything is text and accessible
+6. It is available for all computers (vi)
+7. Can be run in text terminals
+8. Latest emacs version (v.23) has got the basics right
+9. I like it
+
+* Other features
+
+- Write in any language or script
+- Edit, compile and debug in any programming language
+- Remote editing
+- Compare two or three files for differences
+- File manager
+- Image viewer
+- News, mail, RSS
+- Games  
+
+* History of emacs
+
+- Originally written by Richard Stallman
+- GNUemacs
+- Xemacs was a fork that is now discontinued
+- Many versions for non-Unix environments
+- http://www.gnu.org/software/emacs/
+
+* Starting and exiting Emacs
+
+- Start emacs
+  + Search it: "Aquamacs"
+  + Locate it in the Applications folder and pull it into the dock.
+  + Start it from command line:
+
+#+BEGIN_SRC shell
+  emacs [filename]
+#+END_SRC
+
+  + Run it in the terminal, i.e. No Window, 
+
+#+BEGIN_SRC shell
+  emacs -nw [filename] 
+#+END_SRC
+
+- Exit emacs:
+
+  + Menu: File/Quit
+  + Close the window
+  + Keyboard command:
+
+#+BEGIN_SRC shell
+  C-x C-c   save-buffers-kill terminal
+#+END_SRC
+
+* Special keys
+
+#+BEGIN_SRC shell
+  C-x C-c   save-buffers-kill-terminal
+#+END_SRC
+
+- Keyboard commands are given with upper case modifier
+  keys and lower case characters
+  + C - the control key
+  + M - meta key, which usually is mapped to alt key
+
+- Modifier keys are kept down when character keys are pressed
+- Meta key can be replaced by the ESC key. 
+  + It is pressed and released before pressing the character key.
+- Shift key is implicit if needed to reach the character key
+
+* Typing a command 
+
+- All commands have names
+- Most have keyboard short cuts
+- Command names are given by starting with M-x and typing the name
+  with spaces between words.
+- TAB completion can be used at any time
+
+#+BEGIN_SRC shell
+  M-x save-buffers-kill-terminal <Return>
+#+END_SRC
+
+- Typing appears at the bottom of the window echo area
+- Command is executed when the Return key is pressed
+- All commands are added to the special buffer called \texttt{*Messages*}
+
+* Text movement and editing commands
+
+- CUA mode
+  - Make sure that CUA mode is active (Options menu)
+    + Options/Save Options (into ~/.emacs file)
+  - CUA mode gives you standard keybindings to copy, delete, paste
+  - Selection works by S-arrow
+  - Emacs default to start selecting is C-Space
+
+- Editing columns of text
+
+  - Select several lines down starting from the first column
+
+#+BEGIN_SRC shell
+  C-Return  cua-set-rectangle-mark
+#+END_SRC
+
+  - type characters or use CUA edit commands to see the effect
+  - Finish with C-c 
+
+* Some basic text editing commands
+
+#+BEGIN_SRC shell
+   C-t    transpose-chars
+   C-k    kill-line
+
+   M-u    upcase-word
+   M-l    downcase-word
+   M-c    capitalize-word
+#+END_SRC
+
+  - bash has all these!
+
+#+BEGIN_SRC shell
+   C-u         universal-argument
+   C-u 40 #    (try it!)
+#+END_SRC
+
+
+* Opening and saving files
+
+  - Common ones:
+
+#+BEGIN_SRC shell
+	C-x C-f		Find file
+	C-x C-s		Save file
+	C-x s		Save some buffers
+	C-x C-b		List buffers
+	C-x b		Switch buffer
+	C-x C-c		Quit Emacs
+	C-x 1		Delete all but one window
+	C-x u		Undo
+#+END_SRC
+
+  - pressing ESC-ESC-ESC can get you of anything
+
+* Finding and replacing
+
+  - Cumulative search
+
+#+BEGIN_SRC shell
+    C-s <characters>   isearch-forward
+    C-r <characters>   isearch-backward
+    C-s C-w            search next word
+    C-s C-s            repeat search
+#+END_SRC
+
+  - Replace
+    - The only common command with no mnemonics
+
+#+BEGIN_SRC shell
+   M-%  query-replace
+   C-M-% (translated from <escape> C-%)  query-replace-regexp
+#+END_SRC
+
+* Keyboard macros
+
+When you find repeating same keyboards:
+
+1. Press F3 (fn-F3 in linux on Macs) to start recording
+2. Do the typing once
+3. Press F4 stop
+4. Keep pressing F4
+
+Read more from the emacs manual
+
+* Advanced editing from emacs
+
+- Shell commands on region
+
+  + Select text and type the command below, followed by 'grep a'
+
+#+BEGIN_SRC shell  
+  M-|      shell-command-on-region
+  C-u M-|  shell-command-on-region and replace region
+#+END_SRC
+
+
+- Shell command from emacs
+
+#+BEGIN_SRC shell  
+M-!             shell-command
+#+END_SRC
+
+- Running shell within emacs
+
+#+BEGIN_SRC shell  
+M-x shell      run a shell in emacs window
+#+END_SRC
+
+* Version control
+
+Emacs detects automatically if the file you are editing is under a
+version control system.
+
+  - You need one command to add a file to the version control system
+    and commit new changes:
+
+#+BEGIN_SRC shell
+  C-x v v   vc-next-action
+#+END_SRC
+
+  - For other commands, look under Tools/Version Control
+
+* Emacs concepts: windows, frames, files, and buffers
+
+
+  - Menu bar, tool-bar, mode line, echo area
+  - file
+    + Emacs opens stored files into a buffer
+  - buffer
+    + Everything is displayd in its own buffer
+    + A buffer can need not be stored in a file
+    + Any buffer can be saved into a file
+  - frame
+    + is what emacs calls GUI windows
+    + you can open more than one frame
+
+* Working with many windows
+
+  - An emacs frame can have more then one window each displaying a buffer
+#+BEGIN_SRC shell
+    C-x 3   split-window-horizontally
+    C-x 2   split-window-vertically
+    C-x 1   delete-other-windows
+    C-x o   other-window
+#+END_SRC
+
+* modes
+
+** Major modes
+  + dired
+  + org mode http://orgmode.org/
+    - note taking, outlining, todo lists, tables, project planning, authoring (via Latex)
+  + latex mode
+  + computer language modes
+  + ESS Emacs Speaks Statistics (ESS)
+
+** Minor modes
+
+  + CUA mode: C-x, C-c, C-v, C-z work as expected
+  + table mode to create tab-delimited files: part of org mode
+  + line numbers:  M-x linum-mode
+  + spellchecker: M-x fly-spell-mode
+  + code syntax checking: M-x flymake-mode
+
+* perl mode
+
+- The default emacs perl mode is functional but limited
+- the cperl mode is more comprehensive
+
+- To change to cperl:
+
+#+BEGIN_SRC emacs-lisp
+ C-x cperl-mode
+#+END_SRC
+
+-  To always use cperl mode, put this into your .emacs file and restart
+
+#+BEGIN_SRC emacs-lisp
+ (defalias 'perl-mode 'cperl-mode)
+#+END_SRC
+
+* Tutorials
+
+#+BEGIN_SRC shell
+  C-h t  help-with-tutorial
+  C-h r  info-emacs-manual
+#+END_SRC
+
+  - http://www.emacswiki.org/emacs/SiteMap
+  - http://xahlee.org/emacs/emacs.html
