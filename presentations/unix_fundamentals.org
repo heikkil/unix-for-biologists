@@ -46,7 +46,6 @@
   commentstyle=\color{comments},
   backgroundcolor=\color{back}
 }
-
 * Philosophy of command line
 ** CLI versus GUI
 
@@ -1323,6 +1322,21 @@ chmod 755 example1.sh
 ./example1.sh
 #+end_src
 
+** More text processing tools
+Not covered as Perl does the same thing:
+
+- *Command*: \texttt{sed [options] pattern file}
+  + Stream editor
+- Examples:
+  + \texttt{sed 's/U/T/ig' seq} \\ (replace all u's and U's in a file)
+  + \texttt{sed G file} \\ (double space the file)
+
+- *Command*: \texttt{awk [options] pattern file}
+  + Pattern scanning and processing language
+- Examples:
+  + \texttt{echo "1   2   3   4" | awk '{print \$2 " and " (\$3+\$4)}'}
+    \\ (splits input to words and processes them)
+
 
 ** Further reading
 
@@ -1353,3 +1367,4 @@ Attribution-ShareAlike 3.0 Unported.  To view a copy of this license,
 visit http://creativecommons.org/licenses/by-sa/3.0/
 
 [1] Image from from Wikimedia Commons, CC BY-SA 3.0.
+sed 's/foo/bar/g'
