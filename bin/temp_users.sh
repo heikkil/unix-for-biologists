@@ -35,7 +35,8 @@ function create() {
 	LOGIN="$BASE$i"
 	echo $LOGIN
 	yes | adduser -home /home/$LOGIN $LOGIN
-	passwd -e $LOGIN 	
+	passwd -e $LOGIN 
+	ln -s /home/heikki/unix_course /home/$LOGIN
     done
 
 }
