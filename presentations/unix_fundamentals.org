@@ -1366,5 +1366,3 @@ This work is licensed under the Creative Commons
 Attribution-ShareAlike 3.0 Unported.  To view a copy of this license,
 visit http://creativecommons.org/licenses/by-sa/3.0/
 
-[1] Image from from Wikimedia Commons, CC BY-SA 3.0.
-sed 's/foo/bar/g'
