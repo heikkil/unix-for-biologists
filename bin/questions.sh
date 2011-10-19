@@ -8,12 +8,15 @@ fi
 
 echo Starting...
 
+# practicals
 cd practicals
+echo --- Directory 'practicals'
 ../bin/extract_questions.pl
 
-cd ../test
+# exam
+cd ../exam
+echo --- Directory 'exam'
 ../bin/extract_questions.pl test.org
-
 if [ ! -e Questions_Unix_fundamentals.txt ]
 then 
     echo "ERROR: Can not find file 'Questions_Unix_fundamentals.txt'"
@@ -21,4 +24,5 @@ then
 fi
 echo "Questions_Unix_fundamentals.txt -> Test_Unix_fundamentals.txt"
 mv Questions_Unix_fundamentals.txt Test_Unix_fundamentals.txt
-echo "Done"
+
+echo Done

@@ -35,7 +35,7 @@ while (<$F>) {
     s/\- +//;
     s/\\texttt\{([^}]+)\}/$1/g;
     s/\\land /\^/g;
-
+    s|\\_|_|g;
     # print out question lines
     print $OUT $_ if $question;
 
