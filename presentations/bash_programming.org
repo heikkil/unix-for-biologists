@@ -1,0 +1,195 @@
+#+TITLE: Bash programming basics
+#+AUTHOR: Heikki Lehv\auml{}slaiho
+#+EMAIL:     heikki.lehvaslaiho@kaust.edu.sa
+#+DATE:      2011-10-18 \\ CC BY-SA 3.0
+#+DESCRIPTION:
+#+KEYWORDS: UNIX, LINUX , CLI, history, summary, command line  
+#+LANGUAGE:  en
+#+OPTIONS:   H:3 num:t toc:nil \n:nil @:t ::t |:t ^:t -:t f:t *:t <:t
+#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil tags:not-in-toc
+#+INFOJS_OPT: view:nil toc:t ltoc:t mouse:underline buttons:0 path:http://orgmode.org/org-info.js
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+LINK_UP:   
+#+LINK_HOME: 
+#+XSLT:
+
+#+startup: beamer
+#+LaTeX_CLASS: beamer
+##+LaTeX_CLASS_OPTIONS: [bigger]
+
+##+BEAMER_FRAME_LEVEL: 2
+
+#+COLUMNS: %40ITEM %10BEAMER_env(Env) %9BEAMER_envargs(Env Args) %4BEAMER_col(Col) %10BEAMER_extra(Extra)
+
+# TOC slide before every section
+#+latex_header: \AtBeginSection[]{\begin{frame}<beamer>\frametitle{Topic}\tableofcontents[currentsection]\end{frame}}
+
+## see http://deic.uab.es/~iblanes/beamer_gallery/
+
+##+latex_header: \mode<beamer>{\usetheme{Madrid}}
+#+latex_header: \mode<beamer>{\usetheme{Antibes}}
+##+latex_header: \mode<beamer>{\usecolortheme{wolverine}}
+#+latex_header: \mode<beamer>{\usecolortheme{beaver}}
+#+latex_header: \mode<beamer>{\usefonttheme{structurebold}}
+
+#+latex_header: \logo{\includegraphics[width=1cm,height=1cm,keepaspectratio]{img/logo-kaust}}
+
+## define colours for code listings
+\definecolor{keywords}{RGB}{255,0,90}
+\definecolor{comments}{RGB}{60,179,113}
+\definecolor{fore}{RGB}{249,242,215}
+\definecolor{back}{RGB}{51,51,51}
+\lstset{
+  basicstyle=\color{fore},
+  keywordstyle=\color{keywords},
+  commentstyle=\color{comments},
+  backgroundcolor=\color{back}
+}
+
+** Bash is a full featured programming language
+
+- variables
+- regular expressions
+- operators
+- conditionals
+- loops
+- functions
+- user interaction
+
+** Reference works
+
++ BASH programming - Introduction HOW-TO
+  - http://tldp.org/HOWTO/Bash-Prog-Intro-HOWTO.html
++ Bash Guide for Beginners
+  - http://tldp.org/LDP/Bash-Beginners-Guide/Bash-Beginners-Guide.pdf
++ Advanced Bash-Scripting Guide
+  - http://tldp.org/LDP/abs/abs-guide.pdf
+
+** Bash configuration files
+
+Places to store your shortcuts and environmental variables. Create
+when needed.
+
+- /etc/profile
+  + system wide envvars (might call other files)
+
+- $HOME/.bash\_profile
+  + user's envvars
+
+- $HOME/.bashrc
+  + user's init file for aliases and functions
+
+- $HOME/.bash\_logout
+  + executed when logging out
+
+** Shell scripting
+- Create a script:
+#+begin_src sh -n
+#!/bin/bash
+# example1.sh
+hostname
+echo $USER ; date
+#+end_src
+- Run it:
+#+begin_src sh
+chmod 755 example1.sh
+./example1.sh
+#+end_src
+
+* Bash is a full featured programming language
+
+- variables
+- regular expressions
+- operators
+- conditionals
+- loops
+- functions
+- user interaction
+
+-  For more, see:
+   + BASH programming - Introduction HOW-TO http://tldp.org/HOWTO/Bash-Prog-Intro-HOWTO.html
+
+* Uses
+
+- store long commands
+- wrap programs with complex input
+- interact effortlessly with the UNIX OS
+
+* Shortest bash script
+
+#+begin_src shell -n
+  #!/bin/bash
+  echo Hello World
+#+end_src
+
+* Debugging bash scripts
+
+#+begin_src shell
+  #!/bin/bash -x
+#+end_src
+
+* Variables
+#+begin_src shell -n
+  #!/bin/bash          
+  STR="Hello World!"
+  echo $STR
+  echo today: $(date +%Y%m%d)
+#+end_src
+
+- Line 2 creates a variable and assigns it a value
+  + using all upper case just a convention
+- In line 3, *value* of the variable is returned
+- Next, the value of the evaluated expression is returned (line 4)
+
+# local variables
+
+* Conditionals
+
+\texttt{if [expr1]; then stat1 else if [expr2]; then stat2 else stat3 fi}
+
+* Math
+
+#+begin_src shell -n
+  echo 1+1                       # 1+1
+  echo $(1+1)                    # 2
+  echo $(3/4)                    # 0
+  echo 3/2 | bc -l               # .75000000000000000000
+  echo 3/2 | perl -lne 'eval $_' # 0.75
+#+end_src
+
+- You evaluate math like any statement
+- Bash  deals only with integers!
+  + Use other programs to deal with other rational numbers
+
+
+* Arithmetic relational operators
+
+#+begin_src shell
+-lt (<)
+-gt (>)
+-le (<=)
+-ge (>=)
+-eq (==)
+-ne (!=)
+#+end_src
+
+** Arithmetic operators
+
+#+begin_src shell
++
+-
+*
+/
+% (remainder)
+#+end_src
+
+* String comparison
+
+#+begin_src shell
+s1 = s2    # s1 matches s2
+s1 != s2  # s1 does not match s2
+-n s1     # s1 is not null
+-z s1     # s1 is null
+#+end_src
+

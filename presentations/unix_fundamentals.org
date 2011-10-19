@@ -1230,14 +1230,15 @@ Processes (programs) can handle signals.
 ** Some shell specifics
 
 -  Using bash:
-  -  Global initialisation file is /etc/profile
-  -  User-specific initialisation files are .bash\_profile and .bashrc
-  -  set displays all currently set variables
+  -  Global initialisation file is \/etc\/profile
+  -  User-specific initialisation files are ~/.bash\_profile and ~/.bashrc
+     + sometimes \tilde/.bash\_aliases (Ubuntu)
+  -  Command \texttt{set} displays all currently set variables
   -  Syntax to set a variable: export VARNAME="value"
 -  Using tcsh:
   -  Global initialisation file is /etc/csh.cshrc
-  -  User-specific initialisation file is .cshrc
-  -  setenv displays all currently set variables
+  -  User-specific initialisation file is ~/.cshrc
+  -  Command \texttt{setenv} displays all currently set variables
   -  Syntax to set a variable: setenv VARNAME="value"
 
 ** The PATH variable
@@ -1256,8 +1257,10 @@ Processes (programs) can handle signals.
 
 ** Aliases
 
--  Aliases provide command-substitution functionality. They can be used to create new commands or modify the default behaviour of existing commands
--  The alias command is used to view and create aliases
+- Aliases provide command-substitution functionality. They can be used
+  to create new commands or modify the default behaviour of existing
+  commands
+- The \texttt{alias} command is used to view and create aliases
   + called with no arguments, it prints out the current aliases
   + alias name=value creates a new alias
   + custom user aliases are stored in .bashrc or .cshrc
@@ -1268,59 +1271,14 @@ Processes (programs) can handle signals.
 ** Bash functions
 
 -  An other way to provide command-substitution functionality is bash functions
--  The set command is used to view bash functions
-  + more versatile than aliases; you can combine any commands
-  + name() = { commands } creates a new function in .bashrc
+-  The \testtt{set} command lists  bash functions
+- more versatile than aliases; you can combine any commands
+- name() = { commands } creates a new function in .bashrc
 -  Examples:
 #+BEGIN_SRC shell
   psg()   { ps -AF | grep "$@" | grep -v grep ; }
   killn() { kill `psg "$@" | cut -c9-14` ; }
 #+END_SRC
-
-** Bash is a full featured programming language
-
-- variables
-- regular expressions
-- operators
-- conditionals
-- loops
-- functions
-
--  For more, see:
-   + Bash Guide for Beginners http://tldp.org/LDP/Bash-Beginners-Guide/Bash-Beginners-Guide.pdf
-   + BASH programming - Introduction HOW-TO http://tldp.org/HOWTO/Bash-Prog-Intro-HOWTO.html
-   + Advanced Bash-Scripting Guide http://tldp.org/LDP/abs/abs-guide.pdf
-
-** Bash configuration files
-
-Places to store your shortcuts and environmental variables. Create
-when needed.
-
-- /etc/profile
-  + system wide envvars (might call other files)
-
-- $HOME/.bash\_profile
-  + user's envvars
-
-- $HOME/.bashrc
-  + user's init file for aliases and functions
-
-- $HOME/.bash\_logout
-  + executed when logging out
-
-** Shell scripting
-- Create a script:
-#+begin_src sh -n
-#!/bin/bash
-# example1.sh
-hostname
-echo $USER ; date
-#+end_src
-- Run it:
-#+begin_src sh
-chmod 755 example1.sh
-./example1.sh
-#+end_src
 
 ** More text processing tools
 Not covered as Perl does the same thing:
