@@ -47,17 +47,23 @@
   backgroundcolor=\color{back}
 }
 
-** Bash is a full featured programming language
+* Bash is a full featured programming language
 
-- variables
-- regular expressions
-- operators
-- conditionals
-- loops
-- functions
-- user interaction
+- Variables
+- Regular expressions
+- Operators
+- Conditionals
+- Loops
+- Functions
+- User interaction
 
-** Reference works
+* Uses
+
+- Store long UNIX commands
+- Wrap programs with complex input
+- Interact effortlessly with the UNIX OS
+
+* Reference works
 
 + BASH programming - Introduction HOW-TO
   - http://tldp.org/HOWTO/Bash-Prog-Intro-HOWTO.html
@@ -66,7 +72,7 @@
 + Advanced Bash-Scripting Guide
   - http://tldp.org/LDP/abs/abs-guide.pdf
 
-** Bash configuration files
+* Bash configuration files
 
 Places to store your shortcuts and environmental variables. Create
 when needed.
@@ -83,7 +89,7 @@ when needed.
 - $HOME/.bash\_logout
   + executed when logging out
 
-** Shell scripting
+* Shell scripting
 - Create a script:
 #+begin_src sh -n
 #!/bin/bash
@@ -97,44 +103,31 @@ chmod 755 example1.sh
 ./example1.sh
 #+end_src
 
-* Bash is a full featured programming language
-
-- variables
-- regular expressions
-- operators
-- conditionals
-- loops
-- functions
-- user interaction
-
--  For more, see:
-   + BASH programming - Introduction HOW-TO http://tldp.org/HOWTO/Bash-Prog-Intro-HOWTO.html
-
-* Uses
-
-- store long commands
-- wrap programs with complex input
-- interact effortlessly with the UNIX OS
-
-* Shortest bash script
-
-#+begin_src shell -n
-  #!/bin/bash
-  echo Hello World
-#+end_src
-
 * Debugging bash scripts
 
-#+begin_src shell
+#+begin_src sh
   #!/bin/bash -x
 #+end_src
 
+Output from example1.sh with debugging on:
+
+#+begin_src sh -n
++ hostname
+bala
++ echo $USER
+heikki
++ date
+Wed Oct 19 09:30:22 AST 2011
+#+end_src
+
 * Variables
-#+begin_src shell -n
-  #!/bin/bash          
-  STR="Hello World!"
-  echo $STR
-  echo today: $(date +%Y%m%d)
+
+#+begin_src sh -n
+#!/bin/bash
+# example2_var.sh       
+STR="Hello World!"
+echo $STR
+echo today is $(date +%Y-%m-%d)
 #+end_src
 
 - Line 2 creates a variable and assigns it a value
@@ -146,11 +139,146 @@ chmod 755 example1.sh
 
 * Conditionals
 
-\texttt{if [expr1]; then stat1 else if [expr2]; then stat2 else stat3 fi}
+- *if* [expr1]; *then* stat1 *else if* [expr2]; *then* stat2 *else* stat3 *fi*
+
+#+begin_src sh -n
+#!/bin/bash
+# example3_if.sh
+COUNTER=3
+if [ $COUNTER -lt 1 ]; then
+    echo zero
+else
+    echo big counter: $COUNTER
+fi
+#+end_src
+
+Output:
+#+begin_src sh
+big counter: 3
+#+end_src
+
+
+
+* for loop
+
+*for* arg in *[list];* *do* command(s) *done*
+
+#+begin_src sh -n
+#!/bin/bash
+# example4_for.sh
+# for
+for i in  1 2 3 ; do
+    echo $i
+done
+# for each file
+for i in $(ls); do
+    echo -n '- '
+    echo $i
+done
+# for oneliner 
+for i in $(ls); do echo $i; done
+#+end_src
+
+* while and until
+*while* [ condition ]; *do* command(s) *done*
+
+*until* [ condition-is-true ] *do* command(s) *done*
+
+#+begin_src sh -n
+#!/bin/bash
+# example5_whileuntil.sh
+COUNTER=3
+while [ $COUNTER -gt 0 ]; do
+    echo $COUNTER
+    let COUNTER=$COUNTER-1
+done
+COUNTER=3
+until [ $COUNTER -lt 1 ]; do
+    echo $COUNTER
+    let COUNTER-=1
+done
+#+end_src
+
+*break* N ; *continue* N
+
+* function
+
+#+begin_src sh -n
+#!/bin/bash
+# example6_function.sh
+function countdown {
+    COUNTER=$1
+    until [ $COUNTER -lt 1 ]; do
+        echo $COUNTER
+        let COUNTER-=1
+    done
+}
+countdown 3
+exit 0
+#+end_src
+
+# do not forget select
+
+* case
+
+ *case* "$var" *in* "$cond1"*)* command ;; "$cond2"*)* command *;;* *esac*
+
+#+begin_src sh -n
+#!/bin/bash
+# example7_case.sh
+case "$1" in
+    'dna')
+        translate
+        ;;
+    'protein')
+        hydropathy
+        ;;
+    *)
+        usage
+esac
+#+end_src
+- translate, hydropathy and usage are functions!
+
+* Interaction from command line
+
+#+begin_src sh -n
+#!/bin/bash
+# example8_commandline.sh
+if [ -z "$1" ]; then 
+    echo usage: $0 directory
+    exit
+fi
+if [ -d "$1" ]; then
+    ls "$1"
+else
+    echo "$1" is not a valid directory
+fi
+#+end_src
+
+
+* User input
+
+#+begin_src sh -n
+#!/bin/bash
+# example9_userinput.sh
+echo "Give your name: "
+read NAME
+echo "Hi $NAME!"
+OPTIONS="Hello Quit"
+select opt in $OPTIONS; do
+  if [ "$opt" = "Quit" ]; then
+      echo done ; exit
+  elif [ "$opt" = "Hello" ]; then
+      echo Hello World
+  else
+      clear ; echo bad option
+  fi
+done
+#+end_src
 
 * Math
 
-#+begin_src shell -n
+#+begin_src sh -n
   echo 1+1                       # 1+1
   echo $(1+1)                    # 2
   echo $(3/4)                    # 0
@@ -163,9 +291,19 @@ chmod 755 example1.sh
   + Use other programs to deal with other rational numbers
 
 
-* Arithmetic relational operators
+* Arithmetic operators
 
-#+begin_src shell
+#+begin_src sh
+  + (addition)
+  - (subtraction)
+   * (multiplication)
+  / (division)
+  % (remainder)
+#+end_src
+
+- relational
+
+#+begin_src sh
 -lt (<)
 -gt (>)
 -le (<=)
@@ -174,22 +312,13 @@ chmod 755 example1.sh
 -ne (!=)
 #+end_src
 
-** Arithmetic operators
-
-#+begin_src shell
-+
--
-*
-/
-% (remainder)
-#+end_src
-
 * String comparison
 
-#+begin_src shell
-s1 = s2    # s1 matches s2
-s1 != s2  # s1 does not match s2
--n s1     # s1 is not null
--z s1     # s1 is null
+#+begin_src sh
+str1 = str2    # str1 matches str2
+str1 != str2  # str1 does not match str2
+-n str     # str is not null
+-z str     # str is null
 #+end_src
 
+Zero length string is null.
