@@ -145,6 +145,7 @@
 - Command names are given by starting with M-x and typing the name
   with spaces between words.
 - TAB completion can be used at any time
+- <esc><esc><esc> will quit anything
 
 #+BEGIN_SRC shell
   M-x save-buffers-kill-terminal <Return>
@@ -191,7 +192,6 @@
    C-u         universal-argument
    C-u 40 #    (try it!)
 #+END_SRC
-
 
 * Opening and saving files
 
@@ -302,7 +302,7 @@ version control system.
     C-x o   other-window
 #+END_SRC
 
-* modes
+* Modes
 
 ** Major modes
   + dired
@@ -320,10 +320,10 @@ version control system.
   + spellchecker: M-x fly-spell-mode
   + code syntax checking: M-x flymake-mode
 
-* perl mode
+* Perl mode
 
 - The default emacs perl mode is functional but limited
-- the cperl mode is more comprehensive
+- The cperl mode is more comprehensive
 
 - To change to cperl:
 
