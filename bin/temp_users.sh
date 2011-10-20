@@ -2,7 +2,7 @@
 
 # This script creates N number of temporary logins 
 # with a link to the course materials directory
-# the passwd is always 'y' and expired immediately
+# the passwd is always 'y' and expires immediately
 #
 # The script can remove users, too
 
@@ -19,16 +19,13 @@ function usage() {
 if [ `whoami` != "root" ]
 then
     echo Run this script using sudo 
-    exit 1
+#    exit 1
 fi
 
-# need arguments
-#if [  $# < 1 ]; then usage fi
-#if [  $# == 2 ]; then USERCOUNT=$2 fi
 
-USERCOUNT=$2
 
 function create() {
+    USERCOUNT=$1
     echo now creating $USERCOUNT users: $BASE;
 
     for (( i=1 ; i<($USERCOUNT+1) ; i++ )); do
@@ -50,16 +47,16 @@ function remove() {
     done
 }
 
-
-
 case "$1" in
     'create')
-	echo create users
-	create
+	if [ "$#" -ne 2 ]; then usage ; fi
+	echo create $2 users
+	create $2
+	echo
 	;;
     'remove')
-	echo remove users
-        remove
+	echo remove $BASE* users
+        #remove
 	;;
     *)
 	usage
