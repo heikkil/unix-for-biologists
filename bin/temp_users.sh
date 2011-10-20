@@ -56,7 +56,7 @@ case "$1" in
 	;;
     'remove')
 	echo remove $BASE* users
-        #remove
+        remove
 	;;
     *)
 	usage
