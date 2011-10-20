@@ -150,7 +150,7 @@
 \pause
  
 
-#+begin_src shell
+#+begin_src sh
    pwd
 #+end_src
 
@@ -176,7 +176,7 @@
 
 \pause
 
-#+begin_src shell
+#+begin_src sh
    ls -RF
 #+end_src
 
@@ -193,7 +193,7 @@
 
 ** 7.
 - 7. What will the following series of commands do? 
-#+begin_src shell -n
+#+begin_src sh -n
   cp /etc/passwd ~
   mkdir ~/stuff
   cd
@@ -215,7 +215,7 @@
 
 \pause
 
-#+begin_src shell
+#+begin_src sh
   man history
   less ~/.history
 #+end_src
@@ -227,7 +227,7 @@
 
 \pause
 
-#+begin_src shell
+#+begin_src sh
   man date
   date "+%Y-%m-%d"
 #+end_src
@@ -256,13 +256,13 @@
 ** 12.
 - 12. What are the three main privilege types? What will
 
-#+begin_src shell
+#+begin_src sh
   chmod 755 ~
 #+end_src
 
    do? In this output, what does "wheel" signify : 
 
-#+begin_src shell
+#+begin_src sh
    drwxrwxrwx 5  me wheel 170 24 Jan 15:17 Shared
 #+end_src
 
@@ -294,7 +294,7 @@
 ** 2.
 - 2. Type 
 
-#+begin_src shell
+#+begin_src sh
   ls -aRF /
 #+end_src
 
@@ -313,7 +313,7 @@
 
 \pause
  
-#+begin_src shell
+#+begin_src sh
    cat filename > new_filename
 #+end_src
 
@@ -323,7 +323,7 @@
   files, catenate them together  into a new file while numbering all
   non-blank lines.
 
-#+begin_src shell
+#+begin_src sh
   cat > first
   Ctrl-D
   cat > second
@@ -339,7 +339,7 @@
 
 \pause 
 
-#+begin_src shell
+#+begin_src sh
   cat filename | grep pattern
 #+end_src
 
@@ -352,13 +352,13 @@
 
 One command:
 
-#+begin_src shell
+#+begin_src sh
   cut -f 1,3 filename
 #+end_src
 
 or broken into smaller steps:
 
-#+begin_src shell
+#+begin_src sh
 cut -f1 filename > col1
 cut -f 3 filename > col3
 paste col1 col2
@@ -381,7 +381,7 @@ paste col1 col2
 # mrsclient -H mrs.cbrc.kaust.edu.sa -d uniprot -a mimivirus > mimivirus.dat
 # mrsclient -H mrs.cbrc.kaust.edu.sa -d uniprot -a mimivirus -f fasta > mimivirus.fa
 
-#+begin_src shell
+#+begin_src sh
   cat mimivirus.sw | grep "^DT"| grep -c Swiss
   cat mimivirus.sw | grep "^DT"| grep -c Tre
   # in one command:
@@ -398,7 +398,7 @@ paste col1 col2
   
 \pause
 
-#+begin_src shell
+#+begin_src sh
   cat mimivirus.sw | grep ^AC | \
     cut -d\; -f1| cut -d\  -f4 > mimi.ac
 #+end_src
@@ -409,7 +409,7 @@ paste col1 col2
 
 \pause
 
-#+begin_src shell
+#+begin_src sh
   mimivirus.sw | grep 'GO;'| sort -u | wc -l
   # 308
 #+end_src
@@ -423,7 +423,7 @@ paste col1 col2
 
 \pause 
 
-#+begin_src shell
+#+begin_src sh
   cat mimivirus.fa | grep -c '>'
   # 1915
   cat mimivirus.fa | grep -c 'Uncharacterized'
@@ -437,7 +437,7 @@ paste col1 col2
 
 \pause 
 
-#+begin_src shell
+#+begin_src sh
   cat contamination.vulgar | \
   cut -d\  -f6 | \
   sort -u | \
@@ -459,7 +459,7 @@ paste col1 col2
   + Compress and archive them to send less information over the
     network. 
 
-#+begin_src shell
+#+begin_src sh
   tar -cvf filename.tar *dat
   gzip filename.tar
   scp filename.tar.gz user@remote.machine.org:
@@ -474,7 +474,7 @@ paste col1 col2
 ** 2.
 - 2. You have a tarball that was created with the command 
 
-#+begin_src shell
+#+begin_src sh
   tar -zcvf  hooha.tar.gz *
 #+end_src
 
@@ -482,7 +482,7 @@ paste col1 col2
  
 \pause
 
- #+begin_src shell
+ #+begin_src sh
   tar -zxf hooha.tar.gz *.txt
 #+end_src
 
@@ -493,7 +493,7 @@ paste col1 col2
 
 \pause
 
-#+begin_src shell
+#+begin_src sh
   gzip -v mimivirus.dat
   gzip -l mimivirus.dat.gz
   zcat mimivirus.dat.gz| grep -c '>'
@@ -511,27 +511,27 @@ paste col1 col2
 
 - Find the program.
 
-#+begin_src shell
+#+begin_src sh
   ps -aux
   top
 #+end_src
 
 - Try to kill the program gently
 
-#+begin_src shell
+#+begin_src sh
   kill <id>
 #+end_src
 
 - If that does not work, force kill:
  
-#+begin_src shell
+#+begin_src sh
   kill -9 <id>
 #+end_src
 
 ** 2
 - 2. You wish to backup your home directory by running
 
-#+begin_src shell
+#+begin_src sh
   tar -zcvf /home/me/backup.tar.gz home/me
 #+end_src
 
@@ -540,7 +540,7 @@ scheduling utility?
 
 \pause
 
-#+begin_src shell
+#+begin_src sh
  0 12 * * 2 tar -zcvf /home/me/backup.tar.z /home/me/
 #+end_src
 
@@ -550,7 +550,7 @@ scheduling utility?
 
 \pause 
 
-#+begin_src shell
+#+begin_src sh
   # as root
   at 00:00 poweroff
   # compare to
@@ -560,7 +560,7 @@ scheduling utility?
 ** 4.
 - 4. Run the following commands in the remote server and observe what happens.
 
-#+begin_src shell -n
+#+begin_src sh -n
   loop date 2  > time.log &
   tail -f time.log
   Ctrl-C
@@ -588,7 +588,7 @@ uncompress it. Count the number of entries in the file.
 
 \pause
 
-#+begin_src shell -n
+#+begin_src sh -n
 wget ftp://rcserver/pub/bio/databases/OMIM/omim.txt.Z
 file omim.txt.Z
 uncompress omim.txt.Z
@@ -609,13 +609,13 @@ cat omim.txt | grep -c '^\*RECORD\*$'
   variable. Add this line to \texttt{~/.bash\_profile} file. Create
   it, if it does not exist.
 
-#+begin_src shell
+#+begin_src sh
 	export PATH=$PATH:/home/me/vital/statistics
 #+end_src
 
 In most system you can use the predefined environmental variable $HOME to add:
 
-#+begin_src shell
+#+begin_src sh
 	export PATH=$PATH:$HOME/vital/statistics
 #+end_src
 
@@ -628,11 +628,10 @@ In most system you can use the predefined environmental variable $HOME to add:
 
 \pause
 
-#+begin_src shell
+#+begin_src sh
   alias ls='ls --color-auto'
   alias ll='ls -al --color=auto'
 #+end_src
-
 
 ** 3.
 - 3. Secure your shell environment from human errors and make
@@ -644,10 +643,72 @@ In most system you can use the predefined environmental variable $HOME to add:
 Check the manual pages of the commands for the suitable option.
 Use alias to test the effect.
 
-#+begin_src shell
+#+begin_src sh
   alias rm='rm -i'
   alias mv='mv -i'
 #+end_src
 
 Store these aliases in ~/.bashrc file and source it.
 
+** 4.
+- Single most useful UNIX command line I have takes input lines
+  (e.g. identifers) sorts them, counts each unique line, displays them
+  sorted most common first. Create a command line tool 'countsort'
+  that does it.
+
+\pause
+
+#+begin_src sh
+countsort () { 
+    sort "$@" | uniq -c | sort -nr
+}
+#+end_src
+
+* Bash programming 
+** 1.
+- 1. Create a bash script greet.sh that greets you with your login
+  name. Include useful information about the system
+  (e.g. use the command \texttt{w}). Call that program when you log in
+  to the *remote* computer.
+
+\pause
+
+
+#+begin_src sh -n 
+#!/bin/bash
+echo 
+echo Welcome back, $USER
+echo ----- Current status ------------------
+w
+echo ---------------------------------------
+#+end_src
+
+Call the script 'greet.sh' and place it in the $HOME/bin. Add a line
+calling it to the end of $HOME/.bash\_profile because it is sourced
+once when the user logs in. 
+
+** 2.
+- 2. Expand the greet program to include time of the day. E.g. say
+  "Morning" before noon, "Afternoon" before 6 PM, and "Evening" after
+  6 PM.
+
+  + Hint: Use information from the \texttt{date} program to determine
+    the time. Use a variable to store the time.
+
+\pause
+#+begin_src sh
+#! /bin/bash
+TIME=$(date +%H) # 24h 
+if [ $TIME -lt 12 ]; then
+    echo "Good morning!"
+elif [ $TIME -lt 18 ]; then
+    echo "Good afternoon!"
+else
+    echo "Evening!"
+fi
+#+end_src
+
+** 3.
+-3. Write a wrapper for the programme you most often use in command
+ line (blast) in bioinformatics or otherwise. Document each code
+ block, check for input, exit with usage statment if anything is wrong.
