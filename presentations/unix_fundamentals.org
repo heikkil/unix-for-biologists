@@ -583,7 +583,9 @@ Macs (BSD Unix) follow slightly different conventions!
   + the owner
   + the group
   + other users, who do not fall into the previous categories
-
+- Tasks in a computer are controlled by assigning users to groups
+  (command \textt{groups})
+- Superuser (root/Manager) can do anything
 ** Privilege Semantics
 
 - Privileges have different meanings for files and directories
