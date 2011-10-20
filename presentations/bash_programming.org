@@ -59,10 +59,13 @@
 
 * Uses
 
-- Store long UNIX commands
-- Wrap programs with complex input
 - Interact effortlessly with the UNIX OS
-
+- Store long UNIX commands
+  + Add interaction to them
+- Wrap programs with complex input
+  + fill in default values
+  + form categories of command line options
+    - e.g. separate BLAST settings for proteins and nucleotides 
 * Reference works
 
 + BASH programming - Introduction HOW-TO
@@ -71,6 +74,19 @@
   - http://tldp.org/LDP/Bash-Beginners-Guide/Bash-Beginners-Guide.pdf
 + Advanced Bash-Scripting Guide
   - http://tldp.org/LDP/abs/abs-guide.pdf
+
+* Writing Bash scripts in emacs
+
+1. Get a new buffer
+2. Sh-script/Set shell type.. (\texttt{C-c : <Return>})
+  - defaults to bash
+3. Write code
+  - pull complex statements from the Sh-script menu
+4. Execute your script from command line or
+   a) emacs  (\texttt{C-c C-x})
+   b) command line (set execution permissions!)
+5. Write code / debug
+6. Repeat from step 4 until done
 
 * Bash configuration files
 
@@ -237,7 +253,7 @@ case "$1" in
         usage
 esac
 #+end_src
-- translate, hydropathy and usage are functions!
+- translate, hydropathy and usage are user defined functions!
 
 * Interaction from command line
 
@@ -299,9 +315,15 @@ done
    * (multiplication)
   / (division)
   % (remainder)
+   ** exponentation
+  += (plus-equal) 
+  -= (minus-equal) 
+  *= (times-equal) 
+  /= (slash-equal) 
+  %= (modulo-equal) 
 #+end_src
 
-- relational
+- Relational arithmetic operators
 
 #+begin_src sh
 -lt (<)
@@ -315,10 +337,18 @@ done
 * String comparison
 
 #+begin_src sh
-str1 = str2    # str1 matches str2
+str1 == str2    # str1 matches str2
 str1 != str2  # str1 does not match str2
 -n str     # str is not null
 -z str     # str is null
 #+end_src
 
 Zero length string is null.
+
+- Boolean operators
+
+#+begin_src sh 
+! (NOT)
+&& (AND)
+|| (OR)
+#+end_src
