@@ -19,7 +19,7 @@ function usage() {
 if [ `whoami` != "root" ]
 then
     echo Run this script using sudo 
-#    exit 1
+    exit 1
 fi
 
 
