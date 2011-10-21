@@ -1,0 +1,273 @@
+#+TITLE: UNIX Fundamentals
+#+AUTHOR: Heikki Lehv\auml{}slaiho
+#+EMAIL:     heikki.lehvaslaiho@kaust.edu.sa
+#+DATE:      2011-10-21 \\ CC BY-SA 3.0
+#+DESCRIPTION:
+#+KEYWORDS: UNIX, LINUX , CLI, history, summary, command line  
+#+LANGUAGE:  en
+#+OPTIONS:   H:3 num:t toc:t \n:nil @:t ::t |:t ^:t -:t f:t *:t <:t
+#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil tags:not-in-toc
+#+INFOJS_OPT: view:nil toc:t ltoc:t mouse:underline buttons:0 path:http://orgmode.org/org-info.js
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+LINK_UP:   
+#+LINK_HOME: 
+#+XSLT:
+
+#+startup: beamer
+#+LaTeX_CLASS: beamer
+##+LaTeX_CLASS_OPTIONS: [bigger]
+
+#+BEAMER_FRAME_LEVEL: 2
+
+#+COLUMNS: %40ITEM %10BEAMER_env(Env) %9BEAMER_envargs(Env Args) %4BEAMER_col(Col) %10BEAMER_extra(Extra)
+
+# TOC slide before every section
+#+latex_header: \AtBeginSection[]{\begin{frame}<beamer>\frametitle{Topic}\tableofcontents[currentsection]\end{frame}}
+
+## see http://deic.uab.es/~iblanes/beamer_gallery/
+
+##+latex_header: \mode<beamer>{\usetheme{Madrid}}
+#+latex_header: \mode<beamer>{\usetheme{Antibes}}
+##+latex_header: \mode<beamer>{\usecolortheme{wolverine}}
+#+latex_header: \mode<beamer>{\usecolortheme{beaver}}
+#+latex_header: \mode<beamer>{\usefonttheme{structurebold}}
+
+#+latex_header: \logo{\includegraphics[width=1cm,height=1cm,keepaspectratio]{img/logo-kaust}}
+
+## define colours for code listings
+\definecolor{keywords}{RGB}{255,0,90}
+\definecolor{comments}{RGB}{60,179,113}
+\definecolor{fore}{RGB}{249,242,215}
+\definecolor{back}{RGB}{51,51,51}
+\lstset{
+  basicstyle=\color{fore},
+  keywordstyle=\color{keywords},
+  commentstyle=\color{comments},
+  backgroundcolor=\color{back}
+}
+* Philosophy of command line
+** CLI versus GUI
+
+- Philosophical
+  + Command line forces internalization of the problem by abstraction
+- Practical
+  + Scientific data sets are too big for GUI
+  + Scientific data does not come in standard formats
+
+** Practical differences
+
+*** GUI 					      :B_ignoreheading:BMCOL:
+    :PROPERTIES: 
+    :BEAMER_env: block
+    :BEAMER_col: 0.5
+    :END:
+    - Depends on reading the file into memory and manipulating it there.
+    - Only a limited number of commands fit in  menus
+    - Can not be automated
+    \nbsp
+
+*** CLI 						    :BMCOL:B_example:
+    :PROPERTIES: 
+    :BEAMER_col: 0.5
+    :BEAMER_env: block
+    :END:
+    - Work in chunks, e.g. line by line
+    - Programmes are designed to work together
+    - Output from one is the next programme's input 
+    This is instant programming
+
+** Progression in CLI usage
+
+1. One at the time (learn the commands)
+2. Chain them together
+3. Store them for later use (shell aliases and functions)
+4. Create your own (any programming language, bash/perl)
+
+The aim is for efficiency, speed and convenience
+
+** Further reading
+
+In the Beginning was the Command Line: \\ http://www.cryptonomicon.com/beginning.html
+
+* UNIX operating system
+** Operating system
+
+An operating system (OS) is software, consisting of programs and data,
+that runs on computers, manages computer hardware resources, and
+provides common services for execution of various application
+software.
+
+*** list 					      :B_ignoreheading:BMCOL:
+    :PROPERTIES: 
+    :BEAMER_env: ignoreheading
+    :BEAMER_col: 0.6
+    :END:
+    Operating system types:
+    - Real-time
+    - Multi-user vs. Single-user
+    - Multi-tasking vs. Single-tasking
+    - Distributed
+    - Embedded
+
+*** list 					      :B_ignoreheading:BMCOL:
+    :PROPERTIES: 
+    :BEAMER_col: 0.4
+    :BEAMER_env: ignoreheading
+    :END:
+    #+ATTR_LaTeX: width=0.6\textwidth
+    [[file:img/Operating_system_placement.pdf]]
+    \\ \tiny Image from from Wikimedia Commons, CC BY-SA 3.0.
+
+** Unix and Unix-like operating systems
+
+Main features:
+
+- multitasking
+- multi-user
+- memory protection
+
+Originally developed in 1969 by a group of AT&T employees at Bell
+Labs, including Ken Thompson, Dennis Ritchie, Brian Kernighan,
+Douglas McIlroy, and Joe Ossanna.
+
+- Developed in an environment of free information exchange
+- Became heavily fragmented and  commercialised once companies noticed its value
+- GNU project for free OS started by Richhard Stallman in early 80's
+  + “GNU's Not Unix!”
+** Brief History of UNIX
+
+   #+ATTR_LaTeX: width=0.95\textwidth
+   [[file:img/Unix_history-simple.pdf]] 
+   \\ \tiny Image from from Wikimedia Commons, CC BY-SA 3.0.
+
+** Our course computers run MacOSX
+
+- Mac OSX, a variation of BSD UNIX
+- Most servers and workstations in science run LINUX
+
+There are subtle differences in tools and how they work between
+UNIXes.
+
+It is possible to install the GNU tools to a Mac
+
+- The Fink project http://www.finkproject.org/
+- MacPorts http://www.macports.org/
+
+Increasingly, there are native ports of free GUI programs to MacOS X.
+- Aquamacs
+
+** Brief History of LINUX (I)
+
+- Linux began in 1980's as an effort to create a free Unix-like operating system
+- The project was called GNU and was run by the Free Software Foundation (FSF) created by Richard Stallman
+- Development began with system tools such as editors, a compiler and hundreds of other utilities
+- By early 1990's most of the components were written, but the operating system was missing a kernel
+- Coincidentally, Linus Torvalds of Helsinki University had been working on a Unix-based kernel – the first version was completed in 1994
+
+** Brief History of LINUX (II)
+
+- Linus liked the endeavours of the Free Software Foundation and
+  released his kernel under the GNU GPL (The GNU General Public
+  License)
+
+- The Linux kernel and GNU tools made a complete, free operating
+  system: the GNU/Linux operating system
+
+** Open Source Licenses
+- GPL was one of the most important contributions of the FSF
+- The Open Source definition (http://www.opensource.org) is based on the GPL
+- Open Source licenses ensure basic freedoms, including:
+  + The freedom to use the software for any purpose
+  + The freedom to distribute the software to others
+  + The freedom to modify the software
+  + The freedom to distribute the modified software to others (under the same licensing conditions)
+- GPL, MPL and BSD licenses are some examples
+
+** User Interface
+- Describes the way a system interacts with its users
+- Text-based or command line interface:
+  - Dates back to pre 1980's
+  - Commands typed using keyboard to run applications
+  - Less user-friendly but extremely flexible, especially for system administration
+
+** Graphical interface:
+
+- Point and click to run applications
+- Interaction with system easier and quicker to learn
+
+- Unix provides both and can be set up to boot in either text mode or
+  graphical mode
+  - common GUIs in LINUX: Gnome, KDE
+  - many different "window amanagers" are availble
+  - Mac OS X GUI is proprietary Aqua
+
+** Logging In
+
+- Since UNIX is a multiuser operating system, users must authenticate
+  themselves before gaining access
+
+- Authentication is done with a username and password, configured by
+  the system administrator
+
+- Although visually different, the process of logging is the same in
+  both text and graphical mode
+
+- The combination of username, password and disk space for personal
+  files is called a user account
+
+- *Note* that UNIX is case-sensitive
+
+** Changing Passwords
+
+- To change your password, type the command \texttt{passwd} at a shell
+
+- You will be prompted for a new password, and a confirmation - after
+  confirming your current password
+
+- Bad passwords are disallowed.
+   + Passwords should be at least 6 characters long, contain both
+     letters and digits or punctuation and must not be based on
+     dictionary words
+
+- There is usually a graphical utility for changing passwords
+  accessible from the application menu (this is desktop-specific)
+
+** Getting Help on Commands
+
+- Command: man [section] name
+- Common options:
+  + \texttt{ -k}: searches for keywords in man page entries (\texttt{apropos)
+- Standard use displays the manual page of the command
+- The section number may need to be specified for keywords that have
+  more than one entry in the system
+- Examples:
+
+#+BEGIN_SRC shell -n
+   man ls
+   man -k cron
+   apropos cron
+   man 5 crontab
+#+END_SRC
+
+* History
+
+** History and Copyright
+
+- Heikki Lehv\auml{}slaiho, heikki.lehvaslaiho@kaust.edu.sa \\
+  CBRC, KAUST \\
+  September 2011
+
+- Heikki Lehv\auml{}slaiho, heikki@sanbi.ac.za \\
+  SANBI, University of Western Cape \\
+  March 2007
+
+- John M. Ostrowick, jon@cs.wits.ac.za \\
+  School of Computer Science, 
+  University of the Witwatersrand \\
+  June 2005
+
+This work is licensed under the Creative Commons
+Attribution-ShareAlike 3.0 Unported.  To view a copy of this license,
+visit http://creativecommons.org/licenses/by-sa/3.0/
+

@@ -1,7 +1,7 @@
 #+TITLE: UNIX Fundamentals
 #+AUTHOR: Heikki Lehv\auml{}slaiho
 #+EMAIL:     heikki.lehvaslaiho@kaust.edu.sa
-#+DATE:      2011-10-04 \\ CC BY-SA 3.0
+#+DATE:      2011-10-21 \\ CC BY-SA 3.0
 #+DESCRIPTION:
 #+KEYWORDS: UNIX, LINUX , CLI, history, summary, command line  
 #+LANGUAGE:  en
@@ -82,9 +82,13 @@
 1. One at the time (learn the commands)
 2. Chain them together
 3. Store them for later use (shell aliases and functions)
-4. Create your own (any programming language, here perl)
+4. Create your own (any programming language, bash/perl)
 
 The aim is for efficiency, speed and convenience
+
+** Further reading
+
+In the Beginning was the Command Line: \\ http://www.cryptonomicon.com/beginning.html
 
 * UNIX operating system
 ** Operating system
@@ -234,7 +238,7 @@ Increasingly, there are native ports of free GUI programs to MacOS X.
 
 - Command: man [section] name
 - Common options:
-  + \texttt{ -k}: searches for keywords in man page entries (apropos)
+  + \texttt{ -k}: searches for keywords in man page entries (\texttt{apropos)
 - Standard use displays the manual page of the command
 - The section number may need to be specified for keywords that have
   more than one entry in the system
@@ -246,7 +250,6 @@ Increasingly, there are native ports of free GUI programs to MacOS X.
    apropos cron
    man 5 crontab
 #+END_SRC
-
 
 * UNIX file system
 ** File System Basics (I)
@@ -687,7 +690,6 @@ Macs (BSD Unix) follow slightly different conventions!
 -  \texttt{chown}	change file and directory owner and group
 -  \texttt{chmod}	change file and directory access permissions
 
- 
 * Disks and Files
 ** Determining Disk and Memory Usage
 
@@ -786,7 +788,6 @@ Output (modified to fit):
 -  \texttt{file}  look inside the file to determine type
 -  \texttt{ln}  create link to a file
 -  \texttt{ln -s}  create symbolic link to a file or directory
-
 
 * Job Control and IO Redirection
 ** Shell Job Control (I)
@@ -1296,7 +1297,6 @@ Not covered as Perl does the same thing:
 - Examples:
   + \texttt{echo "1   2   3   4" | awk '{print \$2 " and " (\$3+\$4)}'}
     \\ (splits input to words and processes them)
-
 
 ** Further reading
 

@@ -1,0 +1,187 @@
+#+TITLE: UNIX Fundamentals
+#+AUTHOR: Heikki Lehv\auml{}slaiho
+#+EMAIL:     heikki.lehvaslaiho@kaust.edu.sa
+#+DATE:      2011-10-21 \\ CC BY-SA 3.0
+#+DESCRIPTION:
+#+KEYWORDS: UNIX, LINUX , CLI, history, summary, command line  
+#+LANGUAGE:  en
+#+OPTIONS:   H:3 num:t toc:t \n:nil @:t ::t |:t ^:t -:t f:t *:t <:t
+#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil tags:not-in-toc
+#+INFOJS_OPT: view:nil toc:t ltoc:t mouse:underline buttons:0 path:http://orgmode.org/org-info.js
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+LINK_UP:   
+#+LINK_HOME: 
+#+XSLT:
+
+#+startup: beamer
+#+LaTeX_CLASS: beamer
+##+LaTeX_CLASS_OPTIONS: [bigger]
+
+#+BEAMER_FRAME_LEVEL: 2
+
+#+COLUMNS: %40ITEM %10BEAMER_env(Env) %9BEAMER_envargs(Env Args) %4BEAMER_col(Col) %10BEAMER_extra(Extra)
+
+# TOC slide before every section
+#+latex_header: \AtBeginSection[]{\begin{frame}<beamer>\frametitle{Topic}\tableofcontents[currentsection]\end{frame}}
+
+## see http://deic.uab.es/~iblanes/beamer_gallery/
+
+##+latex_header: \mode<beamer>{\usetheme{Madrid}}
+#+latex_header: \mode<beamer>{\usetheme{Antibes}}
+##+latex_header: \mode<beamer>{\usecolortheme{wolverine}}
+#+latex_header: \mode<beamer>{\usecolortheme{beaver}}
+#+latex_header: \mode<beamer>{\usefonttheme{structurebold}}
+
+#+latex_header: \logo{\includegraphics[width=1cm,height=1cm,keepaspectratio]{img/logo-kaust}}
+
+## define colours for code listings
+\definecolor{keywords}{RGB}{255,0,90}
+\definecolor{comments}{RGB}{60,179,113}
+\definecolor{fore}{RGB}{249,242,215}
+\definecolor{back}{RGB}{51,51,51}
+\lstset{
+  basicstyle=\color{fore},
+  keywordstyle=\color{keywords},
+  commentstyle=\color{comments},
+  backgroundcolor=\color{back}
+}
+* Text utilities
+** Searching Within Files
+
+- Command: \texttt{grep [options] pattern files}
+- Common options:
+  + \texttt{-c}: prints a count of the matching lines instead of the default output
+  + \texttt{-i}: performs a case-insensitive search
+  + \texttt{-n}: also prints out the line number 
+  + \texttt{-v}: inverts match, printing out all non-matching lines
+- Examples:
+  + \texttt{grep bash /etc/password} \\ (search for “bash” in the given file)
+  + \texttt{grep -v "\land \$" list.txt > cleanlist.txt} \\ (remove empty lines from a file)
+
+** Counting
+
+- Command: \texttt{wc [options] file}
+- Common options:
+  + \texttt{-c}: byte (ASCII character) count only
+  + \texttt{-w}: word count only
+  + \texttt{-l}: newline (line) count only
+- Examples:
+  + \texttt{wc -l file.txt} \\ (line count in a file)
+  + \texttt{wc -c <Return>acbd<Ctrl-D> <Ctrl-D>} \\ (number of characters typed, 4)
+
+** Looking at only one end of the file
+
+- Command: \texttt{head [options] file}
+- Command: \texttt{tail [options] file}
+  + \texttt{-n}: where n is number of lines to display
+- Examples:
+  + \texttt{head filename} \\ (display 10 first lines by default)
+  + \texttt{head -210 filename} | tail \\ (look at line numbers 200-210)
+
+** Differences Between Files
+
+- Command: \texttt{diff [options] file1 file2}
+- Common options:
+  + \texttt{-i}: ignores changes in case
+  + \texttt{-B}: ignores changes that just insert or delete blank lines
+  + \texttt{-q}: reports only whether the files differ
+- Examples:
+  + \texttt{diff newfile.txt oldfile.txt} \\ (list differences between the files)
+  + \texttt{diff -i newfile.txt oldfile.txt} \\ (list differences with case-insensitive comparison)
+
+** Extracting Columns from Files
+
+- Command: \texttt{cut [options] filename}
+- Common options:
+  + \texttt{-d delim}: uses the given delimiter, instead of tab
+  + \texttt{-c range}: outputs only specified characters
+  + \texttt{-f range}: outputs only specified fields
+  + (Range in the form N, N-, N-M or -M, counting from 1)
+- Examples:
+  + \texttt{cut -f1-3 mydata.txt} \\ (cut fields 1 to 3, use tab as separator)
+  + \texttt{cut -d”,” -f2 summarydata.csv} \\ (cut field 2, use comma as separator)
+
+** Merging Files in Columns
+
+- Command: \texttt{paste [options] files}
+- Common options:
+  + \texttt{-d list}: uses delimiters from the list, instead of tabs
+  + \texttt{-s}: pastes one file at a time instead of in parallel
+- Examples:
+  + \texttt{paste -d\”,\” cols1.txt col2.txt} \\ (paste columns from the 2 files with comma as the separator)
+
+** Extracting Rows from Files
+
+- Command: \texttt{split [options] filename}
+- Common options:
+  + \texttt{-b size}: outputs size bytes per file
+  + \texttt{-l size}: outputs size lines per file
+- Examples:
+  + \texttt{split -l 200 output.db} \\ (split file into 200 line segments)
+
+** Sorting
+
+- Command to sort: \texttt{sort [options] filename}
+- Common options:
+  + \texttt{-f}: folds lower case characters to upper case
+  + \texttt{-b}: ignores leading blanks
+  + \texttt{-r}: reverses the sort
+  + \texttt{-n}: numeric sorting
+- Examples:
+  + \texttt{sort -rf mydictionary} \\ (output lines in case-insensitive reverse sorted order)
+  + \texttt{sort -n somefile | uniq} \\ (output lines in sorted numeric order)
+
+** Removing Duplicates and Counting
+
+- Command to remove successive identical lines: \\ \texttt{uniq [options] filename}
+- Common options:
+  + \texttt{-c}: prefix lines by the number of occurrences 
+- Examples:
+  + \texttt{sort somefile | uniq}  \\ (output lines in sorted order, removing duplicates)
+  + \texttt{sort somefile | uniq -c | sort -nr} \\ (count occurrence of lines and show most common first)
+
+** Passing program output as arguments
+
+- White space limited list as arguments to an other program:  \texttt{xargs [options] command}
+- Common options:
+  + \texttt{-d}: set delimiter 
+- Examples:
+  + \texttt{cut -d: -f1  /etc/passwd | sort | xargs echo} \\ (compact listing of all logins)
+  + \texttt{ls -t | head | grep .ppt | xargs mv -t w/talks/} \\ (move the latest ppt files into the w/talks directory)
+
+** Text Utilities Command Summary
+
+- \texttt{grep}	print lines matching a pattern
+- \texttt{wc}	count lines, words and characters
+- \texttt{diff}	find differences between two files
+- \texttt{cut}	remove sections in columns from files
+- \texttt{paste}	merge files as columns
+- \texttt{split}	split a file into pieces
+- \texttt{sort}	sort lines of text files
+- \texttt{head}	output the first part of the file
+- \texttt{tail}	output the last part of the file
+- \texttt{uniq}	remove duplicate successive lines from a text file
+- \texttt{xargs}	pass list as arguments to an other program
+
+* History
+
+** History and Copyright
+
+- Heikki Lehv\auml{}slaiho, heikki.lehvaslaiho@kaust.edu.sa \\
+  CBRC, KAUST \\
+  September 2011
+
+- Heikki Lehv\auml{}slaiho, heikki@sanbi.ac.za \\
+  SANBI, University of Western Cape \\
+  March 2007
+
+- John M. Ostrowick, jon@cs.wits.ac.za \\
+  School of Computer Science, 
+  University of the Witwatersrand \\
+  June 2005
+
+This work is licensed under the Creative Commons
+Attribution-ShareAlike 3.0 Unported.  To view a copy of this license,
+visit http://creativecommons.org/licenses/by-sa/3.0/
+

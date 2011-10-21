@@ -1,0 +1,148 @@
+#+TITLE: UNIX Fundamentals
+#+AUTHOR: Heikki Lehv\auml{}slaiho
+#+EMAIL:     heikki.lehvaslaiho@kaust.edu.sa
+#+DATE:      2011-10-21 \\ CC BY-SA 3.0
+#+DESCRIPTION:
+#+KEYWORDS: UNIX, LINUX , CLI, history, summary, command line  
+#+LANGUAGE:  en
+#+OPTIONS:   H:3 num:t toc:t \n:nil @:t ::t |:t ^:t -:t f:t *:t <:t
+#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil tags:not-in-toc
+#+INFOJS_OPT: view:nil toc:t ltoc:t mouse:underline buttons:0 path:http://orgmode.org/org-info.js
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+LINK_UP:   
+#+LINK_HOME: 
+#+XSLT:
+
+#+startup: beamer
+#+LaTeX_CLASS: beamer
+##+LaTeX_CLASS_OPTIONS: [bigger]
+
+#+BEAMER_FRAME_LEVEL: 2
+
+#+COLUMNS: %40ITEM %10BEAMER_env(Env) %9BEAMER_envargs(Env Args) %4BEAMER_col(Col) %10BEAMER_extra(Extra)
+
+# TOC slide before every section
+#+latex_header: \AtBeginSection[]{\begin{frame}<beamer>\frametitle{Topic}\tableofcontents[currentsection]\end{frame}}
+
+## see http://deic.uab.es/~iblanes/beamer_gallery/
+
+##+latex_header: \mode<beamer>{\usetheme{Madrid}}
+#+latex_header: \mode<beamer>{\usetheme{Antibes}}
+##+latex_header: \mode<beamer>{\usecolortheme{wolverine}}
+#+latex_header: \mode<beamer>{\usecolortheme{beaver}}
+#+latex_header: \mode<beamer>{\usefonttheme{structurebold}}
+
+#+latex_header: \logo{\includegraphics[width=1cm,height=1cm,keepaspectratio]{img/logo-kaust}}
+
+## define colours for code listings
+\definecolor{keywords}{RGB}{255,0,90}
+\definecolor{comments}{RGB}{60,179,113}
+\definecolor{fore}{RGB}{249,242,215}
+\definecolor{back}{RGB}{51,51,51}
+\lstset{
+  basicstyle=\color{fore},
+  keywordstyle=\color{keywords},
+  commentstyle=\color{comments},
+  backgroundcolor=\color{back}
+}
+* Compression and Archiving
+** Compression and Archiving
+
+- Compression and archiving are useful for backups and transferring
+  multiple files across a network (via ftp, http, scp, email
+  attachments, etc.)
+
+- Compression utilities include 
+  + gzip (.gz extension)
+  + bzip2 (.bz2 extension)
+  + zip (.zip extension – MS compatible)
+  + compress (.Z extension)
+
+- Archiving utilities include 
+  + tar (.tar extension – most common Unix format)
+  + zip (.zip extension – MS compatible)
+  + uncompress (.Z extension)
+
+** gzip - GNU compressor
+
+- Command: \texttt{gzip [options] files}
+- Common options:
+  + \texttt{-d}: decompresses instead of compressing
+  + \texttt{-l}: lists compression information
+  + \texttt{-t}: tests the file's integrity
+- Examples:
+  + \texttt{gzip somefile.txt} \\ (compresses the file and renames to somefile.txt.gz)
+  + \texttt{gzip -d tarfile.tar.gz} \\ (uncompresses the file and renames to tarfile.tar)
+  + bzip2 works similarly to gzip, with a .bz2 filename extension
+
+** tar - archiver
+
+- Command: \texttt{tar [options] [files]}
+- Common options:
+  + \texttt{-c}: creates a new archive
+  + \texttt{-f tarfile}: uses the specified tar filename (instead of stdin / stdout)
+  + \texttt{-t}: lists the contents of an archive
+  + \texttt{-v}: lists files as they are processed
+  + \texttt{-x}: extracts files from an archive
+  + \texttt{-z}: filters the archive through gzip
+  + \texttt{-j}: filters the archive through bzip2
+- Examples:
+  + \texttt{tar -cvf docbackup.tar *.doc} \\ (creates a tar file containing all .doc files)
+  + \texttt{tar -zxf somearchive.tar.gz} \\ (extracts files in the archive compressed with gzip)
+  + \texttt{tar -jtf somearchive.tar.bz2} \\ (lists files in the archive compressed with bzip2)
+
+** zip
+
+- Command: \texttt{zip [options] file1 file2 ...}
+- Common options:
+  + \texttt{-r}: recurses subdirectories
+  + \texttt{-T}: tests the file's integrity
+- Examples:
+  + \texttt{zip jan-budget.zip jan-budget.sxc} \\ (creates zipped archive containing the single file jan-budget.sxc – note: original file is not modified)
+  + \texttt{zip mail-backup.zip mail/*} \\ (creates zipped archive containing everything in the mail directory)
+
+** unzip
+
+- Command: \texttt{unzip [options] zipfile}
+- Common options:
+  + \texttt{-d directory}: specifies the directory to which to extract
+  + \texttt{-l}: lists archive contents without extracting
+- Examples:
+  + \texttt{unzip -d mail jan-backup.zip} \\ (unzips into mail/ directory)
+  + \texttt{unzip -l jan-backup.zip} \\ (lists the contents of the archive)
+
+** Viewing gzipped files
+
+- Command: \texttt{zcat [options] gzipfile}
+- Command: \texttt{less [options] gzipfile}
+  + less automatically runs zipped file through zcat
+- Examples
+    + \texttt{zcat jan-backup.gz | grep boss} \\ (grep contents of the
+      archive)
+    + \texttt{less jan-backup.gz | grep boss} \\(view contents page by
+      page)
+    + \texttt{gzcat jan-backup.gz | less} \\(view contents page by
+      page under Mac OS X)
+
+* History
+
+** History and Copyright
+
+- Heikki Lehv\auml{}slaiho, heikki.lehvaslaiho@kaust.edu.sa \\
+  CBRC, KAUST \\
+  September 2011
+
+- Heikki Lehv\auml{}slaiho, heikki@sanbi.ac.za \\
+  SANBI, University of Western Cape \\
+  March 2007
+
+- John M. Ostrowick, jon@cs.wits.ac.za \\
+  School of Computer Science, 
+  University of the Witwatersrand \\
+  June 2005
+
+This work is licensed under the Creative Commons
+Attribution-ShareAlike 3.0 Unported.  To view a copy of this license,
+visit http://creativecommons.org/licenses/by-sa/3.0/
+

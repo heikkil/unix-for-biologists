@@ -75,19 +75,6 @@
 + Advanced Bash-Scripting Guide
   - http://tldp.org/LDP/abs/abs-guide.pdf
 
-* Writing Bash scripts in emacs
-
-1. Get a new buffer
-2. Sh-script/Set shell type.. (\texttt{C-c : <Return>})
-  - defaults to bash
-3. Write code
-  - pull complex statements from the Sh-script menu
-4. Execute your script from command line or
-   a) emacs  (\texttt{C-c C-x})
-   b) command line (set execution permissions!)
-5. Write code / debug
-6. Repeat from step 4 until done
-
 * Bash configuration files
 
 Places to store your shortcuts and environmental variables. Create
@@ -104,6 +91,19 @@ when needed.
 
 - $HOME/.bash\_logout
   + executed when logging out
+
+* Writing Bash scripts in emacs
+
+1. Get a new buffer
+2. Sh-script/Set shell type.. (\texttt{C-c : <Return>})
+  - defaults to bash
+3. Write code
+  - pull complex statements from the Sh-script menu
+4. Execute your script from
+   - emacs  (\texttt{C-c C-x})
+   - command line (set execution permissions!)
+5. Write code / debug
+6. Repeat from step 4 until done
 
 * Shell scripting
 - Create a script:
@@ -309,6 +309,11 @@ done
 
 * Arithmetic operators
 
+** Arithmetic operators 				    :BMCOL:B_example:
+    :PROPERTIES: 
+    :BEAMER_col: 0.5
+    :BEAMER_env: block
+    :END:
 #+begin_src sh
   + (addition)
   - (subtraction)
@@ -323,8 +328,11 @@ done
   %= (modulo-equal) 
 #+end_src
 
-- Relational arithmetic operators
-
+**  Relational arithmetic operators 			    :BMCOL:B_example:
+    :PROPERTIES: 
+    :BEAMER_col: 0.5
+    :BEAMER_env: block
+    :END: 
 #+begin_src sh
 -lt (<)
 -gt (>)

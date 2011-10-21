@@ -1,0 +1,155 @@
+#+TITLE: UNIX Fundamentals
+#+AUTHOR: Heikki Lehv\auml{}slaiho
+#+EMAIL:     heikki.lehvaslaiho@kaust.edu.sa
+#+DATE:      2011-10-21 \\ CC BY-SA 3.0
+#+DESCRIPTION:
+#+KEYWORDS: UNIX, LINUX , CLI, history, summary, command line  
+#+LANGUAGE:  en
+#+OPTIONS:   H:3 num:t toc:t \n:nil @:t ::t |:t ^:t -:t f:t *:t <:t
+#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil tags:not-in-toc
+#+INFOJS_OPT: view:nil toc:t ltoc:t mouse:underline buttons:0 path:http://orgmode.org/org-info.js
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+LINK_UP:   
+#+LINK_HOME: 
+#+XSLT:
+
+#+startup: beamer
+#+LaTeX_CLASS: beamer
+##+LaTeX_CLASS_OPTIONS: [bigger]
+
+#+BEAMER_FRAME_LEVEL: 2
+
+#+COLUMNS: %40ITEM %10BEAMER_env(Env) %9BEAMER_envargs(Env Args) %4BEAMER_col(Col) %10BEAMER_extra(Extra)
+
+# TOC slide before every section
+#+latex_header: \AtBeginSection[]{\begin{frame}<beamer>\frametitle{Topic}\tableofcontents[currentsection]\end{frame}}
+
+## see http://deic.uab.es/~iblanes/beamer_gallery/
+
+##+latex_header: \mode<beamer>{\usetheme{Madrid}}
+#+latex_header: \mode<beamer>{\usetheme{Antibes}}
+##+latex_header: \mode<beamer>{\usecolortheme{wolverine}}
+#+latex_header: \mode<beamer>{\usecolortheme{beaver}}
+#+latex_header: \mode<beamer>{\usefonttheme{structurebold}}
+
+#+latex_header: \logo{\includegraphics[width=1cm,height=1cm,keepaspectratio]{img/logo-kaust}}
+
+## define colours for code listings
+\definecolor{keywords}{RGB}{255,0,90}
+\definecolor{comments}{RGB}{60,179,113}
+\definecolor{fore}{RGB}{249,242,215}
+\definecolor{back}{RGB}{51,51,51}
+\lstset{
+  basicstyle=\color{fore},
+  keywordstyle=\color{keywords},
+  commentstyle=\color{comments},
+  backgroundcolor=\color{back}
+}
+* Job Control and IO Redirection
+** Shell Job Control (I)
+
+- Job control refers to the ability of the shell to run a command,
+  "processes", in the background
+
+- Background processes do not accept input from the shell, useful for:
+  - processes that do not produce any output
+  - processes that do not interact with the shell
+  - processes that will take a long time to execute
+- A background process is assigned a job number
+
+** Shell Job Control (II)
+
+- Start a process in the background by appending an ampersand to the
+  command, e.g. \texttt{mozilla \&}
+
+- Suspend an active processes by keying \\ \texttt{Ctrl-Z}
+- Send a process to the background by typing \\ \texttt{bg <jobnumber>}
+- Send a process to the foreground by typing \\ \texttt{fg <jobnumber>}
+- View background and suspended processes with the command: \\ \texttt{jobs}
+
+** Standard input and output
+
+- Unix commands take input (STDIN) and/or produce output
+  (STDOUT):
+  + STDIN: keyboard
+  + STDOUT: screen
+  + STDERR: screen
+
+#+ATTR_LaTeX: width=0.99\textwidth
+[[file:img/stdinout.pdf]]
+
+
+** IO Redirection
+
+- IO redirection allows both input and output to be replaced by files
+- Output redirection: 
+  - The > symbol redirects output to a file rather than the terminal
+- Input redirection:
+  -  The < symbol redirects input from a file rather than the terminal
+- Examples:
+
+#+BEGIN_SRC shell -n
+  ls > temp
+  wc -l < temp
+#+END_SRC
+
+** IO Redirection: STDERR
+
+- Many Unix commands report to a third default location: standard error, STDERR
+- tcsh can not redirect STDERR to a file!
+- STDERR redirection in bash: 
+  - \texttt{2>} redirects standard error to a file rather than the terminal
+  - \texttt{2>\&1} redirects standard error to the same file as
+    standard out (equivalent to shorter \texttt{\&>filename})
+
+- Examples:
+#+BEGIN_SRC shell -n
+ prog > temp 2> log
+ prog &> outfile.$$
+#+END_SRC
+
+** Pipes
+
+- Pipes redirect the output of one command to the input of another
+- This allows the user to combine commands to create more complex ones
+- Examples:
+#+BEGIN_SRC shell -n
+  ls -1 | wc -l
+  cat somefile.txt | grep the
+  who | grep mary | wc -l
+#+END_SRC
+
+ \raggedright Text tools work one line at the time!
+
+** Job Control Command Summary
+
+- \texttt{fg/bg}	send processes to foreground / background
+- \texttt{jobs}	list background and suspended processes
+- \texttt{>} redirect STDOUT
+- \texttt{<} redirect STDIN
+- \texttt{2>} redirect STDERR
+- \texttt{2>\&1} and \texttt{\&>} redirect both STDOUT and STDERR together
+- \texttt{|} connect STDIN to next STDOUT
+
+* History
+
+** History and Copyright
+
+- Heikki Lehv\auml{}slaiho, heikki.lehvaslaiho@kaust.edu.sa \\
+  CBRC, KAUST \\
+  September 2011
+
+- Heikki Lehv\auml{}slaiho, heikki@sanbi.ac.za \\
+  SANBI, University of Western Cape \\
+  March 2007
+
+- John M. Ostrowick, jon@cs.wits.ac.za \\
+  School of Computer Science, 
+  University of the Witwatersrand \\
+  June 2005
+
+This work is licensed under the Creative Commons
+Attribution-ShareAlike 3.0 Unported.  To view a copy of this license,
+visit http://creativecommons.org/licenses/by-sa/3.0/
+

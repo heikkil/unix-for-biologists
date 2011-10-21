@@ -1,0 +1,508 @@
+#+TITLE: UNIX fundamentals
+#+AUTHOR: Heikki Lehv\auml{}slaiho
+#+EMAIL:     heikki.lehvaslaiho@kaust.edu.sa
+#+DATE:      2011-10-21 \\ CC BY-SA 3.0
+#+DESCRIPTION:
+#+KEYWORDS: UNIX, LINUX , CLI, history, summary, command line  
+#+LANGUAGE:  en
+#+OPTIONS:   H:3 num:t toc:t \n:nil @:t ::t |:t ^:t -:t f:t *:t <:t
+#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil tags:not-in-toc
+#+INFOJS_OPT: view:nil toc:t ltoc:t mouse:underline buttons:0 path:http://orgmode.org/org-info.js
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+LINK_UP:   
+#+LINK_HOME: 
+#+XSLT:
+
+#+startup: beamer
+#+LaTeX_CLASS: beamer
+##+LaTeX_CLASS_OPTIONS: [bigger]
+
+#+BEAMER_FRAME_LEVEL: 2
+
+#+COLUMNS: %40ITEM %10BEAMER_env(Env) %9BEAMER_envargs(Env Args) %4BEAMER_col(Col) %10BEAMER_extra(Extra)
+
+# TOC slide before every section
+#+latex_header: \AtBeginSection[]{\begin{frame}<beamer>\frametitle{Topic}\tableofcontents[currentsection]\end{frame}}
+
+## see http://deic.uab.es/~iblanes/beamer_gallery/
+
+##+latex_header: \mode<beamer>{\usetheme{Madrid}}
+#+latex_header: \mode<beamer>{\usetheme{Antibes}}
+##+latex_header: \mode<beamer>{\usecolortheme{wolverine}}
+#+latex_header: \mode<beamer>{\usecolortheme{beaver}}
+#+latex_header: \mode<beamer>{\usefonttheme{structurebold}}
+
+#+latex_header: \logo{\includegraphics[width=1cm,height=1cm,keepaspectratio]{img/logo-kaust}}
+
+## define colours for code listings
+\definecolor{keywords}{RGB}{255,0,90}
+\definecolor{comments}{RGB}{60,179,113}
+\definecolor{fore}{RGB}{249,242,215}
+\definecolor{back}{RGB}{51,51,51}
+\lstset{
+  basicstyle=\color{fore},
+  keywordstyle=\color{keywords},
+  commentstyle=\color{comments},
+  backgroundcolor=\color{back}
+}
+* UNIX file system
+** File System Basics (I)
+
+- Files are entities for storing data in a computer system
+
+- There are many types of files: various data files and programs; even
+  devices are represented as files
+
+- Filename extensions are a convenience for the user – the operating
+  system does not derive any meaning from it
+
+- Some common extensions include:
+  - .bz2: File zipped with the bzip2 utility
+  - .c: C source code file
+  - .gif/.jpg/.png: Image files (GIF / JPEG / PNG)
+  - .gz: File zipped with the gzip utility
+  - .zip: File compressed with the zip utility
+
+** File System Basics (II)
+
+- Common extensions (cont.):
+  - .html: Web page
+  - .mp3: MP3 audio file
+  - .pdf: PDF document format
+  - .pl: Perl script
+  - .rpm: RedHat software package
+  - .odt: OpenOffice.org files (writer / calc / impress / draw)
+  - .tar: Archive created with the tar utility
+  - .txt: Plain text file
+
+** Directory Hierarchy
+
+- Files are grouped into logical units into collections called
+  directories (known as folders in other OS's)
+
+- Directories may contain subdirectories, resulting in a hierarchical
+  structure
+
+- The top-most directory in this tree is called the root directory,
+  denoted by a /
+
+- Each user has a directory set aside for storing personal files –
+  this is called his home directory – uniquely identified by the
+  username e.g /home/dilbert
+
+- Users should create new directories in their home directories to
+  properly organise their files
+
+** Important directories in Linux
+
+Macs (BSD Unix) follow slightly different conventions!
+
+*** list 					      :B_ignoreheading:BMCOL:
+    :PROPERTIES: 
+    :BEAMER_env: ignoreheading
+    :BEAMER_col: 0.6
+    :END:
+
+- /bin
+  + Basic system binaries (executables)
+- /usr/bin
+  + More system binaries
+- /usr/local/bin
+  + local (user installed) binaries
+- /sbin
+  + Basic system administrative programs
+- /usr/sbin
+  + More system administrative programs.
+*** list 					      :B_ignoreheading:BMCOL:
+    :PROPERTIES: 
+    :BEAMER_env: ignoreheading
+    :BEAMER_col: 0.6
+    :END:
+- /etc
+  + Et cetera. Systemwide configuration scripts 
+- /etc/rc.d or /etc/init.d
+  + Boot scripts
+- /usr/share/doc
+  + Documentation for installed packages
+- /usr/man
+  + The systemwide manpages
+- /dev
+  + Device directory
+
+** More important directories in Linux
+*** list 					      :B_ignoreheading:BMCOL:
+    :PROPERTIES: 
+    :BEAMER_env: ignoreheading
+    :BEAMER_col: 0.6
+    :END:
+- /proc
+  + Process directory
+- /sys
+  + Systemwide device directory.
+- /mnt or /media
+  + Mount, directory for mounting external drives
+- /var
+  + Variable (changeable) system files
+- /var/log
+  + Systemwide log files
+*** list 					      :B_ignoreheading:BMCOL:
+    :PROPERTIES: 
+    :BEAMER_env: ignoreheading
+    :BEAMER_col: 0.6
+    :END:
+- /var/spool/mail
+  + User mail spool
+- /lib
+  + Systemwide library files
+- /usr/lib
+  + More systemwide library files
+- /tmp
+  + System temporary files (world writable)
+- /boot
+  + System boot directory
+
+** Pathing
+
+- The location of a file in the file system is known as its pathname
+- For example:
+  - /home/dilbert/admin/budget.doc
+  - /usr/bin/less
+  - A pathname uniquely defines the path from the root directory to a file
+  - Note that applications are also files in the file system and have
+    their own pathnames
+
+** Example Directory Tree
+
+#+ATTR_LaTeX: width=0.99\textwidth
+[[file:img/unix_tree.pdf]]
+
+** File Manipulation with the CLI
+
+- Understanding paths is important when using the CLI
+
+- *Absolute pathname*: a path that describes the location of the file
+  from the root directory, e.g. /home/dilbert/admin/budget.doc
+
+- *Relative pathname*: a path that described the location of the file
+  from the current directory, e.g. admin/budget.doc
+
+- A user is automatically placed in his home directory when logging in
+  or opening a new terminal or shell
+
+- The command \texttt{pwd} prints the current working directory
+
+** Changing Directory
+
+- The cd command is used to change directory – pathing rules apply, for example
+  - cd /home/dilbert/admin
+  - cd admin
+-  Certain symbols have special meanings for directories
+  - ~ refers to the user's home directory
+  - . (dot) refers to the current directory
+  - .. refers to the parent directory
+  - - refers to the previous directory
+- For example:
+
+#+BEGIN_SRC shell -n
+  cd ~/admin
+  cd ../../bin
+  cd -
+#+END_SRC
+
+** Moving in the directory structure
+
+#+ATTR_LaTeX: width=0.99\textwidth
+[[file:img/unix_tree_traversing.pdf]]
+
+** Pathing Command Structure and Options
+
+- Unix commands typically follow the structure:
+#+BEGIN_SRC shell
+   command [options] argument1 argument2 ...
+#+END_SRC
+
+- Options are shown in square brackets and are just that
+  (optional). Options take the following forms:
+
+  - Single dash followed by a single letter (e.g. -d; -h)
+  - Double dash followed by the long name of the option (e.g. --delim; --help)
+
+- Most commands support the -h and --help options
+- Arguments are the unnamed parts of the command at the end of the line
+
+** Listing Files
+
+- Command: \texttt{ls [options] [files]}
+- Common options:
+  + \texttt{-a}: shows all files, including hidden files
+  + \texttt{-l}: uses long listing format
+  + \texttt{-r}: produces output in reverse order
+  + \texttt{-t}: sorts output by modification times
+  + \texttt{-1}: lists one file per line
+- Examples: 
+  + \texttt{ls }(short file listing)
+  + \texttt{ls -al} (long listing, including hidden files)
+  + \texttt{ls -1} (short listing; one file per line)
+  + \texttt{ls -lrt} (long listing; most recently accessed files last)
+
+** Creating & Removing Directories
+# Task: How would you create a directory /tmp/2011/10/24/ in one
+# command?
+# Hint: Read the mkrid man page
+- To create a directory, use \texttt{mkdir <directory>}
+#+BEGIN_SRC shell -n
+  mkdir admin
+  mkdir /home/dilbert/admin
+#+END_SRC
+
+- To remove a directory, use \texttt{rmdir <directory>}. Note that the directory must be empty
+#+BEGIN_SRC shell
+  rmdir admin
+#+END_SRC
+
+- Again, the pathing rules apply. The easiest method is to change
+  into the directory first so that relative pathing can be used
+
+** Copying Files
+
+- Command: \texttt{cp [options] source destination}
+- Common options:
+  - \texttt{-f}: does not prompt before removing
+  - \texttt{-i}: prompts before removing
+  - \texttt{-r}: copies directories recursively
+
+- Multiple files can be specified as the source, but only one
+  destination can be specified (which may be a directory)
+
+- Examples:
+#+BEGIN_SRC shell -n
+  cp budget.doc oldbudget.doc
+  cp jan-budget.doc feb-budget.doc admin/
+#+END_SRC
+
+** Removing Files
+
+- Command: \texttt{rm [options] files}
+- Common options:
+  + \texttt{-f}: does not prompt before removing
+  + \texttt{-i}: prompts before removing
+  + \texttt{-r}: removes directories recursively
+- Examples:
+#+BEGIN_SRC shell -n
+  rm budget.doc
+  rm budget.doc oldbudget.doc
+  rm -r admin/ (to be used with care!)
+#+END_SRC
+
+** Renaming and Moving Files
+
+- Command:  \texttt{mv [options] source destination}
+- Common options:
+  - \texttt{-f}: does not prompt before moving
+  - \texttt{-i}: prompts before moving
+- Multiple files can be specified as the source, but only one
+  destination can be specified
+- This command is also used to move and rename directories
+- Examples:
+#+BEGIN_SRC shell -n
+  mv budget.doc oldbudget.doc
+  mv budget.doc ../admin
+  mv admin/ admin2003/
+#+END_SRC
+
+** Using Wildcards in Filenames
+
+- Wildcards can be used to refer to multiple files
+  - \texttt{*}: represents any string of characters
+  - \texttt{?}: represents a single character
+  - \texttt{[]}: defined sets or ranges
+- Examples:
+
+#+BEGIN_SRC shell -n
+  ls *.doc
+  mv *.doc olddocuments/
+  rm *
+  ls -l A???.txt
+  ls [Aa]*png
+  ls [a-z]*jpg
+  rm -rf *  (!!!)
+#+END_SRC
+
+** Helpful CLI Features
+
+- Tab completion: command and file names are completed as far as
+  possible when the tab key is pressed. Double-tab key press shows
+  available completions
+- History: pressing the up arrow key scrolls backwards through the
+  previous commands
+- Events (\texttt{!}): previous events can be rerun using the !
+  character and the first character(s) of the event. The most recent
+  matching event is chosen. !! runs the most recent command
+- Control-R allows live history searching
+- These features are shell-dependent (bash supports all)
+** Viewing File Contents
+
+- \texttt{cat} utility: outputs the contents of a file to the terminal
+- \texttt{less} utility: similar to cat, but displays one page of output at a
+  time (improvement of more)
+  + Press spacebar to advance to the next page
+  + Press \texttt{B} to jump back to the previous page
+  + Press Enter key to advance line at a time
+  + Press up and down arrow keys to move a line at a time
+  + search by pressing \texttt{/}, type the string and press enter
+    (press n for next)
+- \texttt{clear} utility: clears the screen
+** Text Editors
+
+- Unix offers a variety of text editors: vi (or vim), emacs, nedit,
+  pico, jed, kwrite, etc.
+- vi (and vim – vi-improved) is a command-driven editor that is found
+  on almost all Unix-based systems
+- Emacs is a GNU editor that offers a large amount of additional
+  functionality. Its graphical interface and maturity make it an
+  excellent choice of editor for the novice user.
+
+** File System Security
+
+- Unix file system security is a simple scheme based on users and groups
+- Users belong to one or more groups, set by the system administrator (root)
+- Groups allow file access to sets of users to be easily implemented
+- Each file is owned by one user and allocated to one group
+  - \texttt{chown}: change file owner
+  - \texttt{chgrp}: change group
+- A new file is created with the user as its owner and the user's
+  current group as its group
+
+** Privilege Types
+
+- Files and directories may be granted read, write and execute permissions
+- Each of these privileges are specified separately for:
+  + the owner
+  + the group
+  + other users, who do not fall into the previous categories
+- Tasks in a computer are controlled by assigning users to groups
+  (command \textt{groups})
+- Superuser (root/Manager) can do anything
+** Privilege Semantics
+
+- Privileges have different meanings for files and directories
+- Privileges for files
+  + *read* permission allows the file to be read, copied, printed, etc
+  + *write* permission allows the file to be modified, overwritten and deleted
+  + *execute* permission allows the file to be executed
+- Privileges for directories
+  + *read* permission allows the directory's contents to be listed
+  + *write* permission allows files to be created and deleted in it
+  + *execute* permission allows the user to change directory to it
+
+** Viewing Permissions via CLI
+
+#+BEGIN_SRC shell
+-rw-r--r-- 1 heikki heikki 1772 2007-03-07 13:29 test.pdf
+#+END_SRC
+
+- The \texttt{ls -l} command shows file and directory permissions in
+  the first column
+- If the first character is a dash, then it represents a file. If it
+  is a d, it represents a directory
+- Characters 2-4 indicate the permissions of the owner (r = read, w =
+  write, x = execute)
+- Characters 5-7 indicate the permissions of the group
+- Characters 8-10 indicate the permissions of other users
+- Third column displays the owner
+- Fourth column displays the group
+
+** Modifying Permissions via CLI (I)
+
+- Command: \texttt{chmod [options] mode files}
+- Common options:
+  - \texttt{-R}: applies the changes to directories recursively
+- Mode specifies:
+  - Entities to which the change should apply:
+    + u = user
+    + g = group
+    + o = other
+    + a = all
+  - Whether permission should be granted (+) or revoked (-)
+  - Permission types that should be granted or revoked: r, w and/or x
+
+** Modifying Permissions via CLI (II)
+
+- Examples:
+  - \texttt{chmod g+rw budget.doc} (grants read and write access to group)
+  - \texttt{chmod o-rx public\_html} (revokes read and execute permissions to others)
+  - \texttt{chmod ug+x MakeBudget} (grants execute permission to user and group)
+  - \texttt{chmod a+rwx public\_html} (not a good idea!)
+
+** Modifying Permissions via CLI (III)
+
+- Alternative, numeric, notation is to use three groups of octal digits
+ from 0-7 to set all the permissions explicitly:
+
+
+| dec | 0   | 1   | 2   | 3   | 4   | 5   | 6   | 7   |
+| bin | 000 | 001 | 010 | 011 | 100 | 101 | 110 | 111 |
+|-----+-----+-----+-----+-----+-----+-----+-----+-----|
+| r   | -   | -   | -   | -   | r   | r   | r   | r   |
+| w   | -   | -   | w   | w   | -   | -   | w   | w   |
+| x   | -   | x   | -   | x   | -   | w   | -   | x   |
+
+- Examples:
+
+  + \texttt{chmod 700 myscript.sh} (user only executable)
+  + \texttt{chmod 664 schedule.txt} (read by all, write by user and group)
+
+** How to run a program?
+
+1. Explicit path
+  - Give absolute path
+  - Execute bit must be set
+2. use $PATH
+  - Shell variable holding a list of executable directories
+#+begin_src shell -n
+  echo $PATH
+  which echo
+#+end_src
+
+- \texttt{echo} is in \texttt{/bin/echo}
+- Can you find /bin in the path list?
+- \texttt{which} shows the path of an executable
+
+
+** File System Command Summary
+
+-  \texttt{pwd}	print working directory
+-  \texttt{cd}	change directory
+-  \texttt{ls}	list files and directories
+-  \texttt{mkdir/rmdir}	make / remove directories
+-  \texttt{cp}	copy files and directories
+-  \texttt{rm}	remove files
+-  \texttt{mv}	move / rename files and directories
+-  \texttt{cat}	print files to the terminal
+-  \texttt{less/more}	filter output for convenient viewing
+-  \texttt{clear}	clear the screen
+-  \texttt{chown}	change file and directory owner and group
+-  \texttt{chmod}	change file and directory access permissions
+
+* History
+
+** History and Copyright
+
+- Heikki Lehv\auml{}slaiho, heikki.lehvaslaiho@kaust.edu.sa \\
+  CBRC, KAUST \\
+  September 2011
+
+- Heikki Lehv\auml{}slaiho, heikki@sanbi.ac.za \\
+  SANBI, University of Western Cape \\
+  March 2007
+
+- John M. Ostrowick, jon@cs.wits.ac.za \\
+  School of Computer Science, 
+  University of the Witwatersrand \\
+  June 2005
+
+This work is licensed under the Creative Commons
+Attribution-ShareAlike 3.0 Unported.  To view a copy of this license,
+visit http://creativecommons.org/licenses/by-sa/3.0/
+

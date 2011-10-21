@@ -1,0 +1,196 @@
+#+TITLE: UNIX Fundamentals
+#+AUTHOR: Heikki Lehv\auml{}slaiho
+#+EMAIL:     heikki.lehvaslaiho@kaust.edu.sa
+#+DATE:      2011-10-21 \\ CC BY-SA 3.0
+#+DESCRIPTION:
+#+KEYWORDS: UNIX, LINUX , CLI, history, summary, command line  
+#+LANGUAGE:  en
+#+OPTIONS:   H:3 num:t toc:t \n:nil @:t ::t |:t ^:t -:t f:t *:t <:t
+#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil tags:not-in-toc
+#+INFOJS_OPT: view:nil toc:t ltoc:t mouse:underline buttons:0 path:http://orgmode.org/org-info.js
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+LINK_UP:   
+#+LINK_HOME: 
+#+XSLT:
+
+#+startup: beamer
+#+LaTeX_CLASS: beamer
+##+LaTeX_CLASS_OPTIONS: [bigger]
+
+#+BEAMER_FRAME_LEVEL: 2
+
+#+COLUMNS: %40ITEM %10BEAMER_env(Env) %9BEAMER_envargs(Env Args) %4BEAMER_col(Col) %10BEAMER_extra(Extra)
+
+# TOC slide before every section
+#+latex_header: \AtBeginSection[]{\begin{frame}<beamer>\frametitle{Topic}\tableofcontents[currentsection]\end{frame}}
+
+## see http://deic.uab.es/~iblanes/beamer_gallery/
+
+##+latex_header: \mode<beamer>{\usetheme{Madrid}}
+#+latex_header: \mode<beamer>{\usetheme{Antibes}}
+##+latex_header: \mode<beamer>{\usecolortheme{wolverine}}
+#+latex_header: \mode<beamer>{\usecolortheme{beaver}}
+#+latex_header: \mode<beamer>{\usefonttheme{structurebold}}
+
+#+latex_header: \logo{\includegraphics[width=1cm,height=1cm,keepaspectratio]{img/logo-kaust}}
+
+## define colours for code listings
+\definecolor{keywords}{RGB}{255,0,90}
+\definecolor{comments}{RGB}{60,179,113}
+\definecolor{fore}{RGB}{249,242,215}
+\definecolor{back}{RGB}{51,51,51}
+\lstset{
+  basicstyle=\color{fore},
+  keywordstyle=\color{keywords},
+  commentstyle=\color{comments},
+  backgroundcolor=\color{back}
+}
+* Shells
+** What is a Shell
+
+- A shell is a command interpreter that executes commands entered
+  through the command-line interface
+
+- Several shells are available, most popular are bash (Bourne again
+  shell) and tcsh (successor of the original C-shell)
+
+- The default shell is set by the system administrator, but can be
+  changed with the \texttt{chsh} command
+
+- *Important*: The default behaviour of UNIX shells is to do everything
+  asked without confirmation. Users have to change that to safeguard
+  their work!
+
+** Shell capabilities
+
+- Shells mostly offer the same functionality but may differ slightly
+  from each other
+
+- Different initialisation files (bash runs .bashrc and .bash\_profile;
+  tcsh runs .cshrc)
+
+- Tab completion
+
+- possible command and filename completion (tab in bash vs Ctrl-D in tcsh)
+
+- tcsh should not be used for scripting; can not redirect standard error
+
+- Caveat: Many linux distributions have a bash-compatible, more light-weight
+  default shell 
+
+** Environment variables
+
+- They define the user environment and are read from initialisation
+  files each time a user logs in
+- To view the value of a variable, type \texttt{echo \$VARNAME}
+- To see all, type \texttt{printenv}
+- Some common environment variables:
+  + EDITOR: sets the editor to be used by text viewing programs
+  + PATH: specifies directories to be searched for executables
+  + SHELL: the default login shell
+  + PRINTER: the default printer
+
+-  To reload any initialisation file without having to logout and in
+   again, type source <filename>, e.g.
+
+#+BEGIN_SRC shell
+    source ~/.bash_profile
+#+END_SRC
+
+** Some shell specifics
+
+-  Using bash:
+  -  Global initialisation file is \/etc\/profile
+  -  User-specific initialisation files are ~/.bash\_profile and ~/.bashrc
+     + sometimes \tilde/.bash\_aliases (Ubuntu)
+  -  Command \texttt{set} displays all currently set variables
+  -  Syntax to set a variable: export VARNAME="value"
+-  Using tcsh:
+  -  Global initialisation file is /etc/csh.cshrc
+  -  User-specific initialisation file is ~/.cshrc
+  -  Command \texttt{setenv} displays all currently set variables
+  -  Syntax to set a variable: setenv VARNAME="value"
+
+** The PATH variable
+
+- Specifies the directories that the shell searches to find a command
+  or executable
+- Any user-directories added to a path should come after the system
+  directories
+- Directories are searched in the order they appear
+
+#+begin_src sh -n
+  echo $PATH
+  export PATH=$HOME/bin:$PATH
+  export PATH=.:$PATH
+#+end_src
+
+** Aliases
+
+- Aliases provide command-substitution functionality. They can be used
+  to create new commands or modify the default behaviour of existing
+  commands
+- The \texttt{alias} command is used to view and create aliases
+  + called with no arguments, it prints out the current aliases
+  + alias name=value creates a new alias
+  + custom user aliases are stored in .bashrc or .cshrc
+-  Examples:
+  + alias rm='rm -i' (change the behaviour of rm to confirm deletes)
+  + alias ll='ls -lLF | less' (create a new command for friendly file listings)
+
+** Bash functions
+
+-  An other way to provide command-substitution functionality is bash functions
+-  The \testtt{set} command lists  bash functions
+- more versatile than aliases; you can combine any commands
+- name() = { commands } creates a new function in .bashrc
+-  Examples:
+#+BEGIN_SRC shell
+  psg()   { ps -AF | grep "$@" | grep -v grep ; }
+  killn() { kill `psg "$@" | cut -c9-14` ; }
+#+END_SRC
+
+** More text processing tools
+Not covered as Perl does the same thing:
+
+- *Command*: \texttt{sed [options] pattern file}
+  + Stream editor
+- Examples:
+  + \texttt{sed 's/U/T/ig' seq} \\ (replace all u's and U's in a file)
+  + \texttt{sed G file} \\ (double space the file)
+
+- *Command*: \texttt{awk [options] pattern file}
+  + Pattern scanning and processing language
+- Examples:
+  + \texttt{echo "1   2   3   4" | awk '{print \$2 " and " (\$3+\$4)}'}
+    \\ (splits input to words and processes them)
+
+** Further reading
+
+- Introduction to Linux  \\ http://tldp.org/LDP/intro-linux/html/
+- Introduction to Command Line Linux \\ http://www.physics.ubc.ca/mbelab/computer/linux-intro/html/
+- Beginner's Bash \\ http://linux.org.mt/article/terminal 
+- Regular Expressions \\ http://www.zytrax.com/tech/web/regex.htm
+
+* History
+
+** History and Copyright
+
+- Heikki Lehv\auml{}slaiho, heikki.lehvaslaiho@kaust.edu.sa \\
+  CBRC, KAUST \\
+  September 2011
+
+- Heikki Lehv\auml{}slaiho, heikki@sanbi.ac.za \\
+  SANBI, University of Western Cape \\
+  March 2007
+
+- John M. Ostrowick, jon@cs.wits.ac.za \\
+  School of Computer Science, 
+  University of the Witwatersrand \\
+  June 2005
+
+This work is licensed under the Creative Commons
+Attribution-ShareAlike 3.0 Unported.  To view a copy of this license,
+visit http://creativecommons.org/licenses/by-sa/3.0/
+
