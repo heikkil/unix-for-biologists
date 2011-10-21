@@ -1,7 +1,7 @@
 #+TITLE: Emacs basics
 #+AUTHOR: Heikki Lehv\auml{}slaiho
 #+EMAIL:     heikki.lehvaslaiho@kaust.edu.sa
-#+DATE:      2011-10-04 \\ CC BY-SA 3.0
+#+DATE:      2011-10-21 \\ CC BY-SA 3.0
 #+DESCRIPTION:
 #+KEYWORDS: UNIX, LINUX , CLI, history, summary, command line  
 #+LANGUAGE:  en
@@ -51,6 +51,7 @@
 
 - Aquamacs Emacs is a emacs with complete Mac user interface, by David
   Reitter.
+  + http://aquamacs.org/
 
 - Aquamacs's interface is similar to BBEdit or TextMate or in fact any
   modern Mac software. It uses the same keyboard shortcuts Mac users
@@ -131,7 +132,8 @@
 - Keyboard commands are given with upper case modifier
   keys and lower case characters
   + C - the control key
-  + M - meta key, which usually is mapped to alt key
+  + M - meta key, which usually is mapped to alt key, (esc)
+  + S - shift
 
 - Modifier keys are kept down when character keys are pressed
 - Meta key can be replaced by the ESC key. 
@@ -172,7 +174,7 @@
   C-Return  cua-set-rectangle-mark
 #+END_SRC
 
-  - type characters or use CUA edit commands to see the effect
+  - Type characters or use CUA edit commands to see the effect
   - Finish with C-c 
 
 * Some basic text editing commands
@@ -208,7 +210,7 @@
 	C-x u		Undo
 #+END_SRC
 
-  - pressing ESC-ESC-ESC can get you of anything
+  - Pressing ESC-ESC-ESC can get you of anything
 
 * Finding and replacing
 
@@ -282,15 +284,15 @@ version control system.
 
 
   - Menu bar, tool-bar, mode line, echo area
-  - file
+  - File
     + Emacs opens stored files into a buffer
-  - buffer
+  - Buffer
     + Everything is displayd in its own buffer
     + A buffer can need not be stored in a file
     + Any buffer can be saved into a file
-  - frame
+  - Frame
     + is what emacs calls GUI windows
-    + you can open more than one frame
+    + You can open more than one frame
 
 * Working with many windows
 
@@ -309,16 +311,16 @@ version control system.
   + org mode http://orgmode.org/
     - note taking, outlining, todo lists, tables, project planning, authoring (via Latex)
   + latex mode
-  + computer language modes
+  + Computer language modes
   + ESS Emacs Speaks Statistics (ESS)
-
+  + TRAMP (Transparent Remote Access, Multiple Protocols)
 ** Minor modes
 
   + CUA mode: C-x, C-c, C-v, C-z work as expected
-  + table mode to create tab-delimited files: part of org mode
-  + line numbers:  M-x linum-mode
-  + spellchecker: M-x fly-spell-mode
-  + code syntax checking: M-x flymake-mode
+  + Table mode to create tab-delimited files: part of org mode
+  + Line numbers:  M-x linum-mode
+  + Spellchecker: M-x fly-spell-mode
+  + Code syntax checking: M-x flymake-mode
 
 * Perl mode
 
