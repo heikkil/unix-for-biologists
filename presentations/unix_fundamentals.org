@@ -46,6 +46,18 @@
   commentstyle=\color{comments},
   backgroundcolor=\color{back}
 }
+* Aims of the course
+** Aims
+Students are to be comfortable in using the command line to:
+  + Issue UNIX commands to 
+    - Move in the file hierarchy
+    - Manage files
+    - Interrogate text files
+  + Edit text files in a text editor
+  + Connect to a remote computer
+  + Configure bash shell  environment
+  + Put together simple bash script files
+
 * Philosophy of command line
 ** CLI versus GUI
 
