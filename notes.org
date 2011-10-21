@@ -1,0 +1,13 @@
+- name tags
+- no crediting, yet
+  + practical course
+- Certificate
+
+- Ample time to practice
+- last task is to look into student problems
+
+- material on a remote computer
+- git left to the perl course
+
+- Feedback form to be filled in
+- Test (pass/fail)
