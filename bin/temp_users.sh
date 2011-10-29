@@ -5,7 +5,9 @@
 # the passwd is always 'y' and expires immediately
 #
 # The script can remove users, too
-
+#
+# Creation adds a symbolic link to the unix_course dir
+# and creates the ~/.ssh directory
 
 BASE='student'
 
@@ -31,9 +33,16 @@ function create() {
     for (( i=1 ; i<($USERCOUNT+1) ; i++ )); do
 	LOGIN="$BASE$i"
 	echo $LOGIN
+	# create user; passwd is 'y'
 	yes | adduser -home /home/$LOGIN $LOGIN
-	passwd -e $LOGIN 
+	# passwd expires after first login
+	passwd -e $LOGIN
+	# create symbolic link to course material
 	ln -s /home/heikki/unix_course /home/$LOGIN
+	# create ~/.ssh directoryv
+	mkdir /home/$LOGIN/.ssh
+	chmod 700 /home/$LOGIN/.ssh
+	chown $LOGIN.$LOGIN /home/$LOGIN/.ssh
     done
 
 }
