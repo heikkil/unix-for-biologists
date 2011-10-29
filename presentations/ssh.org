@@ -16,7 +16,7 @@
 
 #+startup: beamer
 #+LaTeX_CLASS: beamer
-##+LaTeX_CLASS_OPTIONS: [bigger]
+#+LaTeX_CLASS_OPTIONS: [smaller]
 
 ##+BEAMER_FRAME_LEVEL: 2
 
@@ -50,12 +50,9 @@
 * The necessity of security
 
 - Everything is interconnected in the web
-
 - Security is provided by *secure practices*
-
 - Connections between computers have to be secured
-
-- Telnet should not be allowed, everything through ssh
+- Telnet is not allowed, everything through ssh
 
 * SSH
 
@@ -110,73 +107,90 @@
   + \texttt{scp [[user1]@host1:]file1 [[user2]@host2:]file2}
   + Arguments provide the source and destination respectively
 - Examples (remote computer 'remote'):
-#+BEGIN_SRC shell
-  ssh -l root rem
+#+begin_src sh
+  ssh student1@baloo-dev.kaust.edu.sa
+  ssh -l root remote
   scp ../docs/budget.doc remote:documents/
   scp remote:backup.gz .
   ssh remote 'date ; w'
-#+END_SRC
+#+end_src
 
 
-* Setting up passwordless connection (1/2)
+* Passwordless connection (1/3): keys
 
-- create DSA key pair:
+How to create secure connection from local *to* remote computer
 
-#+BEGIN_SRC shell
+- create a DSA key pair in your *local* computer:
+
+#+begin_src sh
   ssh-keygen -t dsa
-#+END_SRC
+#+end_src
 
-  + Leave the passphrase empty
-  + Files id\_dsa and id\_dsa.pub are put into the ~.ssh dir under
-    home directory.
+- Leave the passphrase empty
+- Files id\_dsa and id\_dsa.pub are put into the ~/.ssh dir under home
+  directory.
+- Check the files:
 
-- Copy the public key to remote machine:
+#+begin_src sh
+  ls -al ~/.ssh
+#+end_src
 
-#+BEGIN_SRC shell
-  scp ~/.ssh/id_dsa.pub remote:.ssh/authorized_keys
-#+END_SRC
+* Passwordless connection (2/3): share public key
 
-* Setting up passwordless connection (2/2)
+- Copy the public key *to* the remote machine
+- The remote ~/.ssh directory has already created for you
 
-- Set the permissions
+#+begin_src sh
+
+  scp ~/.ssh/id_dsa.pub \ 
+    remote:.ssh/authorized_keys
+  # or
+  scp ~/.ssh/id_dsa.pub \
+    student1@cbrc.kaust.edu.sa:.ssh/authorized_keys
+#+end_src
+
+- Note that this overwrites any previous keys
+- To avoid it, copy in two steps
+#+begin_src sh
+  scp ~/.ssh/id_dsa.pub remote:
+  ssh remote \
+    'cat id_dsa.pub >> .ssh/authorized_keys'
+#+end_src
+
+* Passwordless connection (3/3): permissions
+
+- Set the permissions in the remote computer
   + Everything in .ssh must be visible only to you
 
-#+BEGIN_SRC shell
+#+begin_src sh
+  # connect from local to remote
+  ssh student1@cbrc.kaust.edu.sa
+  # in the remote:
   chmod 700 ~/.ssh/
   chmod 600 ~/.ssh/*
-  # or in your work computer:
-  ssh remote 'chmod 700 ~/.ssh/'
-  ssh remote 'chmod 600 ~/.ssh/*'
-#+END_SRC
-
-- Now try connecting!
-
-#+BEGIN_SRC shell
-  ssh remote
-#+END_SRC
+#+end_src
 
 
-* SSH configuration
+* SSH shortcuts
 
-#+begin_src shell
+#+begin_src sh
 touch ~/.ssh/config
 chmod 600 ~/.ssh/config
 #+end_src
 
-- Example contents:
+- Example contents, change the user:
+#10.75.106.110
 
-#+begin_src shell
-Host noor
-     Hostname noor-login.kaust.edu.sa
-     GSSAPIAuthentication no
-     User lehvasho
-
+#+begin_src sh
 Host remote
-     Hostname 10.75.106.110
+     Hostname baloo-dev.cbrc.kaust.edu.sa
      User student1
+#+end_src
 
-Host *
-     User heikki
+- Now try connecting from local!
+
+#+begin_src sh
+  ssh remote
 #+end_src
 
 
@@ -190,28 +204,32 @@ Host *
   + Can remove files on the destination host if those files were
      deleted on the source host to keep both hosts *in sync*.
 
-#+BEGIN_SRC shell
-  rsync -avz --del ~ remote:backup
-#+END_SRC
+#+begin_src sh -n
+  rsync -avz ~ remote:backup
+  cd ; rsync -avz  remote:unix_course .
+#+end_src
 
-- Copies in archive mode
+- Copies in archive mode, verbose output and using compression
 - See the man page for more examples
 
 * Practical
 
-1. You have been created a temporary account (student<no>) in a linux
-   computer \texttt{baloo-dev.cbrc.kaust.edu.sa} . Your password
-   expires at first login. Go and change it.
+- You have been created a temporary account (student<no>) in a linux
+  computer \texttt{baloo-dev.cbrc.kaust.edu.sa} . Your password
+  expires at first login. Go and change it.
 
-2. Establish a passwordless connection to your account.
+- Establish a passwordless connection to your account.
 
-3. Add lines to your ssh config to call this computer 'remote'
+- Add lines to your ssh config to call this computer 'remote'
 
-4. Copy the current course contents into your work computer. The
-   following command should work:
+- Copy the current course contents into your work computer. The
+  following commands should work:
 
-#+begin_src shell
-  scp -r remote:unix_course .
+#+begin_src sh
+  cd ; rsync -avz \
+  student1@baloo-dev.cbrc.kaust.edu.sa:unix_course .
+  # or
+  cd ; rsync -avz remote:unix_course .
 #+end_src
 
 Note the colon and full stop characters!

@@ -92,7 +92,7 @@ Students are to be comfortable in using the command line to:
 ** Progression in CLI usage
 
 1. One at the time (learn the commands)
-2. Chain them together
+2. Chain them together (IO redirection)
 3. Store them for later use (shell aliases and functions)
 4. Create your own (any programming language, bash/perl)
 
@@ -100,7 +100,7 @@ The aim is for efficiency, speed and convenience
 
 ** Further reading
 
-In the Beginning was the Command Line: \\ http://www.cryptonomicon.com/beginning.html
+In the Beginning was the Command Line: \\   http://www.cryptonomicon.com/beginning.html
 
 * UNIX operating system
 ** Operating system
@@ -443,9 +443,10 @@ Macs (BSD Unix) follow slightly different conventions!
   (optional). Options take the following forms:
 
   - Single dash followed by a single letter (e.g. -d; -h)
-  - Double dash followed by the long name of the option (e.g. --delim; --help)
+  - Double dash followed by the long name of the option
+    (e.g. -\shy-delim; -\shy-help)
 
-- Most commands support the -h and --help options
+- Most commands support the -h and  -\shy-help options
 - Arguments are the unnamed parts of the command at the end of the line
 
 ** Listing Files
@@ -839,14 +840,16 @@ Output (modified to fit):
 
 - IO redirection allows both input and output to be replaced by files
 - Output redirection: 
-  - The > symbol redirects output to a file rather than the terminal
+  + The \gt symbol redirects output to a file rather than the terminal
+  + Notation \gt\gt appends the output to the end of the file
 - Input redirection:
-  -  The < symbol redirects input from a file rather than the terminal
+  - The \lt symbol redirects input from a file rather than the terminal
 - Examples:
 
 #+BEGIN_SRC shell -n
   ls > temp
   wc -l < temp
+  myprog >> myprog.log
 #+END_SRC
 
 ** IO Redirection: STDERR
@@ -919,6 +922,7 @@ Output (modified to fit):
 - Examples:
   + \texttt{head filename} \\ (display 10 first lines by default)
   + \texttt{head -210 filename} | tail \\ (look at line numbers 200-210)
+  + \texttt{tail -f continuous.log} \\ (stream end of the file)
 
 ** Differences Between Files
 

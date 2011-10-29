@@ -1,0 +1,17 @@
+#!/bin/bash
+
+echo
+echo Hello, $USER
+TIME=$(date +%H)
+if [ $TIME -lt 12 ]; then
+    echo "Good morning!"
+elif [ $TIME -lt 18 ]; then
+    echo "Good afternoon!"
+else
+    echo "Time to go!"
+fi
+
+echo ----- Current status ---------------------------------
+w
+date
+echo ------------------------------------------------------
