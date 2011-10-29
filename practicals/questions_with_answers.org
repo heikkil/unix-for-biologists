@@ -664,7 +664,7 @@ countsort () {
 }
 #+end_src
 
-* Bash programming 
+* Session: Bash programming
 ** 1.
 - 1. Create a bash script greet.sh that greets you with your login
   name. Include useful information about the system

@@ -1,0 +1,54 @@
+Answers to Text Utilites
+
+1.
+
+  cat filename | grep pattern
+
+2.
+
+One command:
+
+  cut -f 1,3 filename
+
+or broken into smaller steps:
+
+
+  cut -f1 filename > col1
+  cut -f 3 filename > col3
+  paste col1 col2
+
+
+3.
+
+  cat mimivirus.sw | grep "^DT"| grep -c Swiss
+  cat mimivirus.sw | grep "^DT"| grep -c Tre
+  # in one command:
+  cat mimivirus.sw | grep "^DT"| \
+    grep integrated | cut -d/ -f2| sort| uniq -c
+  #  933 Swiss-Prot.
+  #  982 TrEMBL.
+
+4.
+
+  cat mimivirus.sw | grep ^AC | \
+    cut -d\; -f1| cut -d\  -f4 > mimi.ac
+
+
+5.
+
+  mimivirus.sw | grep 'GO;'| sort -u | wc -l
+  # 308
+
+6.
+
+  cat mimivirus.fa | grep -c '>'
+  # 1915
+  cat mimivirus.fa | grep -c 'Uncharacterized'
+  # 607
+
+7.
+
+  cat contamination.vulgar | \
+  cut -d\  -f6 | \
+  sort -u | \
+  wc -l

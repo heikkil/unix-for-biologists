@@ -7,7 +7,15 @@
 - last task is to look into student problems
 
 - material on a remote computer
-- git left to the perl course
+- git left to the perl course or later
 
 - Feedback form to be filled in
 - Test (pass/fail)
+
+* fixes
+
+- clearer instructions to ssh keyless
+- typos in the first talk
+- catenate command line operator : >>
+
+- tail -f 
