@@ -51,7 +51,7 @@
 * Session: Unix operating system
 
 ** 1.
-- 1. List the of the most important features of a Unix system.
+List the of the most important features of a Unix system.
 
 \pause
  
@@ -66,7 +66,7 @@
   memory protection feature.
 
 ** 2.
-- 2. What does a "kernel" do?
+What does a "kernel" do?
 
 \pause
 
@@ -78,7 +78,7 @@
   computer hardware. The kernel is the most important part of an OS.
 
 ** 3.
-- 3. What is the main difference between a command line and graphical
+What is the main difference between a command line and graphical
   interface?
 
 \pause
@@ -88,8 +88,8 @@
   manipulate graphical objects.
 
 
-** 4
-- 4. Why do you have to "log in"? Give examples of login names, two
+** 4.
+Why do you have to "log in"? Give examples of login names, two
   examples of good passwords, and two examples of bad passwords.
 
 \pause
@@ -109,7 +109,7 @@
   + j0ebob
 
 ** 5.
-- 5. Give the path to your home directory. 
+Give the path to your home directory. 
 
 \pause
 
@@ -122,8 +122,7 @@
 * Session: Files in Unix
 
 ** 1.
-   
-- 1. Give an example of a file which does not need a file name
+Give an example of a file which does not need a file name
   extension but which can nevertheless be viewed properly on Linux.
 
 \pause
@@ -131,7 +130,7 @@
 - Plain text can be viewed properly without filename extension.
 
 ** 2.
-- 2. What is the difference between relative and an absolute path?
+What is the difference between relative and an absolute path?
   Give an example of the relative path to the guides directory you
   copied in the ssh exercise, and then give the absolute path to the
   that directory.
@@ -143,8 +142,8 @@
   \texttt{/Users/username/guides}. The relative path, assuming we are
   in our home directory, is \texttt{./guides}.
 
-** 3
-- 3. Use the command which shows your current working directory to
+** 3.
+Use the command which shows your current working directory to
   find out the path of you home directory. 
 
 \pause
@@ -159,8 +158,8 @@
   after logging in if you want the path to your home directory, since
   that is where you are placed after logging in.
 
-** 4
-- 4. See what each of these do combined with \texttt{cd} command: ~
+** 4.
+See what each of these do combined with \texttt{cd} command: ~
   (tilde), - (dash), .. (double dot). What do they do?
 
 \pause
@@ -169,8 +168,8 @@
   + Dash takes you to the previous directory you were in \texttt{cd -}
   + Double-dot takes you up one level in the hierarchy \texttt{cd ..}
 
-** 5
-- 5. Work out how to get recursive directory listing which shows the
+** 5.
+Work out how to get recursive directory listing which shows the
   forward-slashes at the end of directory names. Write down the
   command line.
 
@@ -181,7 +180,7 @@
 #+end_src
 
 ** 6.
-- 6. What is the difference between \texttt{rm} and \texttt{rmdir}?
+What is the difference between \texttt{rm} and \texttt{rmdir}?
   Which is more effective in what circumstance (which always works)?
 
 \pause
@@ -192,7 +191,7 @@
   everything. This makes \texttt{rm -r} extremely dangerous.
 
 ** 7.
-- 7. What will the following series of commands do? 
+What will the following series of commands do? 
 #+begin_src sh -n
   cp /etc/passwd ~
   mkdir ~/stuff
@@ -210,7 +209,7 @@
   from the folder called “stuff” into the home directory (5).
 
 ** 8.
-- 8. Find out where your previous commands shown by \texttt{history}
+Find out where your previous commands shown by \texttt{history}
   are stored.
 
 \pause
@@ -221,7 +220,7 @@
 #+end_src
 
 ** 9.
-- 9. The ISO 8601 standard defines the format of date as
+The ISO 8601 standard defines the format of date as
   YYYY-MM-DD. What is the command line to get the \texttt{date}
   program to output in the ISO format?
 
@@ -234,7 +233,7 @@
 
 
 ** 10.
-- 10. How do you force \texttt{mv} to move instead of rename? When does
+How do you force \texttt{mv} to move instead of rename? When does
   \texttt{mv} move and when does it rename?
 
 \pause
@@ -245,7 +244,7 @@
   renamed.
 
 ** 11.
-- 11. What is the difference between * and ? on the command line?
+What is the difference between * and ? on the command line?
   What do they match?
 
 \pause
@@ -254,7 +253,7 @@
  + ? matches any one character (letter or number).
 
 ** 12.
-- 12. What are the three main privilege types? What will
+What are the three main privilege types? What will
 
 #+begin_src sh
   chmod 755 ~
@@ -279,7 +278,7 @@
 * Session: Job Control and IO Redirection
 
 ** 1.
-- 1. What is the difference between the & operator and the command
+What is the difference between the & operator and the command
   bg? Once you have used one of these, how do you reverse its effect?
   How do you pause a job? How do you cancel a job? How do you see what
   jobs you have running?
@@ -292,7 +291,7 @@
   are running in (under that terminal shell).
 
 ** 2.
-- 2. Type 
+Type 
 
 #+begin_src sh
   ls -aRF /
@@ -308,8 +307,8 @@
 - The solution to this exercise relies on your understanding the
   answer to (1.) above.
 
-** 3
-- 3. How can you use the \texttt{cat} command and IO redirection to copy a file? 
+** 3.
+How can you use the \texttt{cat} command and IO redirection to copy a file? 
 
 \pause
  
@@ -318,8 +317,7 @@
 #+end_src
 
 ** 4.
-
-- 4. \texttt{cat} utility exercise. Create two small text
+cat utility exercise. Create two small text
   files, catenate them together  into a new file while numbering all
   non-blank lines.
 
@@ -334,7 +332,7 @@
 * Session: Text Utilities
 
 ** 1.
-- 1. How can you use the cat and grep commands, together with pipes
+How can you use the cat and grep commands, together with pipes
   to search for pattern in a file?
 
 \pause 
@@ -345,7 +343,7 @@
 
 
 ** 2.
-- 2. How can you use cut, paste and IO redirection to create a new
+How can you use cut, paste and IO redirection to create a new
   file with only the first and second columns?
 
 \pause
@@ -366,14 +364,14 @@ paste col1 col2
 
 
 
-** 3
-- 3. File 'data/mimivirus.sw' contains all UniProt entries from these
+** 3.
+File 'data/mimivirus.sw' contains all UniProt entries from these
   giant viruses. How many of these are from TrEMBL and how many from
   Swiss-Prot?
 
-  + Swiss-Prot format: http://web.expasy.org/docs/#DT_line
+  - Swiss-Prot format: http://web.expasy.org/docs/#DT_line
 
-  + Hint: Use caret to anchor the grep search string to the beginning
+  - Hint: Use caret to anchor the grep search string to the beginning
     of the line, e.g. "\land ID"
 
 \pause
@@ -393,7 +391,7 @@ paste col1 col2
 
 
 ** 4.
-- 4. Extract all primary accession numbers from 'data/mimivirus.sw'
+Extract all primary accession numbers from 'data/mimivirus.sw'
   into a file. (http://web.expasy.org/docs/userman.html#AC_line)
   
 \pause
@@ -404,7 +402,7 @@ paste col1 col2
 #+end_src
 
 ** 5. 
-- 5. How many different GO terms have been assigned to mimivirus proteins
+How many different GO terms have been assigned to mimivirus proteins
   in file 'data/mimivirus.sw'?
 
 \pause
@@ -417,9 +415,9 @@ paste col1 col2
 
 
 ** 6.
-- 6. How many sequences are there in the file 'data/mimivirus.fa'?
+How many sequences are there in the file 'data/mimivirus.fa'?
   How many are 'Uncharacterized'?
-  + Fasta format description: http://en.wikipedia.org/wiki/FASTA_format
+  - Fasta format description: http://en.wikipedia.org/wiki/FASTA_format
 
 \pause 
 
@@ -431,7 +429,7 @@ paste col1 col2
 #+end_src
 
 ** 7.
-- 7. File 'data/contamination.vulgar' shows exonorate homology search in
+File 'data/contamination.vulgar' shows exonorate homology search in
   vulgar format (see vulgar.readme). Use command line tools to extract
   target (subject) ids and count them.
 
@@ -448,7 +446,7 @@ paste col1 col2
 * Session: Compression and Archiving
 
 ** 1.
-- 1. You have a directory full of files. What would be the best way to
+You have a directory full of files. What would be the best way to
   get the files with a .dat extension from one machine to another over
   a slow network?
  
@@ -472,7 +470,7 @@ paste col1 col2
 
 
 ** 2.
-- 2. You have a tarball that was created with the command 
+You have a tarball that was created with the command 
 
 #+begin_src sh
   tar -zcvf  hooha.tar.gz *
@@ -487,7 +485,7 @@ paste col1 col2
 #+end_src
 
 ** 3.
-- 3. Compress large files in your data directory using program
+Compress large files in your data directory using program
   \texttt{gzip}. How can you see the compression ratio?
   How can you continue 'grep'ing compressed files?
 
@@ -504,7 +502,7 @@ paste col1 col2
 * Session: Processes
 
 ** 1. 
-- 1. Your machine is running very slowly because a programs you were
+Your machine is running very slowly because a programs you were
   running is misbehaving. How can you stop this program?
  
 \pause
@@ -528,15 +526,15 @@ paste col1 col2
   kill -9 <id>
 #+end_src
 
-** 2
-- 2. You wish to backup your home directory by running
+** 2.
+You wish to backup your home directory by running
 
 #+begin_src sh
   tar -zcvf /home/me/backup.tar.gz home/me
 #+end_src
 
-every Tuesday at l2:00 PM. What would you need to add to the cron
-scheduling utility?
+  every Tuesday at l2:00 PM. What would you need to add to the cron
+  scheduling utility?
 
 \pause
 
@@ -545,7 +543,7 @@ scheduling utility?
 #+end_src
 
 ** 3.
-- 3. You would want to turn off your computer after midnight using the
+You would want to turn off your computer after midnight using the
   poweroff command. How can you do this?
 
 \pause 
@@ -558,7 +556,7 @@ scheduling utility?
 #+end_src
 
 ** 4.
-- 4. Run the following commands in the remote server and observe what happens.
+Run the following commands in the remote server and observe what happens.
 
 #+begin_src sh -n
   loop date 2  > time.log &
@@ -566,11 +564,11 @@ scheduling utility?
   Ctrl-C
 #+end_src
 
-Then run just the first line and exit from the remote computer. After
-a minute, log in again and see what has happened.
+  Then run just the first line and exit from the remote computer.
+  After a minute, log in again and see what has happened.
 
-Next, read about program \texttt{nohup} and try again while prepending
-it to the line 1. 
+  Next, read about program \texttt{nohup} and try again while
+  prepending it to the line 1.
 
 \pause 
 
@@ -581,10 +579,10 @@ it to the line 1.
   remote computer.
 
 ** 5.
-Most unix computers have either curl or wget utilify. Use one of them
-to copy ftp://rcserver/pub/bio/databases/OMIM/omim.txt.Z from the
-KAUST FTP site. Use the file utility to find the type of the file and
-uncompress it. Count the number of entries in the file.
+Most unix computers have either curl or wget utilify. Use one of
+  them to copy ftp://rcserver/pub/bio/databases/OMIM/omim.txt.Z from
+  the KAUST FTP site. Use the file utility to find the type of the
+  file and uncompress it. Count the number of entries in the file.
 
 \pause
 
@@ -599,7 +597,7 @@ cat omim.txt | grep -c '^\*RECORD\*$'
 
 * Session: Shells
 ** 1.
-- 1. You have a program in \texttt{/home/me/vital/statistics/} that
+You have a program in \texttt{/home/me/vital/statistics/} that
   you use regularly. How can you make it so that this program be run
   easily no matter which directory you are currently in?
  
@@ -619,8 +617,8 @@ In most system you can use the predefined environmental variable $HOME to add:
 	export PATH=$PATH:$HOME/vital/statistics
 #+end_src
 
-** 2
-- 2. You often use the \texttt{ls} command to list the files in a
+** 2.
+You often use the \texttt{ls} command to list the files in a
   directory, but you are lazy and would prefer to use same amount of
   key strokes to output the long listing format. Create command
   \texttt{ll} so that it does that automatically.  Add coloring of
@@ -634,7 +632,7 @@ In most system you can use the predefined environmental variable $HOME to add:
 #+end_src
 
 ** 3.
-- 3. Secure your shell environment from human errors and make
+Secure your shell environment from human errors and make
   \texttt{rm} and \texttt{mv} commands ask you for confirmation before
   doing anything. Make this change permanent.
 
@@ -666,7 +664,7 @@ countsort () {
 
 * Session: Bash programming
 ** 1.
-- 1. Create a bash script greet.sh that greets you with your login
+Create a bash script greet.sh that greets you with your login
   name. Include useful information about the system
   (e.g. use the command \texttt{w}). Call that program when you log in
   to the *remote* computer.
@@ -688,11 +686,11 @@ calling it to the end of $HOME/.bash\_profile because it is sourced
 once when the user logs in. 
 
 ** 2.
-- 2. Expand the greet program to include time of the day. E.g. say
+Expand the greet program to include time of the day. E.g. say
   "Morning" before noon, "Afternoon" before 6 PM, and "Evening" after
   6 PM.
 
-  + Hint: Use information from the \texttt{date} program to determine
+  - Hint: Use information from the \texttt{date} program to determine
     the time. Use a variable to store the time.
 
 \pause
@@ -709,6 +707,7 @@ fi
 #+end_src
 
 ** 3.
--3. Write a wrapper for the programme you most often use in command
- line (blast) in bioinformatics or otherwise. Document each code
- block, check for input, exit with usage statment if anything is wrong.
+Write a wrapper for the programme you most often use in command line
+  (blast) in bioinformatics or otherwise. Document each code block,
+  check for input, exit with usage statment if anything is wrong.
+
