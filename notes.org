@@ -19,3 +19,7 @@
 - catenate command line operator : >>
 
 - tail -f 
+
+* Additions
+
+http://www.commandlinefu.com/
