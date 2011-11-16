@@ -428,7 +428,7 @@ How many sequences are there in the file 'data/mimivirus.fa'?
   # 607
 #+end_src
 
-** 7
+** 7.
 Files 'one.ids' and 'two.ids' in directory data/ are lists of
   mimivirus sequence IDs. How many of the IDs are shared in two files?
   Extract  all IDs that are uniq to file 'two.ids'.
