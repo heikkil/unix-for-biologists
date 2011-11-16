@@ -26,6 +26,8 @@ http://www.commandlinefu.com/
 
 ** emacs
 
+Emacs menus in console mode (M-x menu-bar-open) F10, C-F10, M-`
+
 Emacs Starter Kit
 https://github.com/technomancy/emacs-starter-kit/
 
