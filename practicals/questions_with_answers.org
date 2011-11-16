@@ -428,7 +428,22 @@ How many sequences are there in the file 'data/mimivirus.fa'?
   # 607
 #+end_src
 
-** 7.
+** 7
+Files 'one.ids' and 'two.ids' in directory data/ are lists of
+  mimivirus sequence IDs. How many of the IDs are shared in two files?
+  Extract  all IDs that are uniq to file 'two.ids'.
+
+- Hint: Use grep -f
+
+\pause
+
+#+begin_src sh -n
+  grep -f one.ids two.ids | wc -l
+  # 10
+  grep -v -f one.ids two.ids > two_uniq.ids 
+#+end_src
+
+** 8.
 File 'data/contamination.vulgar' shows exonorate homology search in
   vulgar format (see vulgar.readme). Use command line tools to extract
   target (subject) ids and count them.
@@ -440,6 +455,7 @@ File 'data/contamination.vulgar' shows exonorate homology search in
   cut -d\  -f6 | \
   sort -u | \
   wc -l
+  # 2174
 #+end_src
 
 
@@ -555,30 +571,31 @@ You would want to turn off your computer after midnight using the
   shutdown 00:00
 #+end_src
 
-** 4.
-Run the following commands in the remote server and observe what happens.
-
+#* 4.
+#un the following commands in the remote server and observe what happens.
+#
 #+begin_src sh -n
-  loop date 2  > time.log &
-  tail -f time.log
-  Ctrl-C
+# loop()  { while  echo ;  do "$@" ; sleep 2 ; done; }
+# loop date  > time.log &
+# tail -f time.log
+# Ctrl-C
 #+end_src
+#
+# Then and exit from the remote computer.
+# After a minute, log in again and see what has happened.
+#
+# Next, read about program \texttt{nohup} and try again while
+# prepending it to the line 1.
+#
+#pause 
+#
+# Nohup makes commands immune to HUP (HangUP) signal that is sent to
+# all user processes when user logs off.
+#
+# This is one of the standard ways of executing long running jobs in a
+# remote computer.
 
-  Then run just the first line and exit from the remote computer.
-  After a minute, log in again and see what has happened.
-
-  Next, read about program \texttt{nohup} and try again while
-  prepending it to the line 1.
-
-\pause 
-
-- Nohup makes commands immune to HUP (HangUP) signal that is sent to
-  all user processes when user logs off.
-
-- This is one of the standard ways of executing long running jobs in a
-  remote computer.
-
-** 5.
+** 4.
 Most unix computers have either curl or wget utilify. Use one of
   them to copy ftp://rcserver/pub/bio/databases/OMIM/omim.txt.Z from
   the KAUST FTP site. Use the file utility to find the type of the
