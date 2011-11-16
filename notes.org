@@ -23,3 +23,39 @@
 * Additions
 
 http://www.commandlinefu.com/
+
+** emacs
+
+Emacs Starter Kit
+https://github.com/technomancy/emacs-starter-kit/
+
+** ssh
+
+http://blog.urfix.com/25-ssh-commands-tricks/
+
+sshfs baloo:unix_course ./baloo
+fusermount -u baloo
+
+
+
+16) COPY YOUR SSH PUBLIC KEY TO A SERVER FROM A MACHINE THAT DOESN’T
+    HAVE SSH-COPY-ID
+
+cat ~/.ssh/id_rsa.pub | ssh user@machine "mkdir ~/.ssh; cat >> ~/.ssh/authorized_keys"
+
+
+ssh -t baloo screen -r
+
+ssh -t user@some.domain.com /usr/bin/screen -xRR
+
+Long before tabbed terminals existed, people have been using Gnu
+screen to open many shells in a single text terminal. Combined with
+ssh, it gives you the ability to have many open shells with a single
+remote connection using the above options. If you detach with “Ctrl-a
+d” or if the ssh session is accidentally terminated, all processes
+running in your remote shells remain undisturbed, ready for you to
+reconnect. Other useful screen commands are “Ctrl-a c” (open new
+shell) and “Ctrl-a a” (alternate between shells). Read this quick
+reference for more screen commands:
+http://aperiodic.net/screen/quick_reference
+
