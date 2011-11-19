@@ -233,7 +233,7 @@ Host remote
 
 #+begin_src sh
   cd ; rsync -avz \
-  student1@baloo-dev.cbrc.kaust.edu.sa:unix_course .
+  student1@baloo-dev.cbrc.kaust.edu.sa:unix_course/ .
   # or
   cd ; rsync -avz remote:unix_course .
 #+end_src
