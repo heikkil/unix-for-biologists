@@ -146,7 +146,7 @@ Douglas McIlroy, and Joe Ossanna.
 
 - Developed in an environment of free information exchange
 - Became heavily fragmented and  commercialised once companies noticed its value
-- GNU project for free OS started by Richhard Stallman in early 80's
+- GNU project for free OS started by Richard Stallman in early 80's
   + “GNU's Not Unix!”
 ** Brief History of UNIX
 
