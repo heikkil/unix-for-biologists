@@ -1,7 +1,7 @@
 #+TITLE: UNIX Fundamentals
 #+AUTHOR: Heikki Lehv\auml{}slaiho
 #+EMAIL:     heikki.lehvaslaiho@kaust.edu.sa
-#+DATE:      2011-10-21 \\ CC BY-SA 3.0
+#+DATE:      2011-11-19 \\ CC BY-SA 3.0
 #+DESCRIPTION:
 #+KEYWORDS: UNIX, LINUX , CLI, history, summary, command line  
 #+LANGUAGE:  en
@@ -57,6 +57,7 @@ Students are to be comfortable in using the command line to:
   + Connect to a remote computer
   + Configure bash shell  environment
   + Put together simple bash script files
+
 * Philosophy of command line
 ** CLI versus GUI
 
@@ -91,7 +92,7 @@ Students are to be comfortable in using the command line to:
 ** Progression in CLI usage
 
 1. One at the time (learn the commands)
-2. Chain them together
+2. Chain them together (IO redirection)
 3. Store them for later use (shell aliases and functions)
 4. Create your own (any programming language, bash/perl)
 
@@ -99,7 +100,7 @@ The aim is for efficiency, speed and convenience
 
 ** Further reading
 
-In the Beginning was the Command Line: \\ http://www.cryptonomicon.com/beginning.html
+In the Beginning was the Command Line: \\   http://www.cryptonomicon.com/beginning.html
 
 * UNIX operating system
 ** Operating system
@@ -129,6 +130,7 @@ software.
     #+ATTR_LaTeX: width=0.6\textwidth
     [[file:img/Operating_system_placement.pdf]]
     \\ \tiny Image from from Wikimedia Commons, CC BY-SA 3.0.
+
 
 ** Unix and Unix-like operating systems
 

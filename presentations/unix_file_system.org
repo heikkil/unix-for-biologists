@@ -1,7 +1,7 @@
-#+TITLE: UNIX fundamentals
+#+TITLE: UNIX Fundamentals
 #+AUTHOR: Heikki Lehv\auml{}slaiho
 #+EMAIL:     heikki.lehvaslaiho@kaust.edu.sa
-#+DATE:      2011-10-21 \\ CC BY-SA 3.0
+#+DATE:      2011-11-19 \\ CC BY-SA 3.0
 #+DESCRIPTION:
 #+KEYWORDS: UNIX, LINUX , CLI, history, summary, command line  
 #+LANGUAGE:  en
@@ -226,9 +226,10 @@ Macs (BSD Unix) follow slightly different conventions!
   (optional). Options take the following forms:
 
   - Single dash followed by a single letter (e.g. -d; -h)
-  - Double dash followed by the long name of the option (e.g. --delim; --help)
+  - Double dash followed by the long name of the option
+    (e.g. -\shy-delim; -\shy-help)
 
-- Most commands support the -h and --help options
+- Most commands support the -h and  -\shy-help options
 - Arguments are the unnamed parts of the command at the end of the line
 
 ** Listing Files

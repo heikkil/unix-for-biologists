@@ -1,7 +1,7 @@
 #+TITLE: UNIX Fundamentals
 #+AUTHOR: Heikki Lehv\auml{}slaiho
 #+EMAIL:     heikki.lehvaslaiho@kaust.edu.sa
-#+DATE:      2011-10-21 \\ CC BY-SA 3.0
+#+DATE:      2011-11-19 \\ CC BY-SA 3.0
 #+DESCRIPTION:
 #+KEYWORDS: UNIX, LINUX , CLI, history, summary, command line  
 #+LANGUAGE:  en
@@ -84,14 +84,16 @@
 
 - IO redirection allows both input and output to be replaced by files
 - Output redirection: 
-  - The > symbol redirects output to a file rather than the terminal
+  + The \gt symbol redirects output to a file rather than the terminal
+  + Notation \gt\gt appends the output to the end of the file
 - Input redirection:
-  -  The < symbol redirects input from a file rather than the terminal
+  - The \lt symbol redirects input from a file rather than the terminal
 - Examples:
 
 #+BEGIN_SRC shell -n
   ls > temp
   wc -l < temp
+  myprog >> myprog.log
 #+END_SRC
 
 ** IO Redirection: STDERR
