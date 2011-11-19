@@ -214,15 +214,21 @@ Host remote
 
 * Practical
 
-- You have been created a temporary account (student<no>) in a linux
++ You have been created a temporary account (student<no>) in a linux
   computer \texttt{baloo-dev.cbrc.kaust.edu.sa} . Your password
   expires at first login. Go and change it.
 
-- Establish a passwordless connection to your account.
++ In the remote computer, run this command:
 
-- Add lines to your ssh config to call this computer 'remote'
+#+begin_src sh
+  ~/unix_course/bin/identity.sh
+#+end_src
 
-- Copy the current course contents into your work computer. The
++ Establish a passwordless connection to your account.
+
++ Add lines to your ssh config to call this computer 'remote'
+
++ Copy the current course contents into your work computer. The
   following commands should work:
 
 #+begin_src sh
@@ -233,3 +239,5 @@ Host remote
 #+end_src
 
 Note the colon and full stop characters!
+
+
