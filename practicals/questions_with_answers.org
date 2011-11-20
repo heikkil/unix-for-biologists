@@ -113,6 +113,10 @@ Give the path to your home directory.
 
 \pause
 
+#+begin_src sh
+  cd ; pwd 
+#+end_src
+
 - Under common LINUX systems your login name is
   \texttt{/home/username}.  So, if you login as user bob, your home
   directory is at \texttt{/home/bob}, most likely.
