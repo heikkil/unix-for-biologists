@@ -141,12 +141,12 @@ How to create secure connection from local *to* remote computer
 - The remote ~/.ssh directory has already created for you
 
 #+begin_src sh
-
+  # at the local computer:
   scp ~/.ssh/id_dsa.pub \ 
     remote:.ssh/authorized_keys
   # or
   scp ~/.ssh/id_dsa.pub \
-    student1@cbrc.kaust.edu.sa:.ssh/authorized_keys
+  student1@baloo-dev.cbrc.kaust.edu.sa:.ssh/authorized_keys
 #+end_src
 
 - Note that this overwrites any previous keys
