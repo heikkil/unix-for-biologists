@@ -1249,13 +1249,13 @@ Processes (programs) can handle signals.
 ** Some shell specifics
 
 -  Using bash:
-  -  Global initialisation file is \/etc\/profile
+  -  Global initialisation file is \texttt{ $/$etc/profile }
   -  User-specific initialisation files are ~/.bash\_profile and ~/.bashrc
      + sometimes \tilde/.bash\_aliases (Ubuntu)
   -  Command \texttt{set} displays all currently set variables
   -  Syntax to set a variable: export VARNAME="value"
 -  Using tcsh:
-  -  Global initialisation file is /etc/csh.cshrc
+  -  Global initialisation file is \texttt{ $/$etc/csh.cshrc }
   -  User-specific initialisation file is ~/.cshrc
   -  Command \texttt{setenv} displays all currently set variables
   -  Syntax to set a variable: setenv VARNAME="value"
