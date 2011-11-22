@@ -1,7 +1,7 @@
 #!/bin/bash 
 
 # when run on the remote computer with student accounts, this script
-# creates a listing of all students from a file ~/name:
+# creates a listing of all students from a file ~/identity:
 #
 # full name
 # KAUST ID
