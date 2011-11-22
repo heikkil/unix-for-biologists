@@ -24,7 +24,6 @@
 | *Day 2* |             |                                           |
 |         |  8.00       | Tea and coffee                            |
 |         |  8.00-11.30 | Talk: *Disks and Files*                   |
-|         |             | Practical: Disks and Files                |
 |         |             | Talk: *Job Control and IO Redirection*    |
 |         |             | Practical: Job Control and IO Redirection |
 |         |       \nbsp |                                           |
