@@ -820,6 +820,7 @@ Output (modified to fit):
   command, e.g. \texttt{mozilla \&}
 
 - Suspend an active processes by keying \\ \texttt{Ctrl-Z}
+- Kill an active processes by keying \\ \texttt{Ctrl-C}
 - Send a process to the background by typing \\ \texttt{bg <jobnumber>}
 - Send a process to the foreground by typing \\ \texttt{fg <jobnumber>}
 - View background and suspended processes with the command: \\ \texttt{jobs}
@@ -900,7 +901,7 @@ Output (modified to fit):
   + \texttt{-n}: also prints out the line number 
   + \texttt{-v}: inverts match, printing out all non-matching lines
 - Examples:
-  + \texttt{grep bash /etc/password} \\ (search for “bash” in the given file)
+  + \texttt{grep bash /etc/passwd} \\ (search for “bash” in the given file)
   + \texttt{grep -v "\land \$" list.txt > cleanlist.txt} \\ (remove empty lines from a file)
 
 ** Counting

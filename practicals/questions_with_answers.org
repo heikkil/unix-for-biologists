@@ -373,7 +373,7 @@ File 'data/mimivirus.sw' contains all UniProt entries from these
   giant viruses. How many of these are from TrEMBL and how many from
   Swiss-Prot?
 
-  - Swiss-Prot format: http://web.expasy.org/docs/#DT_line
+  - Swiss-Prot format:(http://web.expasy.org/docs/userman.html#DT_line)
 
   - Hint: Use caret to anchor the grep search string to the beginning
     of the line, e.g. "\land ID"
@@ -554,16 +554,17 @@ Your machine is running very slowly because a programs you were
 You wish to backup your home directory by running
 
 #+begin_src sh
-  tar -zcvf /home/me/backup.tar.gz home/me
+  tar -zcvf /home/me/backup.tar.gz /home/me
 #+end_src
 
-  every Tuesday at l2:00 PM. What would you need to add to the cron
-  scheduling utility?
+  every Tuesday at l2:00 PM. What line would you need to add to the
+  cron scheduling utility?
 
 \pause
 
 #+begin_src sh
- 0 12 * * 2 tar -zcvf /home/me/backup.tar.z /home/me/
+ 0 12 * * 2 \
+  tar -zcvf /home/me/backup.tar.z /home/me/
 #+end_src
 
 ** 3.
@@ -620,7 +621,7 @@ cat omim.txt | grep -c '^\*RECORD\*$'
 
 * Session: Shells
 ** 1.
-You have a program in \texttt{/home/me/vital/statistics/} that
+You have a program in \texttt{$/$home/me/vital/statistics/} that
   you use regularly. How can you make it so that this program be run
   easily no matter which directory you are currently in?
  

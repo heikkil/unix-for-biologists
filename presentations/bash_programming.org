@@ -85,6 +85,7 @@ when needed.
 
 - $HOME/.bash\_profile
   + user's envvars
+  + run once at login
 
 - $HOME/.bashrc
   + user's init file for aliases and functions

@@ -61,3 +61,18 @@ shell) and “Ctrl-a a” (alternate between shells). Read this quick
 reference for more screen commands:
 http://aperiodic.net/screen/quick_reference
 
+
+
+* November 2011 corrections
+
+- command line moving C-a, C-e
+- emacs M-<, M->
+
+
+
+* Feedback:
+
+http://bit.ly/shj4Km
+
+https://docs.google.com/spreadsheet/viewform?hl=en_GB&formkey=dENzeXhrWnpyUmx5Sjc4TTl2bTl0SEE6MQ#gid=0
+

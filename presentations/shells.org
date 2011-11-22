@@ -101,7 +101,7 @@
 ** Some shell specifics
 
 -  Using bash:
-  -  Global initialisation file is \/etc\/profile
+  -  Global initialisation file is \texttt{ $/$etc/profile }
   -  User-specific initialisation files are ~/.bash\_profile and ~/.bashrc
      + sometimes \tilde/.bash\_aliases (Ubuntu)
   -  Command \texttt{set} displays all currently set variables
