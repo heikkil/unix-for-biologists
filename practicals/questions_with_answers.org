@@ -420,7 +420,7 @@ How many different GO terms have been assigned to mimivirus proteins
 
 ** 6.
 How many sequences are there in the file 'data/mimivirus.fa'?
-  How many are 'Uncharacterized'?
+  How many proteins are uncharacterized?
   - Fasta format description: http://en.wikipedia.org/wiki/FASTA_format
 
 \pause 
@@ -428,8 +428,12 @@ How many sequences are there in the file 'data/mimivirus.fa'?
 #+begin_src sh
   cat mimivirus.fa | grep -c '>'
   # 1915
-  cat mimivirus.fa | grep -c 'Uncharacterized'
-  # 607
+  cat mimivirus.fa | grep '>' | \
+    grep -ci Uncharacterized 
+  # 1145
+  cat mimivirus.fa | grep '>' | grep -vi \
+    Uncharacterized | grep -vci Putative
+  # 167
 #+end_src
 
 ** 7.
@@ -578,12 +582,10 @@ You would want to turn off your computer after midnight using the
 #* 4.
 #un the following commands in the remote server and observe what happens.
 #
-#+begin_src sh -n
 # loop()  { while  echo ;  do "$@" ; sleep 2 ; done; }
 # loop date  > time.log &
 # tail -f time.log
 # Ctrl-C
-#+end_src
 #
 # Then and exit from the remote computer.
 # After a minute, log in again and see what has happened.
