@@ -88,6 +88,12 @@
 - News, mail, RSS
 - Games  
 
+* Emacs leaning curve
+#+begin_center
+#+ATTR_LaTeX: width=0.65\textwidth
+[[file:img/emacs_learning_curve.pdf]]
+\\ http://blogs.msdn.com/b/steverowe/archive/2004/11/17/code-editor-learning-curves.aspx
+#+end_center
 * History of emacs
 
 - Originally written by Richard Stallman
@@ -161,10 +167,11 @@
 
 - CUA mode
   - Make sure that CUA mode is active (Options menu)
-    + Options/Save Options (into ~/.emacs file)
+    - Options/Save Options (into ~/.emacs file)
+    - In MacOSX CUA is permanently mapped to the Apple Cmd key
   - CUA mode gives you standard keybindings to copy, delete, paste
   - Selection works by S-arrow
-  - Emacs default to start selecting is C-Space
+  - Emacs default to start selecting is C-Space, followed by arrows
 
 - Editing columns of text
 
@@ -278,7 +285,7 @@ version control system.
   C-x v v   vc-next-action
 #+END_SRC
 
-  - For other commands, look under Tools/Version Control
+  - For other commands, look under menu Tools/Version Control
 
 * Emacs concepts: windows, frames, files, and buffers
 
@@ -348,3 +355,4 @@ version control system.
 
   - http://www.emacswiki.org/emacs/SiteMap
   - http://xahlee.org/emacs/emacs.html
+
