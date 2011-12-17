@@ -221,7 +221,7 @@ Host remote
 + In the remote computer, run this command:
 
 #+begin_src sh
-  ~/unix_course/bin/identity.sh
+  identity.sh
 #+end_src
 
 + Establish a passwordless connection to your account.
