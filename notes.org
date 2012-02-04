@@ -80,3 +80,7 @@ http://bit.ly/shj4Km
 
 https://docs.google.com/spreadsheet/viewform?hl=en_GB&formkey=dENzeXhrWnpyUmx5Sjc4TTl2bTl0SEE6MQ#gid=0
 
+* Bash examples with faults
+
+http://mywiki.wooledge.org/BashPitfalls
+
