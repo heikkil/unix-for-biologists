@@ -355,4 +355,4 @@ version control system.
 
   - http://www.emacswiki.org/emacs/SiteMap
   - http://xahlee.org/emacs/emacs.html
-
+  - http://batsov.com/articles/2011/11/30/the-ultimate-collection-of-emacs-resources/
