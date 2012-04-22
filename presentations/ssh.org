@@ -215,7 +215,7 @@ Host remote
 * Practical
 
 + You have been created a temporary account (student<no>) in a linux
-  computer \texttt{baloo-dev.cbrc.kaust.edu.sa} . Your password
+  computer \texttt{baloo-dev.cbrc.kaust.edu.sa} . Your password ('y')
   expires at first login. Go and change it.
 
 + In the remote computer, run this command:

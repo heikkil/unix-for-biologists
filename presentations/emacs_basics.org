@@ -357,3 +357,4 @@ version control system.
   - http://xahlee.org/emacs/emacs.html
   - http://batsov.com/articles/2011/11/30/the-ultimate-collection-of-emacs-resources/
   - Org mode: http://doc.norang.ca/org-mode.html
+  - http://www.cb1.com/~john/computing/emacs/beyond-tutorial.html
